@@ -2,6 +2,8 @@
 
 import math
 import os
+import ssl
+import time
 from dataclasses import dataclass, field
 from urllib.parse import urlsplit
 
@@ -54,11 +56,46 @@ class ModelClient:
 
     def send(self, request, remaining):
         headers = {"Authorization": "Bearer " + self.key} if self.key else {}
-        response = httpx.post(
-            self.base_url + "/chat/completions",
-            json=request,
-            headers=headers,
-            timeout=min(self.timeout, remaining),
-            follow_redirects=False,
-        )
-        return response
+        max_retries = 3
+        backoff_base = 1.0
+
+        for attempt in range(max_retries + 1):
+            cur_remaining = remaining
+            if cur_remaining <= 0:
+                raise TimeoutError("Deadline exceeded before dispatch.")
+
+            try:
+                # Use a fresh Client with configured SSL and connection pooling
+                with httpx.Client(
+                    timeout=min(self.timeout, cur_remaining),
+                    follow_redirects=False,
+                    verify=True,
+                    http2=False,
+                ) as client:
+                    response = client.post(
+                        self.base_url + "/chat/completions",
+                        json=request,
+                        headers=headers,
+                    )
+                # If server returns transient 503 or 429, retry with backoff
+                if response.status_code in (429, 502, 503, 504) and attempt < max_retries:
+                    sleep_time = min(backoff_base * (2**attempt), cur_remaining)
+                    if sleep_time > 0 and remaining - sleep_time > 0:
+                        time.sleep(sleep_time)
+                        continue
+                return response
+            except (
+                httpx.ConnectError,
+                httpx.ReadError,
+                httpx.WriteError,
+                httpx.NetworkError,
+                httpx.TimeoutException,
+                ssl.SSLError,
+            ) as exc:
+                if attempt >= max_retries:
+                    raise
+                # Exponential backoff: 1s, 2s, 4s...
+                sleep_time = min(backoff_base * (2**attempt), cur_remaining)
+                if sleep_time <= 0 or remaining - sleep_time <= 0:
+                    raise
+                time.sleep(sleep_time)

@@ -59,6 +59,8 @@ def extract(messages, llm, subjects):
         response = llm(
             "reading", prompt + "\n" + json.dumps(payload, ensure_ascii=False)
         )
+        if not response or not isinstance(response, str):
+            raise ValueError("Empty or non-string response from provider")
         stripped = (
             response.strip()
             .removeprefix("```json")
@@ -66,11 +68,14 @@ def extract(messages, llm, subjects):
             .removesuffix("```")
             .strip()
         )
-        result = json.loads(
+        data = json.loads(
             stripped, parse_float=str, parse_constant=_invalid_constant
-        )["messages"]
+        )
+        if not isinstance(data, dict) or "messages" not in data:
+            raise ValueError("Response missing top-level 'messages' object")
+        result = data["messages"]
         if not isinstance(result, list):
-            raise ValueError()
+            raise ValueError("'messages' must be a list")
     except Exception as exc:
         return {
             m["id"]: {"error": "Reading failed (" + type(exc).__name__ + ")."}

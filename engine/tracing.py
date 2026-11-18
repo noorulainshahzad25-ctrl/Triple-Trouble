@@ -125,7 +125,7 @@ class TraceRecorder:
                 os.fsync(out.fileno())
             self.rows.append(row)
             print(
-                f"\nCall {row['call_number']} | {area} | {row['model']}"
+                f"\nCall {row['call_number']} | {area} | {row['model']} | status: {row.get('http_status', 'N/A')}"
                 f"\nInput\n{prompt}\nOutput\n{row['output']}"
                 f"\nTokens (input / output / total): "
                 f"{row['input_tokens']} / {row['output_tokens']} / {row['total_tokens']}",

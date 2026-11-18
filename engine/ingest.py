@@ -15,8 +15,26 @@ WA = (
 EMAIL = r"(?im)^From:\s*(?P<sender>[^\r\n]+)"
 
 
+def clean_rtf(text: str) -> str:
+    """Extract plain text from RTF content if present."""
+    if not text.lstrip().startswith("{\\rtf"):
+        return text
+    t = re.sub(
+        r"\{\\\*?[a-zA-Z]+.*?(?=(?:\\pard|\\[a-z]+[0-9]*\s+[A-Za-z0-9]))",
+        "",
+        text,
+        flags=re.DOTALL,
+    )
+    t = re.sub(r"\\(?:par|line)\b\s*", "\n", t)
+    t = t.replace("\\\r\n", "\n").replace("\\\n", "\n")
+    t = re.sub(r"\\[a-zA-Z]+-?\d*\s?", "", t)
+    t = re.sub(r"[{}]", "", t)
+    lines = [l.strip() for l in t.splitlines() if l.strip()]
+    return "\n".join(l for l in lines if not l.startswith(";") and not l.endswith(";"))
+
+
 def segment(path: Path):
-    raw = path.read_bytes().decode("utf-8")
+    raw = clean_rtf(path.read_bytes().decode("utf-8"))
     scan = raw.removeprefix("\ufeff")
     # Keep nested numbered lists in email/WhatsApp bodies. Explicit "Message N"
     # wrappers outrank the headers contained within each wrapper.
