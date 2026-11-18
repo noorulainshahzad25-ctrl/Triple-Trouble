@@ -4,7 +4,7 @@ Turn a UTF-8 pack of English and Roman Urdu messages into a source-linked hackat
 
 ## Run
 
-Use Python 3.10+ on Linux, macOS or Windows with WSL. The runner uses POSIX file locking, timers and atomic symbolic-link replacement.
+Use Python 3.10+ (macOS ships 3.9 at /usr/bin/python3; install a newer interpreter) on Linux, macOS or Windows with WSL. The runner uses POSIX file locking, timers and atomic symbolic-link replacement.
 
 ```sh
 python -m venv .venv
@@ -61,4 +61,4 @@ RUN_LIVE_MODEL=1 python -m pytest -qs tests/test_runtime.py::test_live_provider
 
 Offline tests inject labeled extractions from external fixtures. The CLI integration test exercises the real HTTP client against a local test server, checks four successive CLI invocations and reconciles the trace with the requests received. Only the opt-in test contacts the configured model. Actual extraction quality, provider latency, token use and bonus eligibility require verification with the chosen model.
 
-Before an official run, verify the event's permitted commit with `git log -1` and the working tree with `git status --short`. The brief dated 18 November 2026 sets a 1:25 p.m. Islamabad code freeze for that event. This runtime revision was prepared after that deadline.
+Before an official run, verify the event's permitted commit with `git log -1` and the working tree with `git status --short`. The brief dated 18 November 2026 sets a 1:25 p.m. Islamabad code freeze for that event.

@@ -11,3 +11,5 @@ __pycache__/
 *.py[cod]
 *.pem
 *.key
+.DS_Store
+*.bundle

@@ -1,5 +1,10 @@
 """Official CLI. Run from the repository root on Linux, macOS or WSL."""
 
+import sys
+
+if sys.version_info < (3, 10):
+    sys.exit("Python 3.10 or newer is required. Found " + sys.version.split()[0] + ".")
+
 import argparse
 import fcntl
 import json
