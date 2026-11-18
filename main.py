@@ -18,7 +18,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from engine.pipeline import process_input
-from engine.reporting import public_result, publish, render
+from engine.reporting import publish, render
 from engine.schemas import AREAS
 from engine.tracing import TraceRecorder, token_text, totals
 
@@ -61,17 +61,16 @@ def run(path, root, client=None):
         )
         try:
             with time_limit(deadline):
-                raw = process_input(path, previous, trace)
+                result = process_input(path, previous, trace)
                 if trace.error:
                     raise RuntimeError(trace.error)
                 errors = [
-                    m["error"] for m in raw["state"]["messages"] if m.get("error")
+                    m["error"] for m in result["state"]["messages"] if m.get("error")
                 ]
                 if errors:
                     raise ValueError(
                         "Extraction incomplete: " + "; ".join(dict.fromkeys(errors))
                     )
-                result = public_result(raw, previous)
                 state, candidate = result["state"], result["plan"]
                 # Stage infeasible revisions for reconciliation. Keep the last validated
                 # plan visible and expose what failed, so a later correction can repair it.
@@ -86,6 +85,7 @@ def run(path, root, client=None):
                         status="needs_review",
                         pending_candidate=candidate,
                         unresolved=candidate["unresolved"],
+                        validations=candidate["validations"],
                     )
                     result["changed_areas"] = []
                     reason = "Held pending review: " + " ".join(
@@ -123,6 +123,7 @@ def run(path, root, client=None):
                 }
                 summary.update(
                     run_id=trace.run_id,
+                    previous_run_id=state_path.resolve().parent.name if previous else None,
                     status=result["plan"]["status"],
                     pending_review=staged,
                     actual_model_areas=[r["area"] for r in trace.rows],

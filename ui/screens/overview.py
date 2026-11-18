@@ -17,6 +17,7 @@ from ..components.metrics import render_metric_rail
 def _render_dark_showcase(bundle: dict[str, Any]) -> None:
     """Render the dark showcase stage 'THE PLAN, EXPLAINED.' with 5 asymmetric domain cards."""
     plan = bundle.get("plan", {})
+    currency = plan.get("budget", {}).get("currency") or ""
     att = plan.get("attendance", {})
     venue = plan.get("venue", {})
     sched = plan.get("schedule", {})
@@ -124,7 +125,7 @@ def _render_dark_showcase(bundle: dict[str, Any]) -> None:
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-top:0.65rem;">
           <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-dark-secondary);">
-            COST: <strong style="color:var(--text-dark-primary);">{html.escape(fmt_amount(venue.get("cost")))}</strong> · FACILITIES: {html.escape(v_facilities)}
+            COST: <strong style="color:var(--text-dark-primary);">{html.escape(fmt_amount(venue.get("cost"), currency))}</strong> · FACILITIES: {html.escape(v_facilities)}
           </span>
           <div>{source_chips_html(venue.get("sources"), dark_stage=True)}</div>
         </div>
@@ -137,15 +138,15 @@ def _render_dark_showcase(bundle: dict[str, Any]) -> None:
           <span class="mm-dark-domain-num">05 / BUDGET</span>
           {status_badge_html(b_val["status"], dark_stage=True)}
         </div>
-        <div class="mm-dark-headline">{html.escape(fmt_amount(b_total))}</div>
+        <div class="mm-dark-headline">{html.escape(fmt_amount(b_total, currency))}</div>
         <div style="font-size:13.5px;color:var(--text-dark-secondary);margin-top:0.25rem;">
           {html.escape(str(b_val["reason"]))}
         </div>
       </div>
       <div>
         <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11.5px;color:var(--text-dark-secondary);">
-          <span>CEILING: {html.escape(fmt_amount(b_ceil))}</span>
-          <span>REMAINING: {html.escape(fmt_amount(b_rem))}</span>
+          <span>CEILING: {html.escape(fmt_amount(b_ceil, currency))}</span>
+          <span>REMAINING: {html.escape(fmt_amount(b_rem, currency))}</span>
         </div>
         <div class="mm-track-outer-dark">
           <div style="width:{b_pct}%;background:{b_bar_color};height:100%;"></div>
@@ -198,7 +199,7 @@ def _render_dark_showcase(bundle: dict[str, Any]) -> None:
           <div style="width:{f_pct}%;background:{f_bar_color};height:100%;"></div>
         </div>
         <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-dark-secondary);margin:0.45rem 0;">
-          UNIT: {html.escape(fmt_amount(food.get("unit_price")))} · TOTAL: {html.escape(fmt_amount(food.get("cost")))}
+          UNIT: {html.escape(fmt_amount(food.get("unit_price"), currency))} · TOTAL: {html.escape(fmt_amount(food.get("cost"), currency))}
         </div>
         <div>{source_chips_html(food.get("sources"), dark_stage=True)}</div>
       </div>

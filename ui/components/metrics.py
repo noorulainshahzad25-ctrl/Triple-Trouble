@@ -54,8 +54,8 @@ def render_metric_rail(bundle: dict[str, Any]) -> None:
         tot = tel.get("total_tokens", 0)
         in_t = tel.get("input_tokens", 0)
         out_t = tel.get("output_tokens", 0)
-        token_html = f'<div class="mm-metric-value">{tot:,}</div>'
-        token_foot = f"{in_t:,} IN / {out_t:,} OUT tokens"
+        token_html = f'<div class="mm-metric-value">{tot if tot is not None else '—'}</div>'
+        token_foot = f"{in_t if in_t is not None else '—'} IN / {out_t if out_t is not None else '—'} OUT tokens"
     else:
         token_html = (
             f'<div class="mm-metric-value-compact" style="color:var(--text-secondary);">'

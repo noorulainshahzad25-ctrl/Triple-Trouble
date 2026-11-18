@@ -36,7 +36,7 @@ def render_system_screen(bundle: dict[str, Any]) -> None:
         else "NOT REPORTED"
     )
     if loaded and tel.get("tokens_available"):
-        tok_summary = f"{tel.get('total_tokens'):,} TOTAL ({tel.get('input_tokens'):,} IN / {tel.get('output_tokens'):,} OUT)"
+        tok_summary = f"{tel['total_tokens'] if tel.get('total_tokens') is not None else '—'} TOTAL ({tel['input_tokens'] if tel.get('input_tokens') is not None else '—'} IN / {tel['output_tokens'] if tel.get('output_tokens') is not None else '—'} OUT)"
     else:
         tok_summary = TOKEN_UNAVAILABLE_LABEL
 

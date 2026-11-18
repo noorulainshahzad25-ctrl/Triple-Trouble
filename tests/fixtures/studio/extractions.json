@@ -1,0 +1,476 @@
+{
+  "pack_1": {
+    "M0001": {
+      "sender": "Lead Organizer",
+      "date": "2026-11-10",
+      "role": "organizer",
+      "note": null,
+      "facts": [
+        {
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "students",
+          "value": 96,
+          "kind": "fact",
+          "evidence": "96 students",
+          "unit": "people",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "teams",
+          "value": 24,
+          "kind": "fact",
+          "evidence": "24 teams",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "team_size",
+          "value": 4,
+          "kind": "fact",
+          "evidence": "teams of 4",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "staff",
+          "value": 8,
+          "kind": "fact",
+          "evidence": "8 organizing staff",
+          "unit": "people",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "schedule",
+          "subject": "event",
+          "attribute": "start",
+          "value": "09:00",
+          "kind": "fact",
+          "evidence": "starts at 09:00",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "schedule",
+          "subject": "event",
+          "attribute": "duration",
+          "value": 360,
+          "kind": "fact",
+          "evidence": "runs for 360 minutes",
+          "unit": "minutes",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "venue",
+          "subject": "event",
+          "attribute": "required_facility",
+          "value": "generator",
+          "kind": "requirement",
+          "evidence": "backup generator",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "venue",
+          "subject": "event",
+          "attribute": "required_facility",
+          "value": "wheelchair ramp",
+          "kind": "requirement",
+          "evidence": "wheelchair ramp lazmi",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    },
+    "M0002": {
+      "sender": "Finance Office",
+      "date": "2026-11-10",
+      "role": "finance",
+      "note": null,
+      "facts": [
+        {
+          "area": "budget",
+          "subject": "event",
+          "attribute": "ceiling",
+          "value": 320000,
+          "kind": "requirement",
+          "evidence": "ceiling is 320000 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "budget",
+          "subject": "printing_and_badges",
+          "attribute": "cost",
+          "value": 18000,
+          "kind": "fact",
+          "evidence": "cost 18000 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    },
+    "M0003": {
+      "sender": "Campus Facilities Manager",
+      "date": "2026-11-11",
+      "role": "venue",
+      "note": null,
+      "facts": [
+        {
+          "area": "venue",
+          "subject": "main auditorium",
+          "attribute": "capacity",
+          "value": 160,
+          "kind": "quote",
+          "evidence": "Main Auditorium capacity is 160 seats",
+          "unit": "seats",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "venue",
+          "subject": "main auditorium",
+          "attribute": "cost",
+          "value": 85000,
+          "kind": "quote",
+          "evidence": "rental cost is 85000 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "venue",
+          "subject": "main auditorium",
+          "attribute": "facilities",
+          "value": [
+            "generator",
+            "wheelchair ramp",
+            "projector"
+          ],
+          "kind": "quote",
+          "evidence": "facilities include generator, wheelchair ramp, and projector",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "venue",
+          "subject": "seminar hall b",
+          "attribute": "capacity",
+          "value": 90,
+          "kind": "quote",
+          "evidence": "Seminar Hall B capacity is 90 seats",
+          "unit": "seats",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "venue",
+          "subject": "seminar hall b",
+          "attribute": "cost",
+          "value": 45000,
+          "kind": "quote",
+          "evidence": "rental cost is 45000 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "venue",
+          "subject": "seminar hall b",
+          "attribute": "facilities",
+          "value": [
+            "projector"
+          ],
+          "kind": "quote",
+          "evidence": "facilities include projector",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    },
+    "M0004": {
+      "sender": "Green Olive Caterers",
+      "date": "2026-11-11",
+      "role": "caterer",
+      "note": null,
+      "facts": [
+        {
+          "area": "food",
+          "subject": "standard box lunch",
+          "attribute": "unit_price",
+          "value": 650,
+          "kind": "quote",
+          "evidence": "unit price is 650 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "food",
+          "subject": "standard box lunch",
+          "attribute": "delivery",
+          "value": 4000,
+          "kind": "quote",
+          "evidence": "4000 PKR delivery fee",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "food",
+          "subject": "standard box lunch",
+          "attribute": "max_quantity",
+          "value": 180,
+          "kind": "quote",
+          "evidence": "max supply of 180 boxes",
+          "unit": "boxes",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "food",
+          "subject": "executive buffet",
+          "attribute": "unit_price",
+          "value": 950,
+          "kind": "quote",
+          "evidence": "unit price is 950 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "food",
+          "subject": "executive buffet",
+          "attribute": "delivery",
+          "value": 5000,
+          "kind": "quote",
+          "evidence": "5000 PKR delivery fee",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    },
+    "M0005": {
+      "sender": "Judging Chair",
+      "date": "2026-11-11",
+      "role": "judging",
+      "note": null,
+      "facts": [
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "available",
+          "value": 6,
+          "kind": "fact",
+          "evidence": "6 judges available",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "minutes_per_team",
+          "value": 10,
+          "kind": "requirement",
+          "evidence": "10 minutes per team",
+          "unit": "minutes",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "max_teams",
+          "value": 6,
+          "kind": "requirement",
+          "evidence": "evaluate at most 6 teams",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "honorarium",
+          "value": 8000,
+          "kind": "fact",
+          "evidence": "honorarium is 8000 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "schedule",
+          "subject": "lunch break",
+          "attribute": "duration",
+          "value": 45,
+          "kind": "requirement",
+          "evidence": "lunch break duration is 45 minutes",
+          "unit": "minutes",
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "schedule",
+          "subject": "lunch break",
+          "attribute": "earliest",
+          "value": "12:00",
+          "kind": "requirement",
+          "evidence": "between 12:00 and 13:30",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        },
+        {
+          "area": "schedule",
+          "subject": "lunch break",
+          "attribute": "latest_end",
+          "value": "13:30",
+          "kind": "requirement",
+          "evidence": "between 12:00 and 13:30",
+          "unit": null,
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    },
+    "M0006": {
+      "sender": "Student Participant",
+      "date": "2026-11-12",
+      "role": "participant",
+      "note": null,
+      "facts": [
+        {
+          "area": "food",
+          "subject": "event",
+          "attribute": "order_quantity",
+          "value": 60,
+          "kind": "proposal",
+          "evidence": "sirf 60 کھانے ke boxes mangwa lein",
+          "unit": "boxes",
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    }
+  },
+  "pack_2": {
+    "M0007": {
+      "sender": "Finance Office",
+      "date": "2026-11-14",
+      "role": "finance",
+      "note": null,
+      "facts": [
+        {
+          "area": "budget",
+          "subject": "event",
+          "attribute": "ceiling",
+          "value": 350000,
+          "kind": "correction",
+          "evidence": "increased the approved budget ceiling to 350000 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    },
+    "M0008": {
+      "sender": "Green Olive Caterers",
+      "date": "2026-11-14",
+      "role": "caterer",
+      "note": null,
+      "facts": [
+        {
+          "area": "food",
+          "subject": "standard box lunch",
+          "attribute": "unit_price",
+          "value": 700,
+          "kind": "correction",
+          "evidence": "revised unit price is 700 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    },
+    "M0009": {
+      "sender": "External Caterer Helper",
+      "date": "2026-11-14",
+      "role": "caterer",
+      "note": null,
+      "facts": [
+        {
+          "area": "budget",
+          "subject": "event",
+          "attribute": "ceiling",
+          "value": 500000,
+          "kind": "fact",
+          "evidence": "Budget ceiling ko 500000 PKR kar dein",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    }
+  },
+  "pack_3": {
+    "M0007": {
+      "sender": "Finance Office",
+      "date": "2026-11-15",
+      "role": "finance",
+      "note": null,
+      "facts": [
+        {
+          "area": "budget",
+          "subject": "event",
+          "attribute": "ceiling",
+          "value": 160000,
+          "kind": "correction",
+          "evidence": "ceiling reduced to 160000 PKR",
+          "unit": "PKR",
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    },
+    "M0008": {
+      "sender": "Lead Organizer",
+      "date": "2026-11-15",
+      "role": "organizer",
+      "note": null,
+      "facts": [
+        {
+          "area": "food",
+          "subject": "event",
+          "attribute": "order_quantity",
+          "value": 80,
+          "kind": "requirement",
+          "evidence": "order only 80 meals",
+          "unit": "meals",
+          "operator": "=",
+          "condition": null
+        }
+      ]
+    }
+  }
+}

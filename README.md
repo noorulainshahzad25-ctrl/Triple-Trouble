@@ -21,7 +21,7 @@ Set `MODEL_BASE_URL` to your provider's OpenAI-compatible API base (including it
 python main.py input/messages.txt
 ```
 
-Supply the actual file path. A file can contain one message, several new messages, or an accumulated pack. The included practice files use the PDF's message bodies and sender/date headers.
+The bundled input/messages.txt contains the practice event. Replace its contents with the incoming batch and repeat the same command for each update. A file can contain one message, several new messages, or an accumulated pack. The included practice files use the PDF's message bodies and sender/date headers.
 
 ```sh
 python main.py tests/fixtures/practice.txt
@@ -35,7 +35,7 @@ The working directory is the default session. Before starting another event, set
 
 1. The core segments the supplied text and fingerprints messages. One reading call extracts claims for all fresh messages. Replaying known messages makes zero model calls. With the current core, the prediction for any fresh input is `reading`. A change in budget or venue can trigger deterministic recalculation in those areas.
 2. Each claim carries a source and supporting text. The resolver considers dates, authority, contradictions and proposals. Python selects eligible venues and meals, assigns judges, builds a timeline and adds budget lines.
-3. The runtime validates required activities, converts the core's internal representation to the public contract and prints the plan. An infeasible revision stays available for correction. When a prior valid plan exists, its figures remain visible with a review status and the full candidate attached. Dependent revisions in one unresolved batch are held together.
+3. The engine validates required activities and returns the public contract directly. The runtime publishes and prints the plan. An infeasible revision stays available for correction. When a prior valid plan exists, its figures remain visible with a review status and the full candidate attached. Dependent revisions in one unresolved batch are held together.
 4. The gateway sends one HTTP request per callback. Each attempted request gets a numbered record with its request body, raw provider response when received, model identity, latency, output and provider usage. Failed and successful attempts share the same append-only trace. A failed extraction retains the last published checkpoint and can be retried explicitly.
 5. A session lock serializes writers. The CLI limits full runs to 120 seconds and updates to 60 seconds. A sixth update call is blocked before dispatch. The runner avoids automatic retries. Missing usage is marked explicitly. Run and session totals sum only provider-reported counters.
 
@@ -51,6 +51,12 @@ The working directory is the default session. Before starting another event, set
 | `output/final_submission.txt` | Readable plan, decisions, full plan details, session trace and reported total as of publication |
 
 The CLI reports wall time through publication in the terminal. JSON outputs are readable by a dashboard with no provider calls. A single pointer selects the completed plan snapshot. The live trace can include attempts after the last published snapshot. Store the complete session directory together when archiving, or copy individual output files with symlinks dereferenced.
+
+## Dashboard
+
+Run `python -m streamlit run app.py` in the same virtual environment and working directory as the CLI. The sidebar lists published runs by ID. The dashboard reads the session selected by `PLANNER_SESSION_DIR` and displays its published plan and matching trace records.
+
+The bundled dashboard examples use offline labeled fixtures. Regenerate them with `python cli.py --seed-verified-runs`. They contain no provider calls or usage.
 
 ## Verify
 

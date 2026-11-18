@@ -1,0 +1,29 @@
+TRIPLE TROUBLE | HACKATHON PLANNER
+
+The app turns event messages into a five-area plan, checks constraints and
+shows decisions and their sources in a dashboard. The plan below comes from
+the bundled practice messages, processed using offline extraction fixtures.
+
+1. PLAN — 150 students, 50 teams
+
+Venue: Hall A, 200 seats, Rs 120,000.
+Schedule (minutes from start): 0–90 hackathon work, 90–105 prayer break,
+105–195 hackathon work, 195–240 judging.
+Food: 177 basic lunch boxes at Rs 800 each, Rs 141,600 with free delivery.
+Judging: 17 assigned judges at Rs 5,000 each, Rs 85,000.
+Budget: Rs 476,600 total, including Rs 100,000 for prizes, Rs 20,000 for
+backup internet and Rs 10,000 for printing. The plan exceeds the requested
+Rs 400,000 cap by Rs 76,600 and does not fit. The bundled practice input
+specifies Rs 650,000. This report applies Rs 400,000 as the submission cap.
+
+2. AI CALL TRACE
+
+Offline plan run: 0 AI calls, 0 tokens used.
+
+The separate live practice attempts were recorded as follows. The model
+names are the requested IDs because no successful model response arrived.
+
+Call 1 | gemini-2.5-flash | Reading messages | Tokens unavailable | DNS failure
+Call 2 | gemini-2.5-flash | Reading messages | Tokens unavailable | HTTP 404
+Call 3 | gemini-3.8-flash | Reading messages | Tokens unavailable | Timeout
+Total | 3 live attempts | 0 successful responses | Token usage unavailable

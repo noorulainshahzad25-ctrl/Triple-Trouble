@@ -193,14 +193,17 @@ def test_cli_over_http(tmp_path):
                 MODEL_API_KEY="",
                 PLANNER_SESSION_DIR=str(tmp_path),
             )
+            input_file = tmp_path / "input/messages.txt"
+            input_file.parent.mkdir()
             for name, calls in [
                 ("practice", 1),
                 ("printing", 2),
                 ("food", 3),
                 ("food", 3),
             ]:
+                input_file.write_bytes((FIX / (name + ".txt")).read_bytes())
                 out = subprocess.run(
-                    [sys.executable, str(ROOT / "main.py"), str(FIX / (name + ".txt"))],
+                    [sys.executable, str(ROOT / "main.py"), "input/messages.txt"],
                     cwd=tmp_path,
                     check=False,
                     env=env,
@@ -226,9 +229,9 @@ def test_cli_over_http(tmp_path):
 
 
 def test_live_provider(tmp_path):
-    load_dotenv(ROOT / ".env")
     if os.environ.get("RUN_LIVE_MODEL") != "1":
         pytest.skip("Opt in with RUN_LIVE_MODEL=1")
+    load_dotenv(ROOT / ".env")
     summary = run(FIX / "practice.txt", tmp_path)
     assert summary["status"] == "valid"
     assert summary["run_usage"]["calls"] >= 1

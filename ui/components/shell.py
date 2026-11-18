@@ -76,7 +76,8 @@ def render_sidebar_and_load_bundle() -> tuple[str, dict[str, Any]]:
         discovered = discover_run_files()
         options_map: dict[str, Path | None] = {}
         for p in discovered:
-            options_map[p.name] = p
+            label = p.parent.name if p.name == "run_summary.json" else p.name
+            options_map[label] = p
         options_map["[AWAITING INPUT — NO RUN]"] = None
 
         option_keys = list(options_map.keys())

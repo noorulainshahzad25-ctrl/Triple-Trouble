@@ -16,6 +16,7 @@ from ..components.hero import render_editorial_hero
 def _render_venue_instrument(bundle: dict[str, Any]) -> None:
     """01 / VENUE — Minimalist occupancy & facility verification instrument."""
     plan = bundle.get("plan", {})
+    currency = plan.get("budget", {}).get("currency") or ""
     venue = plan.get("venue", {}) or {}
     att = plan.get("attendance", {}) or {}
     val = domain_validation_summary(bundle, "venue")
@@ -101,7 +102,7 @@ def _render_venue_instrument(bundle: dict[str, Any]) -> None:
         <div style="text-align:right;">
           <div class="mm-overline">COMMITTED RENTAL COST</div>
           <div style="font-family:var(--font-display);font-size:clamp(26px, 2.8vw, 38px);font-weight:800;font-variant-numeric:tabular-nums;">
-            {html.escape(fmt_amount(cost))}
+            {html.escape(fmt_amount(cost, currency))}
           </div>
         </div>
       </div>
@@ -249,6 +250,7 @@ def _render_schedule_instrument(bundle: dict[str, Any]) -> None:
 def _render_food_instrument(bundle: dict[str, Any]) -> None:
     """03 / FOOD — Meal coverage & unit/delivery cost equation instrument."""
     plan = bundle.get("plan", {})
+    currency = plan.get("budget", {}).get("currency") or ""
     food = plan.get("food", {}) or {}
     att = plan.get("attendance", {}) or {}
     val = domain_validation_summary(bundle, "food")
@@ -322,7 +324,7 @@ def _render_food_instrument(bundle: dict[str, Any]) -> None:
         <div style="text-align:right;">
           <div class="mm-overline">TOTAL CATERING COMMITMENT</div>
           <div style="font-family:var(--font-display);font-size:clamp(26px, 2.8vw, 38px);font-weight:800;font-variant-numeric:tabular-nums;">
-            {html.escape(fmt_amount(total_cost))}
+            {html.escape(fmt_amount(total_cost, currency))}
           </div>
         </div>
       </div>
@@ -346,10 +348,10 @@ def _render_food_instrument(bundle: dict[str, Any]) -> None:
         <div style="background:var(--stage-dark);color:var(--text-dark-primary);padding:1.2rem 1.35rem;display:flex;flex-direction:column;justify-content:space-between;">
           <div class="mm-overline" style="color:var(--accent);">AUDITED PRICING FORMULA</div>
           <div class="mm-mono" style="font-size:13px;line-height:1.65;margin-top:0.4rem;">
-            <div>{html.escape(fmt_int(qty))} meals × {html.escape(fmt_amount(u_price))} unit</div>
-            <div>+ {html.escape(fmt_amount(delivery))} delivery fee</div>
+            <div>{html.escape(fmt_int(qty))} meals × {html.escape(fmt_amount(u_price, currency))} unit</div>
+            <div>+ {html.escape(fmt_amount(delivery, currency))} delivery fee</div>
             <div style="border-top:1px solid var(--border-dark-hairline);margin-top:0.3rem;padding-top:0.3rem;color:var(--accent);font-weight:700;">
-              = {html.escape(fmt_amount(total_cost))}
+              = {html.escape(fmt_amount(total_cost, currency))}
             </div>
           </div>
         </div>
@@ -366,6 +368,7 @@ def _render_food_instrument(bundle: dict[str, Any]) -> None:
 def _render_judging_instrument(bundle: dict[str, Any]) -> None:
     """04 / JUDGING — Structured matrix visualization of judge assignments & capacity."""
     plan = bundle.get("plan", {})
+    currency = plan.get("budget", {}).get("currency") or ""
     judg = plan.get("judging", {}) or {}
     val = domain_validation_summary(bundle, "judging")
 
@@ -435,7 +438,7 @@ def _render_judging_instrument(bundle: dict[str, Any]) -> None:
         <div style="text-align:right;">
           <div class="mm-overline">HONORARIUM ALLOCATION</div>
           <div style="font-family:var(--font-display);font-size:clamp(26px, 2.8vw, 38px);font-weight:800;font-variant-numeric:tabular-nums;">
-            {html.escape(fmt_amount(cost) if cost is not None else "PKR 0 / NONE")}
+            {html.escape(fmt_amount(cost, currency))}
           </div>
         </div>
       </div>
@@ -461,6 +464,7 @@ def _render_judging_instrument(bundle: dict[str, Any]) -> None:
 def _render_budget_instrument(bundle: dict[str, Any]) -> None:
     """05 / BUDGET — Segmented allocation bar and double-rule financial ledger."""
     plan = bundle.get("plan", {})
+    currency = plan.get("budget", {}).get("currency") or ""
     bud = plan.get("budget", {}) or {}
     val = domain_validation_summary(bundle, "budget")
 
@@ -494,7 +498,7 @@ def _render_budget_instrument(bundle: dict[str, Any]) -> None:
 
         if share_pct > 0:
             seg_bars_html += (
-                f'<div title="{html.escape(item_name)}: {html.escape(fmt_amount(c_val))} ({share_pct}%)" '
+                f'<div title="{html.escape(item_name)}: {html.escape(fmt_amount(c_val, currency))} ({share_pct}%)" '
                 f'style="width:{max(2.0, share_pct)}%;background:{col};height:100%;border-right:1px solid #FFFFFF;"></div>'
             )
 
@@ -503,7 +507,7 @@ def _render_budget_instrument(bundle: dict[str, Any]) -> None:
             f'<td><span style="display:inline-block;width:10px;height:10px;background:{col};margin-right:8px;"></span>'
             f'<strong>{html.escape(item_name)}</strong></td>'
             f'<td class="mm-mono">{share_pct:.1f}%</td>'
-            f'<td class="mm-mono" style="font-weight:700;">{html.escape(fmt_amount(c_val))}</td>'
+            f'<td class="mm-mono" style="font-weight:700;">{html.escape(fmt_amount(c_val, currency))}</td>'
             f"<td>{source_chips_html(srcs)}</td>"
             f"</tr>"
         )
@@ -511,13 +515,13 @@ def _render_budget_instrument(bundle: dict[str, Any]) -> None:
     if rem_num > 0 and ceil_num > 0:
         rem_pct = round((rem_num / denom) * 100.0, 1)
         seg_bars_html += (
-            f'<div title="UNALLOCATED HEADROOM: {html.escape(fmt_amount(remaining))}" '
+            f'<div title="UNALLOCATED HEADROOM: {html.escape(fmt_amount(remaining, currency))}" '
             f'style="width:{max(2.0, rem_pct)}%;background:#C9E76B;height:100%;"></div>'
         )
     elif rem_num < 0:
         over_pct = min(35.0, round((abs(rem_num) / denom) * 100.0, 1))
         seg_bars_html += (
-            f'<div title="CEILING OVERRUN: {html.escape(fmt_amount(abs(int(rem_num))))}" '
+            f'<div title="CEILING OVERRUN: {html.escape(fmt_amount(abs(int(rem_num)), currency))}" '
             f'style="width:{max(4.0, over_pct)}%;background:var(--failed);height:100%;"></div>'
         )
 
@@ -545,15 +549,15 @@ def _render_budget_instrument(bundle: dict[str, Any]) -> None:
       <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:1rem;border-bottom:1px solid var(--border-hairline);padding-bottom:0.95rem;">
         <div>
           <div class="mm-overline">COMMITTED TOTAL</div>
-          <div class="mm-decision-monument" style="font-size:clamp(26px, 2.8vw, 42px);">{html.escape(fmt_amount(total))}</div>
+          <div class="mm-decision-monument" style="font-size:clamp(26px, 2.8vw, 42px);">{html.escape(fmt_amount(total, currency))}</div>
         </div>
         <div>
           <div class="mm-overline">APPROVED CEILING</div>
-          <div class="mm-decision-monument" style="font-size:clamp(26px, 2.8vw, 42px);color:var(--text-secondary);">{html.escape(fmt_amount(ceiling))}</div>
+          <div class="mm-decision-monument" style="font-size:clamp(26px, 2.8vw, 42px);color:var(--text-secondary);">{html.escape(fmt_amount(ceiling, currency))}</div>
         </div>
         <div style="text-align:right;">
           <div class="mm-overline">REMAINING BALANCE</div>
-          <div class="mm-decision-monument" style="font-size:clamp(26px, 2.8vw, 42px);color:{rem_color};">{html.escape(fmt_amount(remaining))}</div>
+          <div class="mm-decision-monument" style="font-size:clamp(26px, 2.8vw, 42px);color:{rem_color};">{html.escape(fmt_amount(remaining, currency))}</div>
         </div>
       </div>
 
@@ -561,7 +565,7 @@ def _render_budget_instrument(bundle: dict[str, Any]) -> None:
       <div style="margin-top:1.15rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;">
           <span class="mm-overline">SEGMENTED ALLOCATION BAR (COMMITTED LINES VS. HEADROOM)</span>
-          <span class="mm-mono" style="font-size:11px;">CURRENCY: PKR (RS)</span>
+          <span class="mm-mono" style="font-size:11px;">CURRENCY: {html.escape(currency or 'UNSPECIFIED')}</span>
         </div>
         <div class="mm-track-outer" style="height:22px;border-color:var(--text-primary);">
           {seg_bars_html}
@@ -576,7 +580,7 @@ def _render_budget_instrument(bundle: dict[str, Any]) -> None:
             <tr>
               <th>COMMITTED LINE ITEM</th>
               <th>SHARE</th>
-              <th>AMOUNT (PKR)</th>
+              <th>AMOUNT</th>
               <th>PROVENANCE SOURCES</th>
             </tr>
           </thead>

@@ -125,7 +125,9 @@ class TestMindMachineDecisionStudio(unittest.TestCase):
         self.assertIsNotNone(b2["previous_state"])
         self.assertIn("food", b2["recomputed_areas"])
         self.assertIn("budget", b2["recomputed_areas"])
-        self.assertEqual(b2["called_model_tags"], ["reading"])
+        self.assertEqual(b2["called_model_tags"], [])
+        self.assertEqual(b2["telemetry"]["call_count"], 0)
+        self.assertEqual(b2["predicted_model_areas"], ["reading"])
         diffs = compute_snapshot_diffs(b2)
         self.assertTrue(len(diffs) >= 2)
 
@@ -201,3 +203,24 @@ class TestMindMachineDecisionStudio(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_dashboard_reads_published_sessions(execute, tmp_path):
+    summary, baseline, _ = execute("practice")
+    latest = tmp_path / "output/run_summary.json"
+    bundle = load_run_bundle(latest)
+    assert bundle["run_id"] == summary["run_id"]
+    assert bundle["telemetry"]["total_tokens"] == 58
+    assert bundle["plan"]["budget"]["currency"] == "Rs"
+    assert bundle["previous_state"] is None
+
+    execute("overspend")
+    held = load_run_bundle(latest)
+    assert held["status"] == "needs_review"
+    assert held["plan"]["budget"]["total"] == baseline["budget"]["total"]
+    assert held["previous_state"]["plan"]["budget"] == held["plan"]["budget"]
+
+    execute("overspend")
+    replay = load_run_bundle(latest)
+    assert replay["telemetry"]["call_count"] == 0
+    assert replay["called_model_tags"] == []

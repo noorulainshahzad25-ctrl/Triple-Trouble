@@ -11,6 +11,7 @@ from .conflict_resolver import resolve
 from .domain_model import triage
 from .extractor import extract
 from .ingest import segment
+from .public_plan import public_result
 from .planner import build
 from .schemas import AREAS, SCHEMA_VERSION, check, key
 from .updater import affected, append_messages
@@ -148,7 +149,7 @@ def process_input(
         "planning_checks": planning_checks,
         "affected_areas": touched,
     }
-    return {
+    raw = {
         "status": status,
         "plan": plan,
         "validations": checks,
@@ -157,3 +158,4 @@ def process_input(
         "predicted_model_areas": model_areas,
         "state": state,
     }
+    return public_result(raw, previous_state)

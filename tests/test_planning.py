@@ -4,7 +4,6 @@ import pytest
 from conftest import FIX
 
 from engine.pipeline import process_input
-from engine.reporting import public_result
 from main import run
 
 
@@ -35,15 +34,21 @@ def test_complete_practice_pack(execute):
     assert all(r["source_ids"] for r in plan["budget"]["line_items"])
 
 
-def test_missing_required_prayer_break(client):
+def test_missing_required_prayer_break(monkeypatch):
+    from engine.planner import build
+
+    def omit_break(*args):
+        plan = build(*args)
+        timeline = plan["schedule"]["timeline"]
+        timeline[:] = [t for t in timeline if t["activity"] != "prayer break"]
+        return plan
+
+    monkeypatch.setattr("engine.pipeline.build", omit_break)
     from conftest import extraction
 
-    raw = process_input(
+    result = process_input(
         FIX / "practice.txt", None, lambda area, prompt: extraction(prompt)
     )
-    timeline = raw["plan"]["schedule"]["timeline"]
-    timeline[:] = [t for t in timeline if t["activity"] != "prayer break"]
-    result = public_result(raw, None)
     assert result["plan"]["status"] == "invalid"
     assert any(
         c["check"] == "schedule.required_activity" for c in result["plan"]["unresolved"]

@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import streamlit as st
+from dotenv import load_dotenv
 
 from ui.components.shell import render_sidebar_and_load_bundle, render_top_instrument_strip
 from ui.screens.audit import render_audit_screen
@@ -21,6 +24,7 @@ def main() -> None:
         initial_sidebar_state="expanded",
     )
 
+    load_dotenv(Path.cwd() / ".env")
     inject_editorial_styles()
     active_screen_id, bundle = render_sidebar_and_load_bundle()
     render_top_instrument_strip(active_screen_id, bundle)

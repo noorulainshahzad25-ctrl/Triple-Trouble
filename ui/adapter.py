@@ -53,11 +53,15 @@ def _safe_read_jsonl(path: Path) -> list[dict[str, Any]]:
 def _is_engine_payload(data: Any) -> bool:
     if not isinstance(data, dict):
         return False
+    if "event" in data and "validations" in data and isinstance(data.get("schedule"), list):
+        return True
+    if "mode" in data and isinstance(data.get("plan"), dict):
+        return True
     if "plan" in data and "validations" in data and "status" in data:
         return True
     if "result" in data and isinstance(data["result"], dict):
         inner = data["result"]
-        return "plan" in inner and "validations" in inner
+        return _is_engine_payload(inner)
     if "schema_version" in data and "plan" in data and "messages" in data:
         return True
     if "run_id" in data and "actual_model_areas" in data and "run_usage" in data:
@@ -67,31 +71,26 @@ def _is_engine_payload(data: Any) -> bool:
 
 def discover_run_files(custom_dir: str | Path | None = None) -> list[Path]:
     """Return all valid engine output JSON files discovered on disk."""
-    search_dirs: list[Path] = []
     env_session = os.environ.get("PLANNER_SESSION_DIR")
     env_dir = os.environ.get("MIND_MACHINE_OUTPUT_DIR") or os.environ.get("MM_OUTPUT_DIR")
-    if custom_dir:
-        search_dirs.append(Path(custom_dir))
-    if env_session:
-        s_path = Path(env_session)
-        search_dirs.extend([s_path / "output", s_path / "state" / "current", s_path])
-    if env_dir:
-        search_dirs.append(Path(env_dir))
-    search_dirs.extend(
-        [
-            ROOT_DIR / "output",
-            ROOT_DIR / "state" / "current",
-            *DEFAULT_OUTPUT_DIRS,
-        ]
-    )
-
-    # Also discover individual run directories inside state/runs/*
-    for base in ([Path(env_session)] if env_session else []) + [ROOT_DIR]:
-        runs_root = base / "state" / "runs"
-        if runs_root.is_dir():
-            for run_sub in sorted(runs_root.iterdir(), key=lambda p: -p.stat().st_mtime):
-                if run_sub.is_dir():
-                    search_dirs.append(run_sub)
+    session = Path(env_session or ROOT_DIR)
+    search_dirs = [session / "output"]
+    # Only follow published predecessors. A failed publication may leave a staged directory.
+    current = session / "state/current/run_summary.json"
+    published = set()
+    while current.is_file() and current.resolve() not in published:
+        current = current.resolve()
+        published.add(current)
+        search_dirs.append(current.parent)
+        summary = _safe_read_json(current)
+        prior = summary.get("previous_run_id") if isinstance(summary, dict) else None
+        if not isinstance(prior, str) or not prior.isalnum():
+            break
+        current = session / "state/runs" / prior / "run_summary.json"
+    if custom_dir or env_dir:
+        search_dirs = [Path(custom_dir or env_dir)]
+    elif session.resolve() == ROOT_DIR:
+        search_dirs.extend(DEFAULT_OUTPUT_DIRS)
 
     seen: set[Path] = set()
     candidates: list[Path] = []
@@ -127,12 +126,26 @@ def discover_run_files(custom_dir: str | Path | None = None) -> list[Path]:
 
     candidates.sort(
         key=lambda p: (
-            p.name not in ("run_summary.json", "latest.json"),
+            0 if p.name == "run_summary.json" else 1 if p.name == "latest.json" else 2,
             -p.stat().st_mtime,
             p.name,
         )
     )
     return candidates
+
+
+def _display_plan(plan):
+    event, budget = plan["event"], plan["budget"]
+    return {
+        "attendance": event,
+        "venue": plan["venue"], "food": plan["food"], "judging": plan["judging"],
+        "schedule": {"timeline": plan["schedule"], "start": event.get("start"),
+                     "duration": event.get("duration_minutes")},
+        "budget": {**budget, "ceiling": budget.get("limit"), "lines": [
+            {"item": item["name"], "cost": item["cost"], "sources": item["source_ids"]}
+            for item in budget["line_items"]
+        ]},
+    }
 
 
 def _normalize_payload(
@@ -141,7 +154,7 @@ def _normalize_payload(
     """Normalize an engine output dict, main.py run_summary, or wrapper bundle into a canonical read-only bundle."""
     if "run_id" in raw and "actual_model_areas" in raw and source_path is not None:
         # Loaded a main.py run_summary.json artifact directory
-        run_dir = source_path.parent
+        run_dir = source_path.resolve().parent
         eng_state = _safe_read_json(run_dir / "engine_state.json") or _safe_read_json(
             run_dir.parent / "state" / "engine_state.json"
         )
@@ -167,7 +180,7 @@ def _normalize_payload(
         ]
         result = {
             "status": raw.get("status", pub_plan.get("status", "needs_review") if isinstance(pub_plan, dict) else "needs_review"),
-            "plan": internal_plan,
+            "plan": _display_plan(pub_plan) if pub_plan else internal_plan,
             "validations": validations,
             "rejected_messages": normalized_rejs,
             "changed_areas": raw.get("changed_areas", []),
@@ -180,20 +193,17 @@ def _normalize_payload(
             if raw.get("elapsed_seconds_before_publish") is not None
             else None,
         }
-        trace_candidates = [
-            run_dir / "model_trace.jsonl",
-            run_dir.parent / "output" / "model_trace.jsonl",
-            run_dir.parent.parent / "output" / "model_trace.jsonl",
-            ROOT_DIR / "output" / "model_trace.jsonl",
-        ]
         trace = []
-        for tc in trace_candidates:
-            rows = _safe_read_jsonl(tc)
-            if rows:
-                matching = [r for r in rows if r.get("run_id") == raw.get("run_id")]
-                trace = matching if matching else rows
-                break
-        prev = state_dict.get("last_valid_plan")
+        prev = None
+        if run_dir.parent.name == "runs":
+            session = run_dir.parent.parent.parent
+            trace = [row for row in _safe_read_jsonl(session / "output/trace.jsonl")
+                     if row.get("run_id") == raw["run_id"]]
+            previous_id = raw.get("previous_run_id")
+            if isinstance(previous_id, str) and previous_id.isalnum():
+                prior = _safe_read_json(run_dir.parent / previous_id / "plan.json")
+                if isinstance(prior, dict):
+                    prev = {"plan": _display_plan(prior)}
     elif "result" in raw and isinstance(raw["result"], dict):
         result = raw["result"]
         meta = raw.get("meta", {}) if isinstance(raw.get("meta"), dict) else {}
@@ -219,6 +229,17 @@ def _normalize_payload(
         trace = raw.get("model_calls") or raw.get("trace") or []
         prev = raw.get("previous_state") or raw.get("previous_result")
 
+    if "event" in result and isinstance(result.get("schedule"), list):
+        result = {"plan": result}
+    public = result.get("plan", {})
+    if "event" in public and isinstance(public.get("schedule"), list):
+        result = {**result, "plan": _display_plan(public), "status": public["status"],
+                  "validations": public["validations"], "rejected_messages": [
+                      {"source": r["message_id"], "area": r["affected_area"],
+                       "references": r["source_ids"], "reason": r["reason"], "status": r["status"]}
+                      for r in result.get("rejections", [])
+                  ]}
+
     state = result.get("state", {}) if isinstance(result.get("state"), dict) else {}
 
     # Check companion trace.jsonl if no embedded trace records
@@ -231,15 +252,8 @@ def _normalize_payload(
                 matching = [
                     r for r in rows if not r.get("run_id") or r.get("run_id") == run_id_hint
                 ]
-                trace = matching if matching else rows
+                trace = matching
                 break
-
-    # Check companion previous snapshot if referenced in meta
-    if prev is None and source_path is not None and meta.get("previous_file"):
-        prev_path = (source_path.parent / str(meta["previous_file"])).resolve()
-        prev_raw = _safe_read_json(prev_path)
-        if isinstance(prev_raw, dict):
-            prev = prev_raw.get("result", prev_raw)
 
     # Derive file metadata and freshness
     if source_path is not None and source_path.is_file():
@@ -259,9 +273,7 @@ def _normalize_payload(
 
     # Normalize model calls & token accounting
     normalized_calls: list[dict[str, Any]] = []
-    total_in_tokens = 0
-    total_out_tokens = 0
-    any_tokens_reported = False
+    counters = {"input_tokens": [], "output_tokens": [], "total_tokens": []}
     total_duration_ms = 0.0
     any_duration_reported = False
     models_seen: list[str] = []
@@ -273,16 +285,10 @@ def _normalize_payload(
             continue
         in_tok = call.get("input_tokens")
         out_tok = call.get("output_tokens")
-        if isinstance(in_tok, int) and in_tok >= 0:
-            total_in_tokens += in_tok
-            any_tokens_reported = True
-        else:
-            in_tok = None
-        if isinstance(out_tok, int) and out_tok >= 0:
-            total_out_tokens += out_tok
-            any_tokens_reported = True
-        else:
-            out_tok = None
+        for name, values in counters.items():
+            value = call.get(name)
+            if type(value) is int and value >= 0:
+                values.append(value)
 
         dur_ms = call.get("duration_ms")
         if dur_ms is None:
@@ -323,6 +329,9 @@ def _normalize_payload(
                 "provider": provider_name,
                 "input_tokens": in_tok,
                 "output_tokens": out_tok,
+                "total_tokens": call.get("total_tokens"),
+                "usage_source": call.get("usage_source"),
+                "error": call.get("error"),
                 "duration_ms": dur_ms,
                 "timestamp": call.get("timestamp"),
                 "prompt": call.get("prompt") if call.get("prompt") is not None else call.get("input"),
@@ -333,10 +342,6 @@ def _normalize_payload(
         )
 
     predicted_model_areas = list(result.get("predicted_model_areas") or [])
-    for t in predicted_model_areas:
-        if t not in called_tags:
-            called_tags.append(t)
-
     # Normalize previous state if available
     prev_state: dict[str, Any] | None = None
     if isinstance(prev, dict):
@@ -371,16 +376,10 @@ def _normalize_payload(
         "previous_state": prev_state,
         "model_calls": normalized_calls,
         "telemetry": {
-            "call_count": len(normalized_calls)
-            if normalized_calls
-            else len(predicted_model_areas),
+            "call_count": len(normalized_calls),
             "recorded_call_rows": len(normalized_calls),
-            "tokens_available": any_tokens_reported,
-            "input_tokens": total_in_tokens if any_tokens_reported else None,
-            "output_tokens": total_out_tokens if any_tokens_reported else None,
-            "total_tokens": (total_in_tokens + total_out_tokens)
-            if any_tokens_reported
-            else None,
+            "tokens_available": any(counters.values()),
+            **{name: sum(values) if values else None for name, values in counters.items()},
             "duration_ms": round(total_duration_ms, 1)
             if any_duration_reported
             else meta.get("duration_ms"),
@@ -440,7 +439,7 @@ def load_run_bundle(
         return _normalize_payload(uploaded_json, source_path=None)
     if path is None:
         return empty_bundle()
-    target = Path(path)
+    target = Path(path).resolve()
     raw = _safe_read_json(target)
     if not isinstance(raw, dict) or not _is_engine_payload(raw):
         return empty_bundle()
@@ -568,6 +567,10 @@ def inspect_workspace_files(bundle: dict[str, Any]) -> list[dict[str, Any]]:
     if bundle.get("source_path"):
         src = Path(bundle["source_path"])
         files_to_check.append(("Active Run Output", src))
+        if src.name == "run_summary.json" and src.parent.parent.name == "runs":
+            files_to_check.append(("Session trace", src.parents[3] / "output/trace.jsonl"))
+            for name in ("plan.json", "rejections.json", "engine_state.json", "final_submission.txt"):
+                files_to_check.append(("Published snapshot", src.parent / name))
         for companion in ("trace.jsonl", f"{src.stem}.trace.jsonl", "latest.json"):
             cand = src.parent / companion
             if cand != src and cand.exists():
