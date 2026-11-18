@@ -1,0 +1,134 @@
+[
+  {
+    "text": "Site needs step-free entry and space for two hundred guests.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Kya building mein backup bijli hai?",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Please provide vegan wraps for all delegates.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Lunch ki supply kam mat karna, sab ke liye chahiye.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Every assessor can review two submissions in half an hour.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Jury kay teen members waqt par nahi pohnch sakenge.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Add a reflection session before the closing remarks.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Iftari ka waqfa chalis minute ka hona chahiye.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Finance revised the approved ceiling to 400000.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Poster printing ki payment pehle hi ho chuki hai.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "There will be 96 contestants, in groups of four.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Is dafa pachasi students aur char assistants hain.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "The premises have no lift for wheelchair users.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Kamray mein kursiyan aur bijli dono chahiye.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Dietary restrictions require dairy-free snacks.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Mehmanon ke khanay ka bandobast karo.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Reviewers need sufficient time for all demonstrations.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Har munصف ko sirf do projects milenge.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Put a short interval after the opening speech.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "The accounts team increased the cap to fifty thousand.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Forty teachers and eighty pupils have registered.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Kul mehmanon ki tadaad ek sau bees hai.",
+    "labels": [
+      "attendance"
+    ]
+  }
+]

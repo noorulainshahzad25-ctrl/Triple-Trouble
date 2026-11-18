@@ -1,0 +1,542 @@
+[
+  {
+    "text": "Auditorium has 350 seats and ramps for wheelchair access.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "The lecture theatre rental is 90000 for the day.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Hall booking cancelled because the building is undergoing repair.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Conference room main projector works but no standby power.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Location badal do, naya hall 500 afrad ke liye hai.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Venue mein generator lazmi hai aur parking bhi chahiye.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Event space ki capacity do sau log hai.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Building management says the main hall is available Saturday.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Need accessible toilets and a quiet room at the premises.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Is jagah par internet aur tables maujood hain.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "New venue quote includes seating and security.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "The venue requires a refundable deposit.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Choose an indoor facility with air conditioning.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Meeting room sirf 80 logon ke liye hai.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Campus auditorium is reserved until noon.",
+    "labels": [
+      "venue"
+    ]
+  },
+  {
+    "text": "Please order vegetarian lunch for 90 attendees.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Caterer has revised the price of each meal to 450.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Khane ke 200 dabay deliver honge.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Har attendee ko pani aur lunch chahiye.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Food vendor cannot accommodate nut allergies.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Halal meals are mandatory for all participants.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Refreshments ka bill alag se hai.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "The kitchen will supply 120 sandwiches and fruit.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Dinner boxes ka rate ab 750 hai.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Serve gluten free food to twelve people.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Supplier delivery fee is 6000 for catering.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Chai aur snacks break mein dena hai.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "No peanuts in any meal due to allergy.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Boxed lunch quantity must match the headcount.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Vendor says bottled water is included.",
+    "labels": [
+      "food"
+    ]
+  },
+  {
+    "text": "Judges need ten minutes to evaluate each project.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Each evaluator may score at most four teams.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Panel members will arrive at 3 pm.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Do judges ki availability cancel ho gayi hai.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Har judge sirf teen teams ka review karega.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Evaluation panel needs 25 minutes per presentation.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Adjudicators must assess projects in pairs.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Judge honorarium is 3000 per person.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Jury members will be available from noon onwards.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Scoring rubric includes technical quality and creativity.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Judges ki tadaad pandrah hai.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Teams will pitch to the jury for five minutes each.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Panel cannot assess more than six entries.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "One reviewer leaves at half past four.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "Mentors cannot serve as judges.",
+    "labels": [
+      "judging"
+    ]
+  },
+  {
+    "text": "The program begins at 09:00 and ends at 15:00.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Include a ten minute prayer break in the agenda.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Opening ceremony must finish before the coding session.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Schedule mein namaz ke liye bees minute rakhna.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Event ka duration paanch ghantay hai.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Tea break after the first workshop is compulsory.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "The keynote is thirty minutes long.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Registration starts at 8:30 in the morning.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Closing ceremony must happen after all demos.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Lunch break barah bajay shuru hogi.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Agenda mein ek ghanta networking rakho.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "The workshop cannot overlap the opening address.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Presentation session must finish by 17:00.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Keep a fifteen minute pause between sessions.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "Competition starts at 10 and lasts six hours.",
+    "labels": [
+      "schedule"
+    ]
+  },
+  {
+    "text": "The finance office approved a spending cap of 500000 rupees.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Printing invoice has increased to 20000.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Prize money of 80000 has already been committed.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Internet charges are covered by the event budget.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Budget se gifts ke liye 15000 approve huay hain.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Finance ne total kharch ki limit teen lakh rakhi hai.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "The sponsorship expense has not been approved.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Update the stationery invoice from 3000 to 4500.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Sound equipment is a mandatory expense of 25000.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "The DJ request is a proposal pending approval.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Finance confirms no more than 900000 may be spent.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Photographer invoice is payable from the event funds.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Prize fund has been cancelled by finance.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Insurance premium is already paid from the budget.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "Stationery ka bill ab 12000 rupay hai.",
+    "labels": [
+      "budget"
+    ]
+  },
+  {
+    "text": "There are 240 students divided into teams of four.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Expected headcount is 180 participants and 12 staff.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Students ki tadaad ab 220 hai.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Har team mein paanch log honge.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Registration confirms 60 teams.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Ten volunteers are joining the event.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Five guests require meals; twelve guests will attend.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Organizers have increased the participant count to 300.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Staff members number twenty in total.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Additional attendees include eight mentors.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Participants ke ilawa dus teachers bhi ayenge.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Team count is now forty five.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Total occupancy including staff is 275.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "Only registered attendees will require lunch.",
+    "labels": [
+      "attendance"
+    ]
+  },
+  {
+    "text": "The hackathon now has 90 teams.",
+    "labels": [
+      "attendance"
+    ]
+  }
+]
