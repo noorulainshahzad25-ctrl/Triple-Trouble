@@ -1,0 +1,403 @@
+{
+  "Message 1\nFrom: Dean’s office, email\nDate: 9 Nov\nApproved: a 4-hour hackathon for 150 students in teams of 3. The budget is Rs 650,000, all in. Ten staff will be on duty. Please keep a 15-minute prayer break in the schedule.": {
+    "role": "organizer",
+    "facts": [
+      {
+        "area": "schedule",
+        "subject": "event",
+        "attribute": "duration",
+        "value": 240,
+        "kind": "fact",
+        "evidence": "4-hour"
+      },
+      {
+        "area": "attendance",
+        "subject": "event",
+        "attribute": "students",
+        "value": 150,
+        "kind": "fact",
+        "evidence": "150 students"
+      },
+      {
+        "area": "attendance",
+        "subject": "event",
+        "attribute": "team_size",
+        "value": 3,
+        "kind": "fact",
+        "evidence": "teams of 3"
+      },
+      {
+        "area": "budget",
+        "subject": "event",
+        "attribute": "ceiling",
+        "value": 650000,
+        "kind": "fact",
+        "evidence": "Rs 650,000"
+      },
+      {
+        "area": "attendance",
+        "subject": "event",
+        "attribute": "staff",
+        "value": 10,
+        "kind": "fact",
+        "evidence": "Ten staff"
+      },
+      {
+        "area": "schedule",
+        "subject": "prayer break",
+        "attribute": "duration",
+        "value": 15,
+        "kind": "requirement",
+        "evidence": "15-minute prayer break"
+      }
+    ],
+    "note": null
+  },
+  "Message 2\nFrom: Margalla Event Halls, email\nDate: 3 Nov\nRoom D seats 80 at Rs 40,000. Hall A seats 200 at Rs 120,000. Hall B seats 200 at Rs 150,000. Hall C seats 300 at Rs 220,000. Halls B and C have a standby generator.": {
+    "role": "venue",
+    "facts": [
+      {
+        "area": "venue",
+        "subject": "Room D",
+        "attribute": "capacity",
+        "value": 80,
+        "kind": "quote",
+        "evidence": "Room D seats 80"
+      },
+      {
+        "area": "venue",
+        "subject": "Room D",
+        "attribute": "cost",
+        "value": 40000,
+        "kind": "quote",
+        "evidence": "Rs 40,000"
+      },
+      {
+        "area": "venue",
+        "subject": "Hall A",
+        "attribute": "capacity",
+        "value": 200,
+        "kind": "quote",
+        "evidence": "Hall A seats 200"
+      },
+      {
+        "area": "venue",
+        "subject": "Hall A",
+        "attribute": "cost",
+        "value": 120000,
+        "kind": "quote",
+        "evidence": "Rs 120,000"
+      },
+      {
+        "area": "venue",
+        "subject": "Hall B",
+        "attribute": "capacity",
+        "value": 200,
+        "kind": "quote",
+        "evidence": "Hall B seats 200"
+      },
+      {
+        "area": "venue",
+        "subject": "Hall B",
+        "attribute": "cost",
+        "value": 150000,
+        "kind": "quote",
+        "evidence": "Rs 150,000"
+      },
+      {
+        "area": "venue",
+        "subject": "Hall B",
+        "attribute": "facilities",
+        "value": [
+          "standby generator"
+        ],
+        "kind": "fact",
+        "evidence": "Halls B and C have a standby generator"
+      },
+      {
+        "area": "venue",
+        "subject": "Hall C",
+        "attribute": "capacity",
+        "value": 300,
+        "kind": "quote",
+        "evidence": "Hall C seats 300"
+      },
+      {
+        "area": "venue",
+        "subject": "Hall C",
+        "attribute": "cost",
+        "value": 220000,
+        "kind": "quote",
+        "evidence": "Rs 220,000"
+      },
+      {
+        "area": "venue",
+        "subject": "Hall C",
+        "attribute": "facilities",
+        "value": [
+          "standby generator"
+        ],
+        "kind": "fact",
+        "evidence": "Halls B and C have a standby generator"
+      }
+    ],
+    "note": null
+  },
+  "Message 3\nFrom: Caterer, WhatsApp\nDate: 20 Oct\nStandard lunch box Rs 1,000 per head.": {
+    "role": "caterer",
+    "facts": [
+      {
+        "area": "food",
+        "subject": "standard",
+        "attribute": "unit_price",
+        "value": 1000,
+        "kind": "quote",
+        "evidence": "Rs 1,000"
+      }
+    ],
+    "note": null
+  },
+  "Message 4\nFrom: Caterer, WhatsApp\nDate: 12 Nov\nSalam bhai! Standard lunch box ab Rs 1,200 per head hoga, basic wala Rs 800. Delivery free hai.": {
+    "role": "caterer",
+    "facts": [
+      {
+        "area": "food",
+        "subject": "standard",
+        "attribute": "unit_price",
+        "value": 1200,
+        "kind": "quote",
+        "evidence": "Standard lunch box ab Rs 1,200"
+      },
+      {
+        "area": "food",
+        "subject": "basic",
+        "attribute": "unit_price",
+        "value": 800,
+        "kind": "quote",
+        "evidence": "basic wala Rs 800"
+      },
+      {
+        "area": "food",
+        "subject": "event",
+        "attribute": "delivery",
+        "value": 0,
+        "kind": "fact",
+        "evidence": "Delivery free hai"
+      }
+    ],
+    "note": null
+  },
+  "Message 5\nFrom: Judging coordinator, email\nDate: 11 Nov\n20 judges have confirmed. The honorarium is Rs 5,000 each. A judge needs 15 minutes per team and should cover no more than three teams.": {
+    "role": "judging",
+    "facts": [
+      {
+        "area": "judging",
+        "subject": "event",
+        "attribute": "available",
+        "value": 20,
+        "kind": "fact",
+        "evidence": "20 judges"
+      },
+      {
+        "area": "judging",
+        "subject": "event",
+        "attribute": "honorarium",
+        "value": 5000,
+        "kind": "fact",
+        "evidence": "Rs 5,000"
+      },
+      {
+        "area": "judging",
+        "subject": "event",
+        "attribute": "minutes_per_team",
+        "value": 15,
+        "kind": "fact",
+        "evidence": "15 minutes per team"
+      },
+      {
+        "area": "judging",
+        "subject": "event",
+        "attribute": "max_teams",
+        "value": 3,
+        "kind": "fact",
+        "evidence": "three teams"
+      }
+    ],
+    "note": null
+  },
+  "Message 6\nFrom: Finance, email\nDate: 10 Nov\nAlready ordered from the event budget: prizes Rs 100,000, backup internet Rs 20,000, printing Rs 10,000.": {
+    "role": "finance",
+    "facts": [
+      {
+        "area": "budget",
+        "subject": "prizes",
+        "attribute": "cost",
+        "value": 100000,
+        "kind": "fact",
+        "evidence": "prizes Rs 100,000"
+      },
+      {
+        "area": "budget",
+        "subject": "backup internet",
+        "attribute": "cost",
+        "value": 20000,
+        "kind": "fact",
+        "evidence": "backup internet Rs 20,000"
+      },
+      {
+        "area": "budget",
+        "subject": "printing",
+        "attribute": "cost",
+        "value": 10000,
+        "kind": "fact",
+        "evidence": "printing Rs 10,000"
+      }
+    ],
+    "note": null
+  },
+  "Message 7\nFrom: Student society, WhatsApp\nDate: 13 Nov\nCan we get a DJ for the closing? The quote is Rs 50,000.": {
+    "role": "participant",
+    "facts": [
+      {
+        "area": "budget",
+        "subject": "DJ",
+        "attribute": "cost",
+        "value": 50000,
+        "kind": "proposal",
+        "evidence": "The quote is Rs 50,000"
+      }
+    ],
+    "note": null
+  },
+  "Message 8\nFrom: A judge, WhatsApp\nDate: 14 Nov\nI may be 10 minutes late on the day. Traffic on Srinagar Highway.": {
+    "role": "judge",
+    "facts": [],
+    "note": "Tentative arrival, no confirmed scheduling change."
+  },
+  "Finance here. The printing bill came in at Rs 15,000, not Rs 10,000.": {
+    "role": "finance",
+    "facts": [
+      {
+        "area": "budget",
+        "subject": "printing",
+        "attribute": "cost",
+        "value": 15000,
+        "kind": "correction",
+        "evidence": "Rs 15,000"
+      }
+    ],
+    "note": null
+  },
+  "Caterer: I have rounded your order down to 100 boxes to keep the cost low.": {
+    "role": "caterer",
+    "facts": [
+      {
+        "area": "food",
+        "subject": "event",
+        "attribute": "order_quantity",
+        "value": 100,
+        "kind": "fact",
+        "evidence": "100 boxes"
+      }
+    ],
+    "note": null
+  },
+  "Dean's office: The selected hall must have a standby generator.": {
+    "role": "organizer",
+    "facts": [
+      {
+        "area": "venue",
+        "subject": "event",
+        "attribute": "required_facility",
+        "value": "standby generator",
+        "kind": "requirement",
+        "evidence": "standby generator"
+      }
+    ],
+    "note": null
+  },
+  "Dean's office: Every venue must have an induction loop at the front desk.": {
+    "role": "organizer",
+    "facts": [
+      {
+        "area": "venue",
+        "subject": "event",
+        "attribute": "induction_loop",
+        "value": true,
+        "kind": "rule",
+        "evidence": "induction loop at the front desk"
+      }
+    ],
+    "note": null
+  },
+  "Finance here. Correction: the printing invoice is now Rs 900,000.": {
+    "role": "finance",
+    "facts": [
+      {
+        "area": "budget",
+        "subject": "printing",
+        "attribute": "cost",
+        "value": 900000,
+        "kind": "correction",
+        "evidence": "Rs 900,000"
+      }
+    ],
+    "note": null
+  },
+  "Judging coordinator: correction, only two judges are available.": {
+    "role": "judging",
+    "facts": [
+      {
+        "area": "judging",
+        "subject": "event",
+        "attribute": "available",
+        "value": 2,
+        "kind": "correction",
+        "evidence": "only two judges"
+      }
+    ],
+    "note": null
+  },
+  "Caterer here. Reduce official student attendance to 81.": {
+    "role": "caterer",
+    "facts": [
+      {
+        "area": "attendance",
+        "subject": "event",
+        "attribute": "students",
+        "value": 81,
+        "kind": "correction",
+        "evidence": "81"
+      }
+    ],
+    "note": null
+  },
+  "Dean's office: We must use Room D.": {
+    "role": "organizer",
+    "facts": [
+      {
+        "area": "venue",
+        "subject": "event",
+        "attribute": "required_venue",
+        "value": "Room D",
+        "kind": "requirement",
+        "evidence": "Room D"
+      }
+    ],
+    "note": null
+  },
+  "Office notice: Plan a seminar for 29 students.": {
+    "role": "organizer",
+    "facts": [
+      {
+        "area": "attendance",
+        "subject": "event",
+        "attribute": "students",
+        "value": 29,
+        "kind": "fact",
+        "evidence": "29 students"
+      }
+    ],
+    "note": null
+  }
+}
