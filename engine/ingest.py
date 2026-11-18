@@ -15,6 +15,9 @@ WA = (
 EMAIL = r"(?im)^From:\s*(?P<sender>[^\r\n]+)"
 
 
+DIALOGUE = r"(?im)^[ \t]*(?P<speaker>[A-Za-z0-9_\-]{2,20})\s*:\s+"
+
+
 def clean_rtf(text: str) -> str:
     """Extract plain text from RTF content if present."""
     if not text.lstrip().startswith("{\\rtf"):
@@ -42,6 +45,7 @@ def segment(path: Path):
     explicit = [m.start() for m in re.finditer(wrappers, scan)]
     headers = sorted({m.start() for pat in (WA, EMAIL) for m in re.finditer(pat, scan)})
     numbered = [m.start() for m in re.finditer(NUMBERED, scan)]
+    dialogue = [m.start() for m in re.finditer(DIALOGUE, scan)]
     if explicit:
         starts = explicit
     elif (
@@ -53,6 +57,8 @@ def segment(path: Path):
         starts = numbered
     elif headers or numbered:
         starts = headers or numbered
+    elif dialogue:
+        starts = dialogue
     else:
         starts = [m.end() for m in re.finditer(r"\r?\n[ \t]*\r?\n+", scan)]
     offset = len(raw) - len(scan)
@@ -72,7 +78,12 @@ def segment(path: Path):
         )
         fingerprint = hashlib.sha256(content.encode()).hexdigest()
         wa = re.search(WA, text)
-        sender = wa or re.search(EMAIL, text)
+        speaker_match = re.match(r"(?i)^[ \t]*([A-Za-z0-9_\-]{2,20})\s*:\s*", text)
+        sender = (
+            wa
+            or re.search(EMAIL, text)
+            or ({"sender": speaker_match.group(1)} if speaker_match else None)
+        )
         date = re.search(r"(?im)^Date:\s*([^\r\n]+)", text)
         messages.append(
             {
