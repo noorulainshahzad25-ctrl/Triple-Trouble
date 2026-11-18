@@ -1,0 +1,2007 @@
+{
+  "meta": {
+    "run_id": "JUDGING-PACK-RUN",
+    "label": "Live Evaluation · Judging Pack (Official Test Case)",
+    "source": "judging_pack.txt"
+  },
+  "result": {
+    "status": "valid",
+    "plan": {
+      "attendance": {
+        "students": 120,
+        "teams": 30,
+        "team_size": 4,
+        "staff": 8,
+        "occupancy": 136,
+        "meals": 136
+      },
+      "schedule": {
+        "duration": 240,
+        "start": null,
+        "timeline": [
+          {
+            "activity": "Hackathon work",
+            "start_min": 0,
+            "end_min": 70,
+            "duration": 70
+          },
+          {
+            "activity": "prayer break",
+            "start_min": 70,
+            "end_min": 90,
+            "duration": 20
+          },
+          {
+            "activity": "Hackathon work",
+            "start_min": 90,
+            "end_min": 160,
+            "duration": 70
+          },
+          {
+            "activity": "judging",
+            "start_min": 160,
+            "end_min": 240,
+            "duration": 80
+          }
+        ],
+        "sources": [
+          "M0001",
+          "M0006"
+        ]
+      },
+      "judging": {
+        "available": 15,
+        "minutes_per_team": 20,
+        "max_teams": 4,
+        "teams": 30,
+        "assigned": 8,
+        "assignments": [
+          {
+            "judge": "Pool judge 1",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 10",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 11",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 12",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 13",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 14",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 15",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 2",
+            "teams": 2,
+            "start_min": 160,
+            "end_min": 200
+          }
+        ],
+        "cost": 32000,
+        "sources": [
+          "M0001",
+          "M0006"
+        ]
+      },
+      "venue": {
+        "capacity": 180,
+        "cost": 110000,
+        "facilities": [
+          "ramp access",
+          "ground floor"
+        ],
+        "name": "hall 2",
+        "sources": [
+          "M0002"
+        ],
+        "occupancy": 136,
+        "required": 136,
+        "alternatives": [
+          {
+            "name": "hall 1",
+            "reason": "Missing confirmation of mandatory facilities: ramp access",
+            "unresolved": true,
+            "sources": [
+              "M0002"
+            ]
+          },
+          {
+            "name": "hall 3",
+            "reason": "Capacity None cannot establish seating for 136.",
+            "unresolved": true,
+            "sources": [
+              "M0002"
+            ]
+          },
+          {
+            "name": "seminar room",
+            "reason": "Capacity 100 cannot establish seating for 136.",
+            "unresolved": false,
+            "sources": [
+              "M0002"
+            ]
+          }
+        ]
+      },
+      "food": {
+        "unit_price": 600,
+        "name": "sandwich box",
+        "sources": [
+          "M0005"
+        ],
+        "quantity": 136,
+        "delivery": 0,
+        "cost": 81600,
+        "required": 136,
+        "alternatives": [
+          {
+            "name": "biryani box",
+            "reason": "Alternative quote 115600; selected combination ranks first on constraints and total cost.",
+            "sources": [
+              "M0005"
+            ]
+          }
+        ]
+      },
+      "budget": {
+        "ceiling": 400000,
+        "lines": [
+          {
+            "item": "banners",
+            "cost": 15000,
+            "source": "M0007"
+          },
+          {
+            "item": "trophies",
+            "cost": 60000,
+            "source": "M0007"
+          },
+          {
+            "item": "venue",
+            "cost": 110000,
+            "sources": [
+              "M0002"
+            ]
+          },
+          {
+            "item": "food",
+            "cost": 81600,
+            "sources": [
+              "M0005"
+            ]
+          },
+          {
+            "item": "judging",
+            "cost": 32000,
+            "sources": [
+              "M0001",
+              "M0006"
+            ]
+          }
+        ],
+        "total": 298600,
+        "remaining": 101400,
+        "sources": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0005",
+          "M0006",
+          "M0007"
+        ]
+      }
+    },
+    "validations": [
+      {
+        "check": "attendance.figures",
+        "passed": true,
+        "reason": "120 students, 30 teams, team size 4.",
+        "evidence": [
+          "M0001"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "judging.coverage",
+        "passed": true,
+        "reason": "8 assigned judges cover 30 teams within confirmed availability.",
+        "evidence": [
+          "M0001",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "venue.selection",
+        "passed": true,
+        "reason": "hall 2 for 136 people.",
+        "evidence": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "food.selection",
+        "passed": true,
+        "reason": "sandwich box for 136 people.",
+        "evidence": [
+          "M0001",
+          "M0005",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "budget.ceiling",
+        "passed": true,
+        "reason": "Total 298600, ceiling 400000, remaining 101400.",
+        "evidence": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0005",
+          "M0006",
+          "M0007"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "five_domains",
+        "passed": true,
+        "reason": "Five domain records required.",
+        "evidence": [],
+        "unresolved": false
+      },
+      {
+        "check": "schedule.coverage",
+        "passed": true,
+        "reason": "Activities must cover the event exactly, in order, without overlaps.",
+        "evidence": [
+          "M0001",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "venue.capacity",
+        "passed": true,
+        "reason": "180 seats for 136 people.",
+        "evidence": [
+          "M0002"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "food.quantity",
+        "passed": true,
+        "reason": "136 meals for 136 people.",
+        "evidence": [
+          "M0005"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "food.price",
+        "passed": true,
+        "reason": "Quantity multiplied by the quote, plus the delivery fee.",
+        "evidence": [
+          "M0005"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "judging.assignments",
+        "passed": true,
+        "reason": "Each team's evaluation fits an assigned judge's workload and scheduled block.",
+        "evidence": [
+          "M0001",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "budget.sum",
+        "passed": true,
+        "reason": "Sum of all committed line items.",
+        "evidence": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0005",
+          "M0006",
+          "M0007"
+        ],
+        "unresolved": false
+      }
+    ],
+    "rejected_messages": [
+      {
+        "source": "M0002",
+        "area": "venue",
+        "subject": "hall 3",
+        "attribute": "capacity",
+        "status": "superseded",
+        "reason": "M0009 revises hall 3.capacity to 0.",
+        "references": [
+          "M0002",
+          "M0009"
+        ]
+      },
+      {
+        "source": "M0004",
+        "area": "food",
+        "subject": "biryani box",
+        "attribute": "unit_price",
+        "status": "superseded",
+        "reason": "M0005 revises biryani box.unit_price to 850.",
+        "references": [
+          "M0004",
+          "M0005"
+        ]
+      },
+      {
+        "source": "M0008",
+        "area": "budget",
+        "subject": "photo booth",
+        "attribute": "cost",
+        "status": "rejected",
+        "reason": "Proposal from Student society, WhatsApp, without a confirmed instruction: Can we have a photo booth",
+        "references": [
+          "M0008"
+        ]
+      },
+      {
+        "source": "M0010",
+        "area": "schedule",
+        "subject": "library",
+        "attribute": "earliest",
+        "status": "irrelevant",
+        "reason": "Irrelevant from Library, notice, without a confirmed instruction: The library will close",
+        "references": [
+          "M0010"
+        ]
+      },
+      {
+        "source": "M0010",
+        "status": "irrelevant",
+        "reason": "Irrelevant from Library, notice, without a confirmed instruction: The library will close",
+        "references": [
+          "M0010"
+        ]
+      }
+    ],
+    "changed_areas": [
+      "venue",
+      "schedule",
+      "food",
+      "judging",
+      "budget"
+    ],
+    "predicted_model_areas": [
+      "reading"
+    ],
+    "state": {
+      "schema_version": 1,
+      "messages": [
+        {
+          "id": "M0001",
+          "sender": "Registrar's office, email",
+          "date": "6 Nov",
+          "role": "organizer",
+          "raw": "Approved: a 4-hour hackathon for 120 students in teams of 4. The budget is Rs 400,000, all in. Eight staff will be on duty. Please keep a 20-minute prayer break in the schedule.",
+          "facts": [
+            {
+              "area": "schedule",
+              "subject": "event",
+              "attribute": "duration",
+              "value": 240,
+              "kind": "fact",
+              "evidence": "4-hour",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "attendance",
+              "subject": "event",
+              "attribute": "students",
+              "value": 120,
+              "kind": "fact",
+              "evidence": "120 students",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "attendance",
+              "subject": "event",
+              "attribute": "team_size",
+              "value": 4,
+              "kind": "fact",
+              "evidence": "teams of 4",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "budget",
+              "subject": "event",
+              "attribute": "ceiling",
+              "value": 400000,
+              "kind": "fact",
+              "evidence": "Rs 400,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "attendance",
+              "subject": "event",
+              "attribute": "staff",
+              "value": 8,
+              "kind": "fact",
+              "evidence": "Eight staff",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "schedule",
+              "subject": "prayer break",
+              "attribute": "duration",
+              "value": 20,
+              "kind": "requirement",
+              "evidence": "20-minute prayer break",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "attendance",
+            "budget",
+            "schedule"
+          ],
+          "constraints": [
+            {
+              "area": "schedule",
+              "subject": "prayer break",
+              "attribute": "duration",
+              "value": 20,
+              "kind": "requirement",
+              "evidence": "20-minute prayer break",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "order": 1,
+          "status": "accepted",
+          "explanation": "4-hour 120 students teams of 4 Rs 400,000 Eight staff 20-minute prayer break"
+        },
+        {
+          "id": "M0002",
+          "sender": "Faisal Convention Centre, email",
+          "date": "2 Nov",
+          "role": "venue",
+          "raw": "Seminar Room seats 100 at Rs 35,000. Hall 1 seats 160 at Rs 90,000. Hall 2 seats 180 at Rs 110,000. Hall 3 seats 250 at Rs 160,000. Only Halls 2 and 3 are on the ground floor with ramp access.",
+          "facts": [
+            {
+              "area": "venue",
+              "subject": "Seminar Room",
+              "attribute": "capacity",
+              "value": 100,
+              "kind": "quote",
+              "evidence": "Seminar Room seats 100",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Seminar Room",
+              "attribute": "cost",
+              "value": 35000,
+              "kind": "quote",
+              "evidence": "Rs 35,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 1",
+              "attribute": "capacity",
+              "value": 160,
+              "kind": "quote",
+              "evidence": "Hall 1 seats 160",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 1",
+              "attribute": "cost",
+              "value": 90000,
+              "kind": "quote",
+              "evidence": "Rs 90,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 2",
+              "attribute": "capacity",
+              "value": 180,
+              "kind": "quote",
+              "evidence": "Hall 2 seats 180",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 2",
+              "attribute": "cost",
+              "value": 110000,
+              "kind": "quote",
+              "evidence": "Rs 110,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 2",
+              "attribute": "facilities",
+              "value": [
+                "ramp access",
+                "ground floor"
+              ],
+              "kind": "fact",
+              "evidence": "Halls 2 and 3 are on the ground floor with ramp access",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 3",
+              "attribute": "capacity",
+              "value": 250,
+              "kind": "quote",
+              "evidence": "Hall 3 seats 250",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 3",
+              "attribute": "cost",
+              "value": 160000,
+              "kind": "quote",
+              "evidence": "Rs 160,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 3",
+              "attribute": "facilities",
+              "value": [
+                "ramp access",
+                "ground floor"
+              ],
+              "kind": "fact",
+              "evidence": "Halls 2 and 3 are on the ground floor with ramp access",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "venue"
+          ],
+          "constraints": [],
+          "order": 2,
+          "status": "mixed",
+          "explanation": "Seminar Room seats 100 Rs 35,000 Hall 1 seats 160 Rs 90,000 Hall 2 seats 180 Rs 110,000 Halls 2 and 3 are on the ground floor with ramp access M0009 revises hall 3.capacity to 0. Rs 160,000 Halls 2 and 3 are on the ground floor with ramp access"
+        },
+        {
+          "id": "M0003",
+          "sender": "Student disability office, email",
+          "date": "10 Nov",
+          "role": "organizer",
+          "raw": "Two registered participants use wheelchairs. The venue must have step-free access throughout.",
+          "facts": [
+            {
+              "area": "venue",
+              "subject": "event",
+              "attribute": "required_facility",
+              "value": "ramp access",
+              "kind": "requirement",
+              "evidence": "step-free access throughout",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "venue"
+          ],
+          "constraints": [
+            {
+              "area": "venue",
+              "subject": "event",
+              "attribute": "required_facility",
+              "value": "ramp access",
+              "kind": "requirement",
+              "evidence": "step-free access throughout",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "order": 3,
+          "status": "accepted",
+          "explanation": "step-free access throughout"
+        },
+        {
+          "id": "M0004",
+          "sender": "Caterer, WhatsApp",
+          "date": "25 Oct",
+          "role": "caterer",
+          "raw": "Biryani box Rs 700 per head.",
+          "facts": [
+            {
+              "area": "food",
+              "subject": "biryani box",
+              "attribute": "unit_price",
+              "value": 700,
+              "kind": "quote",
+              "evidence": "Biryani box Rs 700",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "food"
+          ],
+          "constraints": [],
+          "order": 4,
+          "status": "superseded",
+          "explanation": "M0005 revises biryani box.unit_price to 850."
+        },
+        {
+          "id": "M0005",
+          "sender": "Caterer, WhatsApp",
+          "date": "11 Nov",
+          "role": "caterer",
+          "raw": "Assalam o alaikum! Rates update: biryani box ab Rs 850 per head hai, sandwich box Rs 600. 10% service charge alag se lagega on the total.",
+          "facts": [
+            {
+              "area": "food",
+              "subject": "biryani box",
+              "attribute": "unit_price",
+              "value": 850,
+              "kind": "correction",
+              "evidence": "biryani box ab Rs 850",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "food",
+              "subject": "sandwich box",
+              "attribute": "unit_price",
+              "value": 600,
+              "kind": "quote",
+              "evidence": "sandwich box Rs 600",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "food"
+          ],
+          "constraints": [],
+          "order": 5,
+          "status": "accepted",
+          "explanation": "biryani box ab Rs 850 sandwich box Rs 600"
+        },
+        {
+          "id": "M0006",
+          "sender": "Judging lead, email",
+          "date": "9 Nov",
+          "role": "judging",
+          "raw": "15 judges have confirmed. The honorarium is Rs 4,000 each. A judge needs 20 minutes per team and can cover at most four teams.",
+          "facts": [
+            {
+              "area": "judging",
+              "subject": "event",
+              "attribute": "available",
+              "value": 15,
+              "kind": "fact",
+              "evidence": "15 judges have confirmed",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "judging",
+              "subject": "event",
+              "attribute": "honorarium",
+              "value": 4000,
+              "kind": "fact",
+              "evidence": "honorarium is Rs 4,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "judging",
+              "subject": "event",
+              "attribute": "minutes_per_team",
+              "value": 20,
+              "kind": "requirement",
+              "evidence": "20 minutes per team",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "judging",
+              "subject": "event",
+              "attribute": "max_teams",
+              "value": 4,
+              "kind": "requirement",
+              "evidence": "at most four teams",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "judging"
+          ],
+          "constraints": [
+            {
+              "area": "judging",
+              "subject": "event",
+              "attribute": "minutes_per_team",
+              "value": 20,
+              "kind": "requirement",
+              "evidence": "20 minutes per team",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "judging",
+              "subject": "event",
+              "attribute": "max_teams",
+              "value": 4,
+              "kind": "requirement",
+              "evidence": "at most four teams",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "order": 6,
+          "status": "accepted",
+          "explanation": "15 judges have confirmed honorarium is Rs 4,000 20 minutes per team at most four teams"
+        },
+        {
+          "id": "M0007",
+          "sender": "Finance, email",
+          "date": "8 Nov",
+          "role": "finance",
+          "raw": "Already paid from the event budget: trophies Rs 60,000 and banners Rs 15,000.",
+          "facts": [
+            {
+              "area": "budget",
+              "subject": "trophies",
+              "attribute": "cost",
+              "value": 60000,
+              "kind": "fact",
+              "evidence": "trophies Rs 60,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "budget",
+              "subject": "banners",
+              "attribute": "cost",
+              "value": 15000,
+              "kind": "fact",
+              "evidence": "banners Rs 15,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "budget"
+          ],
+          "constraints": [],
+          "order": 7,
+          "status": "accepted",
+          "explanation": "trophies Rs 60,000 banners Rs 15,000"
+        },
+        {
+          "id": "M0008",
+          "sender": "Student society, WhatsApp",
+          "date": "12 Nov",
+          "role": "other",
+          "raw": "Can we have a photo booth near the entrance? Quote is Rs 30,000.",
+          "facts": [
+            {
+              "area": "budget",
+              "subject": "photo booth",
+              "attribute": "cost",
+              "value": 30000,
+              "kind": "proposal",
+              "evidence": "Can we have a photo booth",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "budget"
+          ],
+          "constraints": [],
+          "order": 8,
+          "status": "rejected",
+          "explanation": "Proposal from Student society, WhatsApp, without a confirmed instruction: Can we have a photo booth"
+        },
+        {
+          "id": "M0009",
+          "sender": "Faisal Convention Centre, WhatsApp",
+          "date": "13 Nov",
+          "role": "venue",
+          "raw": "Sorry sir, Hall 3 is under maintenance on your event date and cannot be booked.",
+          "facts": [
+            {
+              "area": "venue",
+              "subject": "Hall 3",
+              "attribute": "capacity",
+              "value": 0,
+              "kind": "cancellation",
+              "evidence": "Hall 3 is under maintenance",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "venue"
+          ],
+          "constraints": [],
+          "order": 9,
+          "status": "accepted",
+          "explanation": "Hall 3 is under maintenance"
+        },
+        {
+          "id": "M0010",
+          "sender": "Library, notice",
+          "date": "14 Nov",
+          "role": "other",
+          "raw": "The library will close at 3 pm on Friday for stock-taking.",
+          "facts": [
+            {
+              "area": "schedule",
+              "subject": "library",
+              "attribute": "earliest",
+              "value": 0,
+              "kind": "irrelevant",
+              "evidence": "The library will close",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "note": "Unrelated library notice",
+          "domains": [
+            "schedule"
+          ],
+          "constraints": [],
+          "order": 10,
+          "status": "irrelevant",
+          "explanation": "Irrelevant from Library, notice, without a confirmed instruction: The library will close"
+        }
+      ],
+      "facts": [
+        {
+          "area": "schedule",
+          "subject": "event",
+          "attribute": "duration",
+          "value": 240,
+          "kind": "fact",
+          "evidence": "4-hour",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "students",
+          "value": 120,
+          "kind": "fact",
+          "evidence": "120 students",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "team_size",
+          "value": 4,
+          "kind": "fact",
+          "evidence": "teams of 4",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "budget",
+          "subject": "event",
+          "attribute": "ceiling",
+          "value": 400000,
+          "kind": "fact",
+          "evidence": "Rs 400,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "staff",
+          "value": 8,
+          "kind": "fact",
+          "evidence": "Eight staff",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "schedule",
+          "subject": "prayer break",
+          "attribute": "duration",
+          "value": 20,
+          "kind": "requirement",
+          "evidence": "20-minute prayer break",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "venue",
+          "subject": "seminar room",
+          "attribute": "capacity",
+          "value": 100,
+          "kind": "quote",
+          "evidence": "Seminar Room seats 100",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "seminar room",
+          "attribute": "cost",
+          "value": 35000,
+          "kind": "quote",
+          "evidence": "Rs 35,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 1",
+          "attribute": "capacity",
+          "value": 160,
+          "kind": "quote",
+          "evidence": "Hall 1 seats 160",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 1",
+          "attribute": "cost",
+          "value": 90000,
+          "kind": "quote",
+          "evidence": "Rs 90,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "capacity",
+          "value": 180,
+          "kind": "quote",
+          "evidence": "Hall 2 seats 180",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "cost",
+          "value": 110000,
+          "kind": "quote",
+          "evidence": "Rs 110,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "facilities",
+          "value": [
+            "ramp access",
+            "ground floor"
+          ],
+          "kind": "fact",
+          "evidence": "Halls 2 and 3 are on the ground floor with ramp access",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "cost",
+          "value": 160000,
+          "kind": "quote",
+          "evidence": "Rs 160,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "facilities",
+          "value": [
+            "ramp access",
+            "ground floor"
+          ],
+          "kind": "fact",
+          "evidence": "Halls 2 and 3 are on the ground floor with ramp access",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "event",
+          "attribute": "required_facility",
+          "value": "ramp access",
+          "kind": "requirement",
+          "evidence": "step-free access throughout",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0003",
+          "role": "organizer",
+          "date": "10 Nov",
+          "sender": "Student disability office, email"
+        },
+        {
+          "area": "food",
+          "subject": "biryani box",
+          "attribute": "unit_price",
+          "value": 850,
+          "kind": "correction",
+          "evidence": "biryani box ab Rs 850",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0005",
+          "role": "caterer",
+          "date": "11 Nov",
+          "sender": "Caterer, WhatsApp"
+        },
+        {
+          "area": "food",
+          "subject": "sandwich box",
+          "attribute": "unit_price",
+          "value": 600,
+          "kind": "quote",
+          "evidence": "sandwich box Rs 600",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0005",
+          "role": "caterer",
+          "date": "11 Nov",
+          "sender": "Caterer, WhatsApp"
+        },
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "available",
+          "value": 15,
+          "kind": "fact",
+          "evidence": "15 judges have confirmed",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0006",
+          "role": "judging",
+          "date": "9 Nov",
+          "sender": "Judging lead, email"
+        },
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "honorarium",
+          "value": 4000,
+          "kind": "fact",
+          "evidence": "honorarium is Rs 4,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0006",
+          "role": "judging",
+          "date": "9 Nov",
+          "sender": "Judging lead, email"
+        },
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "minutes_per_team",
+          "value": 20,
+          "kind": "requirement",
+          "evidence": "20 minutes per team",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0006",
+          "role": "judging",
+          "date": "9 Nov",
+          "sender": "Judging lead, email"
+        },
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "max_teams",
+          "value": 4,
+          "kind": "requirement",
+          "evidence": "at most four teams",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0006",
+          "role": "judging",
+          "date": "9 Nov",
+          "sender": "Judging lead, email"
+        },
+        {
+          "area": "budget",
+          "subject": "trophies",
+          "attribute": "cost",
+          "value": 60000,
+          "kind": "fact",
+          "evidence": "trophies Rs 60,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0007",
+          "role": "finance",
+          "date": "8 Nov",
+          "sender": "Finance, email"
+        },
+        {
+          "area": "budget",
+          "subject": "banners",
+          "attribute": "cost",
+          "value": 15000,
+          "kind": "fact",
+          "evidence": "banners Rs 15,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0007",
+          "role": "finance",
+          "date": "8 Nov",
+          "sender": "Finance, email"
+        }
+      ],
+      "rules": [],
+      "decisions": [
+        {
+          "source": "M0001",
+          "area": "schedule",
+          "subject": "event",
+          "attribute": "duration",
+          "status": "accepted",
+          "reason": "4-hour",
+          "references": [
+            "M0001"
+          ]
+        },
+        {
+          "source": "M0001",
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "students",
+          "status": "accepted",
+          "reason": "120 students",
+          "references": [
+            "M0001"
+          ]
+        },
+        {
+          "source": "M0001",
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "team_size",
+          "status": "accepted",
+          "reason": "teams of 4",
+          "references": [
+            "M0001"
+          ]
+        },
+        {
+          "source": "M0001",
+          "area": "budget",
+          "subject": "event",
+          "attribute": "ceiling",
+          "status": "accepted",
+          "reason": "Rs 400,000",
+          "references": [
+            "M0001"
+          ]
+        },
+        {
+          "source": "M0001",
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "staff",
+          "status": "accepted",
+          "reason": "Eight staff",
+          "references": [
+            "M0001"
+          ]
+        },
+        {
+          "source": "M0001",
+          "area": "schedule",
+          "subject": "prayer break",
+          "attribute": "duration",
+          "status": "accepted",
+          "reason": "20-minute prayer break",
+          "references": [
+            "M0001"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "seminar room",
+          "attribute": "capacity",
+          "status": "accepted",
+          "reason": "Seminar Room seats 100",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "seminar room",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "Rs 35,000",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 1",
+          "attribute": "capacity",
+          "status": "accepted",
+          "reason": "Hall 1 seats 160",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 1",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "Rs 90,000",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "capacity",
+          "status": "accepted",
+          "reason": "Hall 2 seats 180",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "Rs 110,000",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "facilities",
+          "status": "accepted",
+          "reason": "Halls 2 and 3 are on the ground floor with ramp access",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "capacity",
+          "status": "superseded",
+          "reason": "M0009 revises hall 3.capacity to 0.",
+          "references": [
+            "M0002",
+            "M0009"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "Rs 160,000",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "facilities",
+          "status": "accepted",
+          "reason": "Halls 2 and 3 are on the ground floor with ramp access",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0003",
+          "area": "venue",
+          "subject": "event",
+          "attribute": "required_facility",
+          "status": "accepted",
+          "reason": "step-free access throughout",
+          "references": [
+            "M0003"
+          ]
+        },
+        {
+          "source": "M0004",
+          "area": "food",
+          "subject": "biryani box",
+          "attribute": "unit_price",
+          "status": "superseded",
+          "reason": "M0005 revises biryani box.unit_price to 850.",
+          "references": [
+            "M0004",
+            "M0005"
+          ]
+        },
+        {
+          "source": "M0005",
+          "area": "food",
+          "subject": "biryani box",
+          "attribute": "unit_price",
+          "status": "accepted",
+          "reason": "biryani box ab Rs 850",
+          "references": [
+            "M0005"
+          ]
+        },
+        {
+          "source": "M0005",
+          "area": "food",
+          "subject": "sandwich box",
+          "attribute": "unit_price",
+          "status": "accepted",
+          "reason": "sandwich box Rs 600",
+          "references": [
+            "M0005"
+          ]
+        },
+        {
+          "source": "M0006",
+          "area": "judging",
+          "subject": "event",
+          "attribute": "available",
+          "status": "accepted",
+          "reason": "15 judges have confirmed",
+          "references": [
+            "M0006"
+          ]
+        },
+        {
+          "source": "M0006",
+          "area": "judging",
+          "subject": "event",
+          "attribute": "honorarium",
+          "status": "accepted",
+          "reason": "honorarium is Rs 4,000",
+          "references": [
+            "M0006"
+          ]
+        },
+        {
+          "source": "M0006",
+          "area": "judging",
+          "subject": "event",
+          "attribute": "minutes_per_team",
+          "status": "accepted",
+          "reason": "20 minutes per team",
+          "references": [
+            "M0006"
+          ]
+        },
+        {
+          "source": "M0006",
+          "area": "judging",
+          "subject": "event",
+          "attribute": "max_teams",
+          "status": "accepted",
+          "reason": "at most four teams",
+          "references": [
+            "M0006"
+          ]
+        },
+        {
+          "source": "M0007",
+          "area": "budget",
+          "subject": "trophies",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "trophies Rs 60,000",
+          "references": [
+            "M0007"
+          ]
+        },
+        {
+          "source": "M0007",
+          "area": "budget",
+          "subject": "banners",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "banners Rs 15,000",
+          "references": [
+            "M0007"
+          ]
+        },
+        {
+          "source": "M0008",
+          "area": "budget",
+          "subject": "photo booth",
+          "attribute": "cost",
+          "status": "rejected",
+          "reason": "Proposal from Student society, WhatsApp, without a confirmed instruction: Can we have a photo booth",
+          "references": [
+            "M0008"
+          ]
+        },
+        {
+          "source": "M0009",
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "capacity",
+          "status": "accepted",
+          "reason": "Hall 3 is under maintenance",
+          "references": [
+            "M0009"
+          ]
+        },
+        {
+          "source": "M0010",
+          "area": "schedule",
+          "subject": "library",
+          "attribute": "earliest",
+          "status": "irrelevant",
+          "reason": "Irrelevant from Library, notice, without a confirmed instruction: The library will close",
+          "references": [
+            "M0010"
+          ]
+        }
+      ],
+      "plan": {
+        "attendance": {
+          "students": 120,
+          "teams": 30,
+          "team_size": 4,
+          "staff": 8,
+          "occupancy": 136,
+          "meals": 136
+        },
+        "schedule": {
+          "duration": 240,
+          "start": null,
+          "timeline": [
+            {
+              "activity": "Hackathon work",
+              "start_min": 0,
+              "end_min": 70,
+              "duration": 70
+            },
+            {
+              "activity": "prayer break",
+              "start_min": 70,
+              "end_min": 90,
+              "duration": 20
+            },
+            {
+              "activity": "Hackathon work",
+              "start_min": 90,
+              "end_min": 160,
+              "duration": 70
+            },
+            {
+              "activity": "judging",
+              "start_min": 160,
+              "end_min": 240,
+              "duration": 80
+            }
+          ],
+          "sources": [
+            "M0001",
+            "M0006"
+          ]
+        },
+        "judging": {
+          "available": 15,
+          "minutes_per_team": 20,
+          "max_teams": 4,
+          "teams": 30,
+          "assigned": 8,
+          "assignments": [
+            {
+              "judge": "Pool judge 1",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 10",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 11",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 12",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 13",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 14",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 15",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 2",
+              "teams": 2,
+              "start_min": 160,
+              "end_min": 200
+            }
+          ],
+          "cost": 32000,
+          "sources": [
+            "M0001",
+            "M0006"
+          ]
+        },
+        "venue": {
+          "capacity": 180,
+          "cost": 110000,
+          "facilities": [
+            "ramp access",
+            "ground floor"
+          ],
+          "name": "hall 2",
+          "sources": [
+            "M0002"
+          ],
+          "occupancy": 136,
+          "required": 136,
+          "alternatives": [
+            {
+              "name": "hall 1",
+              "reason": "Missing confirmation of mandatory facilities: ramp access",
+              "unresolved": true,
+              "sources": [
+                "M0002"
+              ]
+            },
+            {
+              "name": "hall 3",
+              "reason": "Capacity None cannot establish seating for 136.",
+              "unresolved": true,
+              "sources": [
+                "M0002"
+              ]
+            },
+            {
+              "name": "seminar room",
+              "reason": "Capacity 100 cannot establish seating for 136.",
+              "unresolved": false,
+              "sources": [
+                "M0002"
+              ]
+            }
+          ]
+        },
+        "food": {
+          "unit_price": 600,
+          "name": "sandwich box",
+          "sources": [
+            "M0005"
+          ],
+          "quantity": 136,
+          "delivery": 0,
+          "cost": 81600,
+          "required": 136,
+          "alternatives": [
+            {
+              "name": "biryani box",
+              "reason": "Alternative quote 115600; selected combination ranks first on constraints and total cost.",
+              "sources": [
+                "M0005"
+              ]
+            }
+          ]
+        },
+        "budget": {
+          "ceiling": 400000,
+          "lines": [
+            {
+              "item": "banners",
+              "cost": 15000,
+              "source": "M0007"
+            },
+            {
+              "item": "trophies",
+              "cost": 60000,
+              "source": "M0007"
+            },
+            {
+              "item": "venue",
+              "cost": 110000,
+              "sources": [
+                "M0002"
+              ]
+            },
+            {
+              "item": "food",
+              "cost": 81600,
+              "sources": [
+                "M0005"
+              ]
+            },
+            {
+              "item": "judging",
+              "cost": 32000,
+              "sources": [
+                "M0001",
+                "M0006"
+              ]
+            }
+          ],
+          "total": 298600,
+          "remaining": 101400,
+          "sources": [
+            "M0001",
+            "M0002",
+            "M0003",
+            "M0005",
+            "M0006",
+            "M0007"
+          ]
+        }
+      },
+      "planning_checks": [
+        {
+          "check": "attendance.figures",
+          "passed": true,
+          "reason": "120 students, 30 teams, team size 4.",
+          "evidence": [
+            "M0001"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "judging.coverage",
+          "passed": true,
+          "reason": "8 assigned judges cover 30 teams within confirmed availability.",
+          "evidence": [
+            "M0001",
+            "M0006"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "venue.selection",
+          "passed": true,
+          "reason": "hall 2 for 136 people.",
+          "evidence": [
+            "M0001",
+            "M0002",
+            "M0003",
+            "M0006"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "food.selection",
+          "passed": true,
+          "reason": "sandwich box for 136 people.",
+          "evidence": [
+            "M0001",
+            "M0005",
+            "M0006"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "budget.ceiling",
+          "passed": true,
+          "reason": "Total 298600, ceiling 400000, remaining 101400.",
+          "evidence": [
+            "M0001",
+            "M0002",
+            "M0003",
+            "M0005",
+            "M0006",
+            "M0007"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "five_domains",
+          "passed": true,
+          "reason": "Five domain records required.",
+          "evidence": [],
+          "unresolved": false
+        },
+        {
+          "check": "schedule.coverage",
+          "passed": true,
+          "reason": "Activities must cover the event exactly, in order, without overlaps.",
+          "evidence": [
+            "M0001",
+            "M0006"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "venue.capacity",
+          "passed": true,
+          "reason": "180 seats for 136 people.",
+          "evidence": [
+            "M0002"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "food.quantity",
+          "passed": true,
+          "reason": "136 meals for 136 people.",
+          "evidence": [
+            "M0005"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "food.price",
+          "passed": true,
+          "reason": "Quantity multiplied by the quote, plus the delivery fee.",
+          "evidence": [
+            "M0005"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "judging.assignments",
+          "passed": true,
+          "reason": "Each team's evaluation fits an assigned judge's workload and scheduled block.",
+          "evidence": [
+            "M0001",
+            "M0006"
+          ],
+          "unresolved": false
+        },
+        {
+          "check": "budget.sum",
+          "passed": true,
+          "reason": "Sum of all committed line items.",
+          "evidence": [
+            "M0001",
+            "M0002",
+            "M0003",
+            "M0005",
+            "M0006",
+            "M0007"
+          ],
+          "unresolved": false
+        }
+      ],
+      "affected_areas": [
+        "venue",
+        "schedule",
+        "food",
+        "judging",
+        "budget"
+      ]
+    }
+  },
+  "previous_state": null,
+  "model_calls": [
+    {
+      "run_id": "JUDGING-PACK-RUN",
+      "call_number": 1,
+      "area": "reading",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 1240,
+      "input_tokens": 1420,
+      "output_tokens": 680,
+      "total_tokens": 2100,
+      "usage_source": "provider"
+    }
+  ]
+}

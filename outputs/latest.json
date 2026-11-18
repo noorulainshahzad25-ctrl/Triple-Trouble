@@ -1,1065 +1,1332 @@
 {
   "meta": {
-    "run_id": "DEMO-2",
-    "label": "Offline example · update"
+    "run_id": "JUDGING-PACK-RUN",
+    "label": "Live Evaluation · Judging Pack (Official Test Case)",
+    "source": "judging_pack.txt"
   },
   "result": {
-    "mode": "update",
+    "status": "valid",
+    "plan": {
+      "attendance": {
+        "students": 120,
+        "teams": 30,
+        "team_size": 4,
+        "staff": 8,
+        "occupancy": 136,
+        "meals": 136
+      },
+      "schedule": {
+        "duration": 240,
+        "start": null,
+        "timeline": [
+          {
+            "activity": "Hackathon work",
+            "start_min": 0,
+            "end_min": 70,
+            "duration": 70
+          },
+          {
+            "activity": "prayer break",
+            "start_min": 70,
+            "end_min": 90,
+            "duration": 20
+          },
+          {
+            "activity": "Hackathon work",
+            "start_min": 90,
+            "end_min": 160,
+            "duration": 70
+          },
+          {
+            "activity": "judging",
+            "start_min": 160,
+            "end_min": 240,
+            "duration": 80
+          }
+        ],
+        "sources": [
+          "M0001",
+          "M0006"
+        ]
+      },
+      "judging": {
+        "available": 15,
+        "minutes_per_team": 20,
+        "max_teams": 4,
+        "teams": 30,
+        "assigned": 8,
+        "assignments": [
+          {
+            "judge": "Pool judge 1",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 10",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 11",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 12",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 13",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 14",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 15",
+            "teams": 4,
+            "start_min": 160,
+            "end_min": 240
+          },
+          {
+            "judge": "Pool judge 2",
+            "teams": 2,
+            "start_min": 160,
+            "end_min": 200
+          }
+        ],
+        "cost": 32000,
+        "sources": [
+          "M0001",
+          "M0006"
+        ]
+      },
+      "venue": {
+        "capacity": 180,
+        "cost": 110000,
+        "facilities": [
+          "ramp access",
+          "ground floor"
+        ],
+        "name": "hall 2",
+        "sources": [
+          "M0002"
+        ],
+        "occupancy": 136,
+        "required": 136,
+        "alternatives": [
+          {
+            "name": "hall 1",
+            "reason": "Missing confirmation of mandatory facilities: ramp access",
+            "unresolved": true,
+            "sources": [
+              "M0002"
+            ]
+          },
+          {
+            "name": "hall 3",
+            "reason": "Capacity None cannot establish seating for 136.",
+            "unresolved": true,
+            "sources": [
+              "M0002"
+            ]
+          },
+          {
+            "name": "seminar room",
+            "reason": "Capacity 100 cannot establish seating for 136.",
+            "unresolved": false,
+            "sources": [
+              "M0002"
+            ]
+          }
+        ]
+      },
+      "food": {
+        "unit_price": 600,
+        "name": "sandwich box",
+        "sources": [
+          "M0005"
+        ],
+        "quantity": 136,
+        "delivery": 0,
+        "cost": 81600,
+        "required": 136,
+        "alternatives": [
+          {
+            "name": "biryani box",
+            "reason": "Alternative quote 115600; selected combination ranks first on constraints and total cost.",
+            "sources": [
+              "M0005"
+            ]
+          }
+        ]
+      },
+      "budget": {
+        "ceiling": 400000,
+        "lines": [
+          {
+            "item": "banners",
+            "cost": 15000,
+            "source": "M0007"
+          },
+          {
+            "item": "trophies",
+            "cost": 60000,
+            "source": "M0007"
+          },
+          {
+            "item": "venue",
+            "cost": 110000,
+            "sources": [
+              "M0002"
+            ]
+          },
+          {
+            "item": "food",
+            "cost": 81600,
+            "sources": [
+              "M0005"
+            ]
+          },
+          {
+            "item": "judging",
+            "cost": 32000,
+            "sources": [
+              "M0001",
+              "M0006"
+            ]
+          }
+        ],
+        "total": 298600,
+        "remaining": 101400,
+        "sources": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0005",
+          "M0006",
+          "M0007"
+        ]
+      }
+    },
+    "validations": [
+      {
+        "check": "attendance.figures",
+        "passed": true,
+        "reason": "120 students, 30 teams, team size 4.",
+        "evidence": [
+          "M0001"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "judging.coverage",
+        "passed": true,
+        "reason": "8 assigned judges cover 30 teams within confirmed availability.",
+        "evidence": [
+          "M0001",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "venue.selection",
+        "passed": true,
+        "reason": "hall 2 for 136 people.",
+        "evidence": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "food.selection",
+        "passed": true,
+        "reason": "sandwich box for 136 people.",
+        "evidence": [
+          "M0001",
+          "M0005",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "budget.ceiling",
+        "passed": true,
+        "reason": "Total 298600, ceiling 400000, remaining 101400.",
+        "evidence": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0005",
+          "M0006",
+          "M0007"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "five_domains",
+        "passed": true,
+        "reason": "Five domain records required.",
+        "evidence": [],
+        "unresolved": false
+      },
+      {
+        "check": "schedule.coverage",
+        "passed": true,
+        "reason": "Activities must cover the event exactly, in order, without overlaps.",
+        "evidence": [
+          "M0001",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "venue.capacity",
+        "passed": true,
+        "reason": "180 seats for 136 people.",
+        "evidence": [
+          "M0002"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "food.quantity",
+        "passed": true,
+        "reason": "136 meals for 136 people.",
+        "evidence": [
+          "M0005"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "food.price",
+        "passed": true,
+        "reason": "Quantity multiplied by the quote, plus the delivery fee.",
+        "evidence": [
+          "M0005"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "judging.assignments",
+        "passed": true,
+        "reason": "Each team's evaluation fits an assigned judge's workload and scheduled block.",
+        "evidence": [
+          "M0001",
+          "M0006"
+        ],
+        "unresolved": false
+      },
+      {
+        "check": "budget.sum",
+        "passed": true,
+        "reason": "Sum of all committed line items.",
+        "evidence": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0005",
+          "M0006",
+          "M0007"
+        ],
+        "unresolved": false
+      }
+    ],
+    "rejected_messages": [
+      {
+        "source": "M0002",
+        "area": "venue",
+        "subject": "hall 3",
+        "attribute": "capacity",
+        "status": "superseded",
+        "reason": "M0009 revises hall 3.capacity to 0.",
+        "references": [
+          "M0002",
+          "M0009"
+        ]
+      },
+      {
+        "source": "M0004",
+        "area": "food",
+        "subject": "biryani box",
+        "attribute": "unit_price",
+        "status": "superseded",
+        "reason": "M0005 revises biryani box.unit_price to 850.",
+        "references": [
+          "M0004",
+          "M0005"
+        ]
+      },
+      {
+        "source": "M0008",
+        "area": "budget",
+        "subject": "photo booth",
+        "attribute": "cost",
+        "status": "rejected",
+        "reason": "Proposal from Student society, WhatsApp, without a confirmed instruction: Can we have a photo booth",
+        "references": [
+          "M0008"
+        ]
+      },
+      {
+        "source": "M0010",
+        "area": "schedule",
+        "subject": "library",
+        "attribute": "earliest",
+        "status": "irrelevant",
+        "reason": "Irrelevant from Library, notice, without a confirmed instruction: The library will close",
+        "references": [
+          "M0010"
+        ]
+      },
+      {
+        "source": "M0010",
+        "status": "irrelevant",
+        "reason": "Irrelevant from Library, notice, without a confirmed instruction: The library will close",
+        "references": [
+          "M0010"
+        ]
+      }
+    ],
+    "changed_areas": [
+      "venue",
+      "schedule",
+      "food",
+      "judging",
+      "budget"
+    ],
+    "predicted_model_areas": [
+      "reading"
+    ],
     "state": {
       "schema_version": 1,
       "messages": [
         {
-          "raw": "Message 1\nFrom: Lead Organizer\nDate: 2026-11-10\nWe have 96 students registered in 24 teams of 4, plus 8 organizing staff members. Event starts at 09:00 and runs for 360 minutes. Venue mein backup generator aur wheelchair ramp lazmi chahiye.\n\n",
-          "fingerprint": "e9df606950e5837ec414e25f0850918b5560b114000572d0fbdbb179a1c8284f",
-          "sender": "Lead Organizer",
-          "date": "2026-11-10",
           "id": "M0001",
-          "order": 1,
+          "sender": "Registrar's office, email",
+          "date": "6 Nov",
+          "role": "organizer",
+          "raw": "Approved: a 4-hour hackathon for 120 students in teams of 4. The budget is Rs 400,000, all in. Eight staff will be on duty. Please keep a 20-minute prayer break in the schedule.",
           "facts": [
             {
-              "area": "attendance",
+              "area": "schedule",
               "subject": "event",
-              "attribute": "students",
+              "attribute": "duration",
+              "value": 240,
               "kind": "fact",
-              "evidence": "96 students",
-              "value": 96,
+              "evidence": "4-hour",
+              "condition": null,
               "operator": "=",
-              "unit": "people",
-              "condition": null
+              "unit": null
             },
             {
               "area": "attendance",
               "subject": "event",
-              "attribute": "teams",
+              "attribute": "students",
+              "value": 120,
               "kind": "fact",
-              "evidence": "24 teams",
-              "value": 24,
+              "evidence": "120 students",
+              "condition": null,
               "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
             },
             {
               "area": "attendance",
               "subject": "event",
               "attribute": "team_size",
+              "value": 4,
               "kind": "fact",
               "evidence": "teams of 4",
-              "value": 4,
+              "condition": null,
               "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
+            },
+            {
+              "area": "budget",
+              "subject": "event",
+              "attribute": "ceiling",
+              "value": 400000,
+              "kind": "fact",
+              "evidence": "Rs 400,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
             },
             {
               "area": "attendance",
               "subject": "event",
               "attribute": "staff",
-              "kind": "fact",
-              "evidence": "8 organizing staff",
               "value": 8,
-              "operator": "=",
-              "unit": "people",
-              "condition": null
-            },
-            {
-              "area": "schedule",
-              "subject": "event",
-              "attribute": "start",
               "kind": "fact",
-              "evidence": "starts at 09:00",
-              "value": "09:00",
+              "evidence": "Eight staff",
+              "condition": null,
               "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
             },
             {
               "area": "schedule",
-              "subject": "event",
+              "subject": "prayer break",
               "attribute": "duration",
-              "kind": "fact",
-              "evidence": "runs for 360 minutes",
-              "value": 360,
-              "operator": "=",
-              "unit": "minutes",
-              "condition": null
-            },
-            {
-              "area": "venue",
-              "subject": "event",
-              "attribute": "required_facility",
+              "value": 20,
               "kind": "requirement",
-              "evidence": "backup generator",
-              "value": "generator",
+              "evidence": "20-minute prayer break",
+              "condition": null,
               "operator": "=",
-              "unit": null,
-              "condition": null
-            },
-            {
-              "area": "venue",
-              "subject": "event",
-              "attribute": "required_facility",
-              "kind": "requirement",
-              "evidence": "wheelchair ramp lazmi",
-              "value": "wheelchair ramp",
-              "operator": "=",
-              "unit": null,
-              "condition": null
-            }
-          ],
-          "constraints": [
-            {
-              "area": "venue",
-              "subject": "event",
-              "attribute": "required_facility",
-              "kind": "requirement",
-              "evidence": "backup generator",
-              "value": "generator",
-              "operator": "=",
-              "unit": null,
-              "condition": null
-            },
-            {
-              "area": "venue",
-              "subject": "event",
-              "attribute": "required_facility",
-              "kind": "requirement",
-              "evidence": "wheelchair ramp lazmi",
-              "value": "wheelchair ramp",
-              "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
             }
           ],
           "domains": [
             "attendance",
-            "schedule",
-            "venue"
-          ],
-          "role": "organizer",
-          "note": null,
-          "status": "accepted",
-          "explanation": "96 students 24 teams teams of 4 8 organizing staff starts at 09:00 runs for 360 minutes backup generator wheelchair ramp lazmi"
-        },
-        {
-          "raw": "Message 2\nFrom: Finance Office\nDate: 2026-11-10\nApproved event budget ceiling is 320000 PKR. Poster printing and badges cost 18000 PKR confirmed.\n\n",
-          "fingerprint": "6d1a3739875ef71e56a9fb133e6273b208182d558d6a04ce7de97643bd6f4dc2",
-          "sender": "Finance Office",
-          "date": "2026-11-10",
-          "id": "M0002",
-          "order": 2,
-          "facts": [
-            {
-              "area": "budget",
-              "subject": "event",
-              "attribute": "ceiling",
-              "kind": "requirement",
-              "evidence": "ceiling is 320000 PKR",
-              "value": 320000,
-              "operator": "=",
-              "unit": "PKR",
-              "condition": null
-            },
-            {
-              "area": "budget",
-              "subject": "printing_and_badges",
-              "attribute": "cost",
-              "kind": "fact",
-              "evidence": "cost 18000 PKR",
-              "value": 18000,
-              "operator": "=",
-              "unit": "PKR",
-              "condition": null
-            }
+            "budget",
+            "schedule"
           ],
           "constraints": [
             {
-              "area": "budget",
-              "subject": "event",
-              "attribute": "ceiling",
+              "area": "schedule",
+              "subject": "prayer break",
+              "attribute": "duration",
+              "value": 20,
               "kind": "requirement",
-              "evidence": "ceiling is 320000 PKR",
-              "value": 320000,
+              "evidence": "20-minute prayer break",
+              "condition": null,
               "operator": "=",
-              "unit": "PKR",
-              "condition": null
+              "unit": null
             }
           ],
-          "domains": [
-            "budget"
-          ],
-          "role": "finance",
-          "note": null,
-          "status": "mixed",
-          "explanation": "M0007 revises event.ceiling to 350000. cost 18000 PKR"
+          "order": 1,
+          "status": "accepted",
+          "explanation": "4-hour 120 students teams of 4 Rs 400,000 Eight staff 20-minute prayer break"
         },
         {
-          "raw": "Message 3\nFrom: Campus Facilities Manager\nDate: 2026-11-11\nMain Auditorium capacity is 160 seats, rental cost is 85000 PKR, and facilities include generator, wheelchair ramp, and projector. Seminar Hall B capacity is 90 seats, rental cost is 45000 PKR, facilities include projector.\n\n",
-          "fingerprint": "5ec8ea1f024d60259c4c6e89d67047a5d22833e512d1d0ea1e3eaa093f81a61b",
-          "sender": "Campus Facilities Manager",
-          "date": "2026-11-11",
-          "id": "M0003",
-          "order": 3,
+          "id": "M0002",
+          "sender": "Faisal Convention Centre, email",
+          "date": "2 Nov",
+          "role": "venue",
+          "raw": "Seminar Room seats 100 at Rs 35,000. Hall 1 seats 160 at Rs 90,000. Hall 2 seats 180 at Rs 110,000. Hall 3 seats 250 at Rs 160,000. Only Halls 2 and 3 are on the ground floor with ramp access.",
           "facts": [
             {
               "area": "venue",
-              "subject": "main auditorium",
+              "subject": "Seminar Room",
               "attribute": "capacity",
+              "value": 100,
               "kind": "quote",
-              "evidence": "Main Auditorium capacity is 160 seats",
+              "evidence": "Seminar Room seats 100",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Seminar Room",
+              "attribute": "cost",
+              "value": 35000,
+              "kind": "quote",
+              "evidence": "Rs 35,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 1",
+              "attribute": "capacity",
               "value": 160,
+              "kind": "quote",
+              "evidence": "Hall 1 seats 160",
+              "condition": null,
               "operator": "=",
-              "unit": "seats",
-              "condition": null
+              "unit": null
             },
             {
               "area": "venue",
-              "subject": "main auditorium",
+              "subject": "Hall 1",
               "attribute": "cost",
+              "value": 90000,
               "kind": "quote",
-              "evidence": "rental cost is 85000 PKR",
-              "value": 85000,
+              "evidence": "Rs 90,000",
+              "condition": null,
               "operator": "=",
-              "unit": "PKR",
-              "condition": null
+              "unit": null
             },
             {
               "area": "venue",
-              "subject": "main auditorium",
-              "attribute": "facilities",
-              "kind": "quote",
-              "evidence": "facilities include generator, wheelchair ramp, and projector",
-              "value": [
-                "generator",
-                "wheelchair ramp",
-                "projector"
-              ],
-              "operator": "=",
-              "unit": null,
-              "condition": null
-            },
-            {
-              "area": "venue",
-              "subject": "seminar hall b",
+              "subject": "Hall 2",
               "attribute": "capacity",
+              "value": 180,
               "kind": "quote",
-              "evidence": "Seminar Hall B capacity is 90 seats",
-              "value": 90,
+              "evidence": "Hall 2 seats 180",
+              "condition": null,
               "operator": "=",
-              "unit": "seats",
-              "condition": null
+              "unit": null
             },
             {
               "area": "venue",
-              "subject": "seminar hall b",
+              "subject": "Hall 2",
               "attribute": "cost",
+              "value": 110000,
               "kind": "quote",
-              "evidence": "rental cost is 45000 PKR",
-              "value": 45000,
+              "evidence": "Rs 110,000",
+              "condition": null,
               "operator": "=",
-              "unit": "PKR",
-              "condition": null
+              "unit": null
             },
             {
               "area": "venue",
-              "subject": "seminar hall b",
+              "subject": "Hall 2",
               "attribute": "facilities",
-              "kind": "quote",
-              "evidence": "facilities include projector",
               "value": [
-                "projector"
+                "ramp access",
+                "ground floor"
               ],
+              "kind": "fact",
+              "evidence": "Halls 2 and 3 are on the ground floor with ramp access",
+              "condition": null,
               "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 3",
+              "attribute": "capacity",
+              "value": 250,
+              "kind": "quote",
+              "evidence": "Hall 3 seats 250",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 3",
+              "attribute": "cost",
+              "value": 160000,
+              "kind": "quote",
+              "evidence": "Rs 160,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "venue",
+              "subject": "Hall 3",
+              "attribute": "facilities",
+              "value": [
+                "ramp access",
+                "ground floor"
+              ],
+              "kind": "fact",
+              "evidence": "Halls 2 and 3 are on the ground floor with ramp access",
+              "condition": null,
+              "operator": "=",
+              "unit": null
             }
           ],
-          "constraints": [],
           "domains": [
             "venue"
           ],
-          "role": "venue",
-          "note": null,
-          "status": "accepted",
-          "explanation": "Main Auditorium capacity is 160 seats rental cost is 85000 PKR facilities include generator, wheelchair ramp, and projector Seminar Hall B capacity is 90 seats rental cost is 45000 PKR facilities include projector"
+          "constraints": [],
+          "order": 2,
+          "status": "mixed",
+          "explanation": "Seminar Room seats 100 Rs 35,000 Hall 1 seats 160 Rs 90,000 Hall 2 seats 180 Rs 110,000 Halls 2 and 3 are on the ground floor with ramp access M0009 revises hall 3.capacity to 0. Rs 160,000 Halls 2 and 3 are on the ground floor with ramp access"
         },
         {
-          "raw": "Message 4\nFrom: Green Olive Caterers\nDate: 2026-11-11\nStandard Box Lunch menu unit price is 650 PKR per meal with 4000 PKR delivery fee and max supply of 180 boxes. Executive Buffet menu unit price is 950 PKR per meal with 5000 PKR delivery fee.\n\n",
-          "fingerprint": "243c3670adecceb52fd6856bac9cd4312f81ac1b08185e05ca221bbe05c98ac3",
-          "sender": "Green Olive Caterers",
-          "date": "2026-11-11",
+          "id": "M0003",
+          "sender": "Student disability office, email",
+          "date": "10 Nov",
+          "role": "organizer",
+          "raw": "Two registered participants use wheelchairs. The venue must have step-free access throughout.",
+          "facts": [
+            {
+              "area": "venue",
+              "subject": "event",
+              "attribute": "required_facility",
+              "value": "ramp access",
+              "kind": "requirement",
+              "evidence": "step-free access throughout",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "venue"
+          ],
+          "constraints": [
+            {
+              "area": "venue",
+              "subject": "event",
+              "attribute": "required_facility",
+              "value": "ramp access",
+              "kind": "requirement",
+              "evidence": "step-free access throughout",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "order": 3,
+          "status": "accepted",
+          "explanation": "step-free access throughout"
+        },
+        {
           "id": "M0004",
-          "order": 4,
+          "sender": "Caterer, WhatsApp",
+          "date": "25 Oct",
+          "role": "caterer",
+          "raw": "Biryani box Rs 700 per head.",
           "facts": [
             {
               "area": "food",
-              "subject": "standard box lunch",
+              "subject": "biryani box",
               "attribute": "unit_price",
+              "value": 700,
               "kind": "quote",
-              "evidence": "unit price is 650 PKR",
-              "value": 650,
+              "evidence": "Biryani box Rs 700",
+              "condition": null,
               "operator": "=",
-              "unit": "PKR",
-              "condition": null
-            },
-            {
-              "area": "food",
-              "subject": "standard box lunch",
-              "attribute": "delivery",
-              "kind": "quote",
-              "evidence": "4000 PKR delivery fee",
-              "value": 4000,
-              "operator": "=",
-              "unit": "PKR",
-              "condition": null
-            },
-            {
-              "area": "food",
-              "subject": "standard box lunch",
-              "attribute": "max_quantity",
-              "kind": "quote",
-              "evidence": "max supply of 180 boxes",
-              "value": 180,
-              "operator": "=",
-              "unit": "boxes",
-              "condition": null
-            },
-            {
-              "area": "food",
-              "subject": "executive buffet",
-              "attribute": "unit_price",
-              "kind": "quote",
-              "evidence": "unit price is 950 PKR",
-              "value": 950,
-              "operator": "=",
-              "unit": "PKR",
-              "condition": null
-            },
-            {
-              "area": "food",
-              "subject": "executive buffet",
-              "attribute": "delivery",
-              "kind": "quote",
-              "evidence": "5000 PKR delivery fee",
-              "value": 5000,
-              "operator": "=",
-              "unit": "PKR",
-              "condition": null
+              "unit": null
             }
           ],
-          "constraints": [],
           "domains": [
             "food"
           ],
-          "role": "caterer",
-          "note": null,
-          "status": "mixed",
-          "explanation": "M0008 revises standard box lunch.unit_price to 700. 4000 PKR delivery fee max supply of 180 boxes unit price is 950 PKR 5000 PKR delivery fee"
+          "constraints": [],
+          "order": 4,
+          "status": "superseded",
+          "explanation": "M0005 revises biryani box.unit_price to 850."
         },
         {
-          "raw": "Message 5\nFrom: Judging Chair\nDate: 2026-11-11\nWe have 6 judges available in the pool. Each team needs 10 minutes per team for evaluation, and each judge can evaluate at most 6 teams. Judge honorarium is 8000 PKR per assigned judge. Mandatory lunch break duration is 45 minutes between 12:00 and 13:30.\n\n",
-          "fingerprint": "a5d62bf8366424d43bf4eec0f295e7fb8510370a51e90f087dffc3b6511847ae",
-          "sender": "Judging Chair",
-          "date": "2026-11-11",
           "id": "M0005",
+          "sender": "Caterer, WhatsApp",
+          "date": "11 Nov",
+          "role": "caterer",
+          "raw": "Assalam o alaikum! Rates update: biryani box ab Rs 850 per head hai, sandwich box Rs 600. 10% service charge alag se lagega on the total.",
+          "facts": [
+            {
+              "area": "food",
+              "subject": "biryani box",
+              "attribute": "unit_price",
+              "value": 850,
+              "kind": "correction",
+              "evidence": "biryani box ab Rs 850",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            },
+            {
+              "area": "food",
+              "subject": "sandwich box",
+              "attribute": "unit_price",
+              "value": 600,
+              "kind": "quote",
+              "evidence": "sandwich box Rs 600",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "food"
+          ],
+          "constraints": [],
           "order": 5,
+          "status": "accepted",
+          "explanation": "biryani box ab Rs 850 sandwich box Rs 600"
+        },
+        {
+          "id": "M0006",
+          "sender": "Judging lead, email",
+          "date": "9 Nov",
+          "role": "judging",
+          "raw": "15 judges have confirmed. The honorarium is Rs 4,000 each. A judge needs 20 minutes per team and can cover at most four teams.",
           "facts": [
             {
               "area": "judging",
               "subject": "event",
               "attribute": "available",
+              "value": 15,
               "kind": "fact",
-              "evidence": "6 judges available",
-              "value": 6,
+              "evidence": "15 judges have confirmed",
+              "condition": null,
               "operator": "=",
-              "unit": null,
-              "condition": null
-            },
-            {
-              "area": "judging",
-              "subject": "event",
-              "attribute": "minutes_per_team",
-              "kind": "requirement",
-              "evidence": "10 minutes per team",
-              "value": 10,
-              "operator": "=",
-              "unit": "minutes",
-              "condition": null
-            },
-            {
-              "area": "judging",
-              "subject": "event",
-              "attribute": "max_teams",
-              "kind": "requirement",
-              "evidence": "evaluate at most 6 teams",
-              "value": 6,
-              "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
             },
             {
               "area": "judging",
               "subject": "event",
               "attribute": "honorarium",
+              "value": 4000,
               "kind": "fact",
-              "evidence": "honorarium is 8000 PKR",
-              "value": 8000,
+              "evidence": "honorarium is Rs 4,000",
+              "condition": null,
               "operator": "=",
-              "unit": "PKR",
-              "condition": null
+              "unit": null
             },
             {
-              "area": "schedule",
-              "subject": "lunch break",
-              "attribute": "duration",
+              "area": "judging",
+              "subject": "event",
+              "attribute": "minutes_per_team",
+              "value": 20,
               "kind": "requirement",
-              "evidence": "lunch break duration is 45 minutes",
-              "value": 45,
+              "evidence": "20 minutes per team",
+              "condition": null,
               "operator": "=",
-              "unit": "minutes",
-              "condition": null
+              "unit": null
             },
             {
-              "area": "schedule",
-              "subject": "lunch break",
-              "attribute": "earliest",
+              "area": "judging",
+              "subject": "event",
+              "attribute": "max_teams",
+              "value": 4,
               "kind": "requirement",
-              "evidence": "between 12:00 and 13:30",
-              "value": "12:00",
+              "evidence": "at most four teams",
+              "condition": null,
               "operator": "=",
-              "unit": null,
-              "condition": null
-            },
-            {
-              "area": "schedule",
-              "subject": "lunch break",
-              "attribute": "latest_end",
-              "kind": "requirement",
-              "evidence": "between 12:00 and 13:30",
-              "value": "13:30",
-              "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
             }
+          ],
+          "domains": [
+            "judging"
           ],
           "constraints": [
             {
               "area": "judging",
               "subject": "event",
               "attribute": "minutes_per_team",
+              "value": 20,
               "kind": "requirement",
-              "evidence": "10 minutes per team",
-              "value": 10,
+              "evidence": "20 minutes per team",
+              "condition": null,
               "operator": "=",
-              "unit": "minutes",
-              "condition": null
+              "unit": null
             },
             {
               "area": "judging",
               "subject": "event",
               "attribute": "max_teams",
+              "value": 4,
               "kind": "requirement",
-              "evidence": "evaluate at most 6 teams",
-              "value": 6,
+              "evidence": "at most four teams",
+              "condition": null,
               "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
+            }
+          ],
+          "order": 6,
+          "status": "accepted",
+          "explanation": "15 judges have confirmed honorarium is Rs 4,000 20 minutes per team at most four teams"
+        },
+        {
+          "id": "M0007",
+          "sender": "Finance, email",
+          "date": "8 Nov",
+          "role": "finance",
+          "raw": "Already paid from the event budget: trophies Rs 60,000 and banners Rs 15,000.",
+          "facts": [
+            {
+              "area": "budget",
+              "subject": "trophies",
+              "attribute": "cost",
+              "value": 60000,
+              "kind": "fact",
+              "evidence": "trophies Rs 60,000",
+              "condition": null,
+              "operator": "=",
+              "unit": null
             },
             {
-              "area": "schedule",
-              "subject": "lunch break",
-              "attribute": "duration",
-              "kind": "requirement",
-              "evidence": "lunch break duration is 45 minutes",
-              "value": 45,
+              "area": "budget",
+              "subject": "banners",
+              "attribute": "cost",
+              "value": 15000,
+              "kind": "fact",
+              "evidence": "banners Rs 15,000",
+              "condition": null,
               "operator": "=",
-              "unit": "minutes",
-              "condition": null
-            },
-            {
-              "area": "schedule",
-              "subject": "lunch break",
-              "attribute": "earliest",
-              "kind": "requirement",
-              "evidence": "between 12:00 and 13:30",
-              "value": "12:00",
-              "operator": "=",
-              "unit": null,
-              "condition": null
-            },
-            {
-              "area": "schedule",
-              "subject": "lunch break",
-              "attribute": "latest_end",
-              "kind": "requirement",
-              "evidence": "between 12:00 and 13:30",
-              "value": "13:30",
-              "operator": "=",
-              "unit": null,
-              "condition": null
+              "unit": null
             }
           ],
           "domains": [
-            "judging",
+            "budget"
+          ],
+          "constraints": [],
+          "order": 7,
+          "status": "accepted",
+          "explanation": "trophies Rs 60,000 banners Rs 15,000"
+        },
+        {
+          "id": "M0008",
+          "sender": "Student society, WhatsApp",
+          "date": "12 Nov",
+          "role": "other",
+          "raw": "Can we have a photo booth near the entrance? Quote is Rs 30,000.",
+          "facts": [
+            {
+              "area": "budget",
+              "subject": "photo booth",
+              "attribute": "cost",
+              "value": 30000,
+              "kind": "proposal",
+              "evidence": "Can we have a photo booth",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "budget"
+          ],
+          "constraints": [],
+          "order": 8,
+          "status": "rejected",
+          "explanation": "Proposal from Student society, WhatsApp, without a confirmed instruction: Can we have a photo booth"
+        },
+        {
+          "id": "M0009",
+          "sender": "Faisal Convention Centre, WhatsApp",
+          "date": "13 Nov",
+          "role": "venue",
+          "raw": "Sorry sir, Hall 3 is under maintenance on your event date and cannot be booked.",
+          "facts": [
+            {
+              "area": "venue",
+              "subject": "Hall 3",
+              "attribute": "capacity",
+              "value": 0,
+              "kind": "cancellation",
+              "evidence": "Hall 3 is under maintenance",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "domains": [
+            "venue"
+          ],
+          "constraints": [],
+          "order": 9,
+          "status": "accepted",
+          "explanation": "Hall 3 is under maintenance"
+        },
+        {
+          "id": "M0010",
+          "sender": "Library, notice",
+          "date": "14 Nov",
+          "role": "other",
+          "raw": "The library will close at 3 pm on Friday for stock-taking.",
+          "facts": [
+            {
+              "area": "schedule",
+              "subject": "library",
+              "attribute": "earliest",
+              "value": 0,
+              "kind": "irrelevant",
+              "evidence": "The library will close",
+              "condition": null,
+              "operator": "=",
+              "unit": null
+            }
+          ],
+          "note": "Unrelated library notice",
+          "domains": [
             "schedule"
           ],
-          "role": "judging",
-          "note": null,
-          "status": "accepted",
-          "explanation": "6 judges available 10 minutes per team evaluate at most 6 teams honorarium is 8000 PKR lunch break duration is 45 minutes between 12:00 and 13:30 between 12:00 and 13:30"
-        },
-        {
-          "raw": "Message 6\nFrom: Student Participant\nDate: 2026-11-12\nSir humaray khayal mein sirf 60 کھانے ke boxes mangwa lein taake paise bach jayein.",
-          "fingerprint": "e45807dd40b2a9e75f5ac8707e8153d184bd5e3db84360086b32678d7c0992f6",
-          "sender": "Student Participant",
-          "date": "2026-11-12",
-          "id": "M0006",
-          "order": 6,
-          "facts": [
-            {
-              "area": "food",
-              "subject": "event",
-              "attribute": "order_quantity",
-              "kind": "proposal",
-              "evidence": "sirf 60 کھانے ke boxes mangwa lein",
-              "value": 60,
-              "operator": "=",
-              "unit": "boxes",
-              "condition": null
-            }
-          ],
           "constraints": [],
-          "domains": [
-            "food"
-          ],
-          "role": "participant",
-          "note": null,
-          "status": "rejected",
-          "explanation": "Order of 60 meals leaves 48 of 108 people unfed."
-        },
-        {
-          "raw": "Message 7\nFrom: Finance Office\nDate: 2026-11-14\nCorrection: Finance has increased the approved budget ceiling to 350000 PKR after sponsorship confirmation.\n\n",
-          "fingerprint": "3b45e397d6a210c2ca13347d6086684f0d6c185c4aaae90a0328825db4030fcc",
-          "sender": "Finance Office",
-          "date": "2026-11-14",
-          "id": "M0007",
-          "order": 7,
-          "facts": [
-            {
-              "area": "budget",
-              "subject": "event",
-              "attribute": "ceiling",
-              "kind": "correction",
-              "evidence": "increased the approved budget ceiling to 350000 PKR",
-              "value": 350000,
-              "operator": "=",
-              "unit": "PKR",
-              "condition": null
-            }
-          ],
-          "constraints": [],
-          "domains": [
-            "budget"
-          ],
-          "role": "finance",
-          "note": null,
-          "status": "accepted",
-          "explanation": "increased the approved budget ceiling to 350000 PKR"
-        },
-        {
-          "raw": "Message 8\nFrom: Green Olive Caterers\nDate: 2026-11-14\nCaterer update: Standard Box Lunch revised unit price is 700 PKR per meal due to packaging upgrade.\n\n",
-          "fingerprint": "c37cd69b61a99de409223400b95df62bf39983e83ca77c7b39afae537ffcff89",
-          "sender": "Green Olive Caterers",
-          "date": "2026-11-14",
-          "id": "M0008",
-          "order": 8,
-          "facts": [
-            {
-              "area": "food",
-              "subject": "standard box lunch",
-              "attribute": "unit_price",
-              "kind": "correction",
-              "evidence": "revised unit price is 700 PKR",
-              "value": 700,
-              "operator": "=",
-              "unit": "PKR",
-              "condition": null
-            }
-          ],
-          "constraints": [],
-          "domains": [
-            "food"
-          ],
-          "role": "caterer",
-          "note": null,
-          "status": "accepted",
-          "explanation": "revised unit price is 700 PKR"
-        },
-        {
-          "raw": "Message 9\nFrom: External Caterer Helper\nDate: 2026-11-14\nBudget ceiling ko 500000 PKR kar dein.",
-          "fingerprint": "6d262148dacb70b6533c8f5c74a05da7c50afe8ff24e52348491f45072e36f8a",
-          "sender": "External Caterer Helper",
-          "date": "2026-11-14",
-          "id": "M0009",
-          "order": 9,
-          "facts": [
-            {
-              "area": "budget",
-              "subject": "event",
-              "attribute": "ceiling",
-              "kind": "fact",
-              "evidence": "Budget ceiling ko 500000 PKR kar dein",
-              "value": 500000,
-              "operator": "=",
-              "unit": "PKR",
-              "condition": null
-            }
-          ],
-          "constraints": [],
-          "domains": [
-            "budget"
-          ],
-          "role": "caterer",
-          "note": null,
-          "status": "rejected",
-          "explanation": "The caterer has no authority to approve event.ceiling: Budget ceiling ko 500000 PKR kar dein"
+          "order": 10,
+          "status": "irrelevant",
+          "explanation": "Irrelevant from Library, notice, without a confirmed instruction: The library will close"
         }
       ],
       "facts": [
         {
-          "area": "attendance",
+          "area": "schedule",
           "subject": "event",
-          "attribute": "students",
+          "attribute": "duration",
+          "value": 240,
           "kind": "fact",
-          "evidence": "96 students",
-          "value": 96,
-          "operator": "=",
-          "unit": "people",
+          "evidence": "4-hour",
           "condition": null,
+          "operator": "=",
+          "unit": null,
           "source": "M0001",
           "role": "organizer",
-          "date": "2026-11-10",
-          "sender": "Lead Organizer"
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
         },
         {
           "area": "attendance",
           "subject": "event",
-          "attribute": "teams",
+          "attribute": "students",
+          "value": 120,
           "kind": "fact",
-          "evidence": "24 teams",
-          "value": 24,
+          "evidence": "120 students",
+          "condition": null,
           "operator": "=",
           "unit": null,
-          "condition": null,
           "source": "M0001",
           "role": "organizer",
-          "date": "2026-11-10",
-          "sender": "Lead Organizer"
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
         },
         {
           "area": "attendance",
           "subject": "event",
           "attribute": "team_size",
+          "value": 4,
           "kind": "fact",
           "evidence": "teams of 4",
-          "value": 4,
+          "condition": null,
           "operator": "=",
           "unit": null,
-          "condition": null,
           "source": "M0001",
           "role": "organizer",
-          "date": "2026-11-10",
-          "sender": "Lead Organizer"
-        },
-        {
-          "area": "attendance",
-          "subject": "event",
-          "attribute": "staff",
-          "kind": "fact",
-          "evidence": "8 organizing staff",
-          "value": 8,
-          "operator": "=",
-          "unit": "people",
-          "condition": null,
-          "source": "M0001",
-          "role": "organizer",
-          "date": "2026-11-10",
-          "sender": "Lead Organizer"
-        },
-        {
-          "area": "schedule",
-          "subject": "event",
-          "attribute": "start",
-          "kind": "fact",
-          "evidence": "starts at 09:00",
-          "value": "09:00",
-          "operator": "=",
-          "unit": null,
-          "condition": null,
-          "source": "M0001",
-          "role": "organizer",
-          "date": "2026-11-10",
-          "sender": "Lead Organizer"
-        },
-        {
-          "area": "schedule",
-          "subject": "event",
-          "attribute": "duration",
-          "kind": "fact",
-          "evidence": "runs for 360 minutes",
-          "value": 360,
-          "operator": "=",
-          "unit": "minutes",
-          "condition": null,
-          "source": "M0001",
-          "role": "organizer",
-          "date": "2026-11-10",
-          "sender": "Lead Organizer"
-        },
-        {
-          "area": "venue",
-          "subject": "event",
-          "attribute": "required_facility",
-          "kind": "requirement",
-          "evidence": "backup generator",
-          "value": "generator",
-          "operator": "=",
-          "unit": null,
-          "condition": null,
-          "source": "M0001",
-          "role": "organizer",
-          "date": "2026-11-10",
-          "sender": "Lead Organizer"
-        },
-        {
-          "area": "venue",
-          "subject": "event",
-          "attribute": "required_facility",
-          "kind": "requirement",
-          "evidence": "wheelchair ramp lazmi",
-          "value": "wheelchair ramp",
-          "operator": "=",
-          "unit": null,
-          "condition": null,
-          "source": "M0001",
-          "role": "organizer",
-          "date": "2026-11-10",
-          "sender": "Lead Organizer"
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
         },
         {
           "area": "budget",
           "subject": "event",
           "attribute": "ceiling",
-          "kind": "correction",
-          "evidence": "increased the approved budget ceiling to 350000 PKR",
-          "value": 350000,
-          "operator": "=",
-          "unit": "PKR",
-          "condition": null,
-          "source": "M0007",
-          "role": "finance",
-          "date": "2026-11-14",
-          "sender": "Finance Office"
-        },
-        {
-          "area": "budget",
-          "subject": "printing_and_badges",
-          "attribute": "cost",
+          "value": 400000,
           "kind": "fact",
-          "evidence": "cost 18000 PKR",
-          "value": 18000,
-          "operator": "=",
-          "unit": "PKR",
+          "evidence": "Rs 400,000",
           "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "attendance",
+          "subject": "event",
+          "attribute": "staff",
+          "value": 8,
+          "kind": "fact",
+          "evidence": "Eight staff",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "schedule",
+          "subject": "prayer break",
+          "attribute": "duration",
+          "value": 20,
+          "kind": "requirement",
+          "evidence": "20-minute prayer break",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0001",
+          "role": "organizer",
+          "date": "6 Nov",
+          "sender": "Registrar's office, email"
+        },
+        {
+          "area": "venue",
+          "subject": "seminar room",
+          "attribute": "capacity",
+          "value": 100,
+          "kind": "quote",
+          "evidence": "Seminar Room seats 100",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
           "source": "M0002",
-          "role": "finance",
-          "date": "2026-11-10",
-          "sender": "Finance Office"
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
         },
         {
           "area": "venue",
-          "subject": "main auditorium",
-          "attribute": "capacity",
+          "subject": "seminar room",
+          "attribute": "cost",
+          "value": 35000,
           "kind": "quote",
-          "evidence": "Main Auditorium capacity is 160 seats",
+          "evidence": "Rs 35,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 1",
+          "attribute": "capacity",
           "value": 160,
-          "operator": "=",
-          "unit": "seats",
-          "condition": null,
-          "source": "M0003",
-          "role": "venue",
-          "date": "2026-11-11",
-          "sender": "Campus Facilities Manager"
-        },
-        {
-          "area": "venue",
-          "subject": "main auditorium",
-          "attribute": "cost",
           "kind": "quote",
-          "evidence": "rental cost is 85000 PKR",
-          "value": 85000,
-          "operator": "=",
-          "unit": "PKR",
+          "evidence": "Hall 1 seats 160",
           "condition": null,
-          "source": "M0003",
-          "role": "venue",
-          "date": "2026-11-11",
-          "sender": "Campus Facilities Manager"
-        },
-        {
-          "area": "venue",
-          "subject": "main auditorium",
-          "attribute": "facilities",
-          "kind": "quote",
-          "evidence": "facilities include generator, wheelchair ramp, and projector",
-          "value": [
-            "generator",
-            "wheelchair ramp",
-            "projector"
-          ],
           "operator": "=",
           "unit": null,
-          "condition": null,
-          "source": "M0003",
+          "source": "M0002",
           "role": "venue",
-          "date": "2026-11-11",
-          "sender": "Campus Facilities Manager"
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
         },
         {
           "area": "venue",
-          "subject": "seminar hall b",
+          "subject": "hall 1",
+          "attribute": "cost",
+          "value": 90000,
+          "kind": "quote",
+          "evidence": "Rs 90,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 2",
           "attribute": "capacity",
+          "value": 180,
           "kind": "quote",
-          "evidence": "Seminar Hall B capacity is 90 seats",
-          "value": 90,
-          "operator": "=",
-          "unit": "seats",
+          "evidence": "Hall 2 seats 180",
           "condition": null,
-          "source": "M0003",
-          "role": "venue",
-          "date": "2026-11-11",
-          "sender": "Campus Facilities Manager"
-        },
-        {
-          "area": "venue",
-          "subject": "seminar hall b",
-          "attribute": "cost",
-          "kind": "quote",
-          "evidence": "rental cost is 45000 PKR",
-          "value": 45000,
-          "operator": "=",
-          "unit": "PKR",
-          "condition": null,
-          "source": "M0003",
-          "role": "venue",
-          "date": "2026-11-11",
-          "sender": "Campus Facilities Manager"
-        },
-        {
-          "area": "venue",
-          "subject": "seminar hall b",
-          "attribute": "facilities",
-          "kind": "quote",
-          "evidence": "facilities include projector",
-          "value": [
-            "projector"
-          ],
           "operator": "=",
           "unit": null,
-          "condition": null,
-          "source": "M0003",
+          "source": "M0002",
           "role": "venue",
-          "date": "2026-11-11",
-          "sender": "Campus Facilities Manager"
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "cost",
+          "value": 110000,
+          "kind": "quote",
+          "evidence": "Rs 110,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "facilities",
+          "value": [
+            "ramp access",
+            "ground floor"
+          ],
+          "kind": "fact",
+          "evidence": "Halls 2 and 3 are on the ground floor with ramp access",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "cost",
+          "value": 160000,
+          "kind": "quote",
+          "evidence": "Rs 160,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "facilities",
+          "value": [
+            "ramp access",
+            "ground floor"
+          ],
+          "kind": "fact",
+          "evidence": "Halls 2 and 3 are on the ground floor with ramp access",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0002",
+          "role": "venue",
+          "date": "2 Nov",
+          "sender": "Faisal Convention Centre, email"
+        },
+        {
+          "area": "venue",
+          "subject": "event",
+          "attribute": "required_facility",
+          "value": "ramp access",
+          "kind": "requirement",
+          "evidence": "step-free access throughout",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0003",
+          "role": "organizer",
+          "date": "10 Nov",
+          "sender": "Student disability office, email"
         },
         {
           "area": "food",
-          "subject": "standard box lunch",
+          "subject": "biryani box",
           "attribute": "unit_price",
+          "value": 850,
           "kind": "correction",
-          "evidence": "revised unit price is 700 PKR",
-          "value": 700,
-          "operator": "=",
-          "unit": "PKR",
+          "evidence": "biryani box ab Rs 850",
           "condition": null,
-          "source": "M0008",
+          "operator": "=",
+          "unit": null,
+          "source": "M0005",
           "role": "caterer",
-          "date": "2026-11-14",
-          "sender": "Green Olive Caterers"
+          "date": "11 Nov",
+          "sender": "Caterer, WhatsApp"
         },
         {
           "area": "food",
-          "subject": "standard box lunch",
-          "attribute": "delivery",
-          "kind": "quote",
-          "evidence": "4000 PKR delivery fee",
-          "value": 4000,
-          "operator": "=",
-          "unit": "PKR",
-          "condition": null,
-          "source": "M0004",
-          "role": "caterer",
-          "date": "2026-11-11",
-          "sender": "Green Olive Caterers"
-        },
-        {
-          "area": "food",
-          "subject": "standard box lunch",
-          "attribute": "max_quantity",
-          "kind": "quote",
-          "evidence": "max supply of 180 boxes",
-          "value": 180,
-          "operator": "=",
-          "unit": "boxes",
-          "condition": null,
-          "source": "M0004",
-          "role": "caterer",
-          "date": "2026-11-11",
-          "sender": "Green Olive Caterers"
-        },
-        {
-          "area": "food",
-          "subject": "executive buffet",
+          "subject": "sandwich box",
           "attribute": "unit_price",
+          "value": 600,
           "kind": "quote",
-          "evidence": "unit price is 950 PKR",
-          "value": 950,
-          "operator": "=",
-          "unit": "PKR",
+          "evidence": "sandwich box Rs 600",
           "condition": null,
-          "source": "M0004",
-          "role": "caterer",
-          "date": "2026-11-11",
-          "sender": "Green Olive Caterers"
-        },
-        {
-          "area": "food",
-          "subject": "executive buffet",
-          "attribute": "delivery",
-          "kind": "quote",
-          "evidence": "5000 PKR delivery fee",
-          "value": 5000,
           "operator": "=",
-          "unit": "PKR",
-          "condition": null,
-          "source": "M0004",
+          "unit": null,
+          "source": "M0005",
           "role": "caterer",
-          "date": "2026-11-11",
-          "sender": "Green Olive Caterers"
+          "date": "11 Nov",
+          "sender": "Caterer, WhatsApp"
         },
         {
           "area": "judging",
           "subject": "event",
           "attribute": "available",
+          "value": 15,
           "kind": "fact",
-          "evidence": "6 judges available",
-          "value": 6,
+          "evidence": "15 judges have confirmed",
+          "condition": null,
           "operator": "=",
           "unit": null,
-          "condition": null,
-          "source": "M0005",
+          "source": "M0006",
           "role": "judging",
-          "date": "2026-11-11",
-          "sender": "Judging Chair"
-        },
-        {
-          "area": "judging",
-          "subject": "event",
-          "attribute": "minutes_per_team",
-          "kind": "requirement",
-          "evidence": "10 minutes per team",
-          "value": 10,
-          "operator": "=",
-          "unit": "minutes",
-          "condition": null,
-          "source": "M0005",
-          "role": "judging",
-          "date": "2026-11-11",
-          "sender": "Judging Chair"
-        },
-        {
-          "area": "judging",
-          "subject": "event",
-          "attribute": "max_teams",
-          "kind": "requirement",
-          "evidence": "evaluate at most 6 teams",
-          "value": 6,
-          "operator": "=",
-          "unit": null,
-          "condition": null,
-          "source": "M0005",
-          "role": "judging",
-          "date": "2026-11-11",
-          "sender": "Judging Chair"
+          "date": "9 Nov",
+          "sender": "Judging lead, email"
         },
         {
           "area": "judging",
           "subject": "event",
           "attribute": "honorarium",
+          "value": 4000,
           "kind": "fact",
-          "evidence": "honorarium is 8000 PKR",
-          "value": 8000,
-          "operator": "=",
-          "unit": "PKR",
+          "evidence": "honorarium is Rs 4,000",
           "condition": null,
-          "source": "M0005",
-          "role": "judging",
-          "date": "2026-11-11",
-          "sender": "Judging Chair"
-        },
-        {
-          "area": "schedule",
-          "subject": "lunch break",
-          "attribute": "duration",
-          "kind": "requirement",
-          "evidence": "lunch break duration is 45 minutes",
-          "value": 45,
-          "operator": "=",
-          "unit": "minutes",
-          "condition": null,
-          "source": "M0005",
-          "role": "judging",
-          "date": "2026-11-11",
-          "sender": "Judging Chair"
-        },
-        {
-          "area": "schedule",
-          "subject": "lunch break",
-          "attribute": "earliest",
-          "kind": "requirement",
-          "evidence": "between 12:00 and 13:30",
-          "value": "12:00",
           "operator": "=",
           "unit": null,
-          "condition": null,
-          "source": "M0005",
+          "source": "M0006",
           "role": "judging",
-          "date": "2026-11-11",
-          "sender": "Judging Chair"
+          "date": "9 Nov",
+          "sender": "Judging lead, email"
         },
         {
-          "area": "schedule",
-          "subject": "lunch break",
-          "attribute": "latest_end",
+          "area": "judging",
+          "subject": "event",
+          "attribute": "minutes_per_team",
+          "value": 20,
           "kind": "requirement",
-          "evidence": "between 12:00 and 13:30",
-          "value": "13:30",
+          "evidence": "20 minutes per team",
+          "condition": null,
           "operator": "=",
           "unit": null,
-          "condition": null,
-          "source": "M0005",
+          "source": "M0006",
           "role": "judging",
-          "date": "2026-11-11",
-          "sender": "Judging Chair"
+          "date": "9 Nov",
+          "sender": "Judging lead, email"
+        },
+        {
+          "area": "judging",
+          "subject": "event",
+          "attribute": "max_teams",
+          "value": 4,
+          "kind": "requirement",
+          "evidence": "at most four teams",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0006",
+          "role": "judging",
+          "date": "9 Nov",
+          "sender": "Judging lead, email"
+        },
+        {
+          "area": "budget",
+          "subject": "trophies",
+          "attribute": "cost",
+          "value": 60000,
+          "kind": "fact",
+          "evidence": "trophies Rs 60,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0007",
+          "role": "finance",
+          "date": "8 Nov",
+          "sender": "Finance, email"
+        },
+        {
+          "area": "budget",
+          "subject": "banners",
+          "attribute": "cost",
+          "value": 15000,
+          "kind": "fact",
+          "evidence": "banners Rs 15,000",
+          "condition": null,
+          "operator": "=",
+          "unit": null,
+          "source": "M0007",
+          "role": "finance",
+          "date": "8 Nov",
+          "sender": "Finance, email"
         }
       ],
       "rules": [],
       "decisions": [
         {
           "source": "M0001",
-          "area": "attendance",
+          "area": "schedule",
           "subject": "event",
-          "attribute": "students",
+          "attribute": "duration",
           "status": "accepted",
-          "reason": "96 students",
+          "reason": "4-hour",
           "references": [
             "M0001"
           ]
@@ -1068,9 +1335,9 @@
           "source": "M0001",
           "area": "attendance",
           "subject": "event",
-          "attribute": "teams",
+          "attribute": "students",
           "status": "accepted",
-          "reason": "24 teams",
+          "reason": "120 students",
           "references": [
             "M0001"
           ]
@@ -1088,11 +1355,22 @@
         },
         {
           "source": "M0001",
+          "area": "budget",
+          "subject": "event",
+          "attribute": "ceiling",
+          "status": "accepted",
+          "reason": "Rs 400,000",
+          "references": [
+            "M0001"
+          ]
+        },
+        {
+          "source": "M0001",
           "area": "attendance",
           "subject": "event",
           "attribute": "staff",
           "status": "accepted",
-          "reason": "8 organizing staff",
+          "reason": "Eight staff",
           "references": [
             "M0001"
           ]
@@ -1100,66 +1378,121 @@
         {
           "source": "M0001",
           "area": "schedule",
-          "subject": "event",
-          "attribute": "start",
-          "status": "accepted",
-          "reason": "starts at 09:00",
-          "references": [
-            "M0001"
-          ]
-        },
-        {
-          "source": "M0001",
-          "area": "schedule",
-          "subject": "event",
+          "subject": "prayer break",
           "attribute": "duration",
           "status": "accepted",
-          "reason": "runs for 360 minutes",
-          "references": [
-            "M0001"
-          ]
-        },
-        {
-          "source": "M0001",
-          "area": "venue",
-          "subject": "event",
-          "attribute": "required_facility",
-          "status": "accepted",
-          "reason": "backup generator",
-          "references": [
-            "M0001"
-          ]
-        },
-        {
-          "source": "M0001",
-          "area": "venue",
-          "subject": "event",
-          "attribute": "required_facility",
-          "status": "accepted",
-          "reason": "wheelchair ramp lazmi",
+          "reason": "20-minute prayer break",
           "references": [
             "M0001"
           ]
         },
         {
           "source": "M0002",
-          "area": "budget",
-          "subject": "event",
-          "attribute": "ceiling",
-          "status": "superseded",
-          "reason": "M0007 revises event.ceiling to 350000.",
+          "area": "venue",
+          "subject": "seminar room",
+          "attribute": "capacity",
+          "status": "accepted",
+          "reason": "Seminar Room seats 100",
           "references": [
-            "M0002",
-            "M0007"
+            "M0002"
           ]
         },
         {
           "source": "M0002",
-          "area": "budget",
-          "subject": "printing_and_badges",
+          "area": "venue",
+          "subject": "seminar room",
           "attribute": "cost",
           "status": "accepted",
-          "reason": "cost 18000 PKR",
+          "reason": "Rs 35,000",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 1",
+          "attribute": "capacity",
+          "status": "accepted",
+          "reason": "Hall 1 seats 160",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 1",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "Rs 90,000",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "capacity",
+          "status": "accepted",
+          "reason": "Hall 2 seats 180",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "Rs 110,000",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 2",
+          "attribute": "facilities",
+          "status": "accepted",
+          "reason": "Halls 2 and 3 are on the ground floor with ramp access",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "capacity",
+          "status": "superseded",
+          "reason": "M0009 revises hall 3.capacity to 0.",
+          "references": [
+            "M0002",
+            "M0009"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "Rs 160,000",
+          "references": [
+            "M0002"
+          ]
+        },
+        {
+          "source": "M0002",
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "facilities",
+          "status": "accepted",
+          "reason": "Halls 2 and 3 are on the ground floor with ramp access",
           "references": [
             "M0002"
           ]
@@ -1167,65 +1500,10 @@
         {
           "source": "M0003",
           "area": "venue",
-          "subject": "main auditorium",
-          "attribute": "capacity",
+          "subject": "event",
+          "attribute": "required_facility",
           "status": "accepted",
-          "reason": "Main Auditorium capacity is 160 seats",
-          "references": [
-            "M0003"
-          ]
-        },
-        {
-          "source": "M0003",
-          "area": "venue",
-          "subject": "main auditorium",
-          "attribute": "cost",
-          "status": "accepted",
-          "reason": "rental cost is 85000 PKR",
-          "references": [
-            "M0003"
-          ]
-        },
-        {
-          "source": "M0003",
-          "area": "venue",
-          "subject": "main auditorium",
-          "attribute": "facilities",
-          "status": "accepted",
-          "reason": "facilities include generator, wheelchair ramp, and projector",
-          "references": [
-            "M0003"
-          ]
-        },
-        {
-          "source": "M0003",
-          "area": "venue",
-          "subject": "seminar hall b",
-          "attribute": "capacity",
-          "status": "accepted",
-          "reason": "Seminar Hall B capacity is 90 seats",
-          "references": [
-            "M0003"
-          ]
-        },
-        {
-          "source": "M0003",
-          "area": "venue",
-          "subject": "seminar hall b",
-          "attribute": "cost",
-          "status": "accepted",
-          "reason": "rental cost is 45000 PKR",
-          "references": [
-            "M0003"
-          ]
-        },
-        {
-          "source": "M0003",
-          "area": "venue",
-          "subject": "seminar hall b",
-          "attribute": "facilities",
-          "status": "accepted",
-          "reason": "facilities include projector",
+          "reason": "step-free access throughout",
           "references": [
             "M0003"
           ]
@@ -1233,340 +1511,327 @@
         {
           "source": "M0004",
           "area": "food",
-          "subject": "standard box lunch",
+          "subject": "biryani box",
           "attribute": "unit_price",
           "status": "superseded",
-          "reason": "M0008 revises standard box lunch.unit_price to 700.",
+          "reason": "M0005 revises biryani box.unit_price to 850.",
           "references": [
             "M0004",
-            "M0008"
+            "M0005"
           ]
         },
         {
-          "source": "M0004",
+          "source": "M0005",
           "area": "food",
-          "subject": "standard box lunch",
-          "attribute": "delivery",
-          "status": "accepted",
-          "reason": "4000 PKR delivery fee",
-          "references": [
-            "M0004"
-          ]
-        },
-        {
-          "source": "M0004",
-          "area": "food",
-          "subject": "standard box lunch",
-          "attribute": "max_quantity",
-          "status": "accepted",
-          "reason": "max supply of 180 boxes",
-          "references": [
-            "M0004"
-          ]
-        },
-        {
-          "source": "M0004",
-          "area": "food",
-          "subject": "executive buffet",
+          "subject": "biryani box",
           "attribute": "unit_price",
           "status": "accepted",
-          "reason": "unit price is 950 PKR",
+          "reason": "biryani box ab Rs 850",
           "references": [
-            "M0004"
+            "M0005"
           ]
         },
         {
-          "source": "M0004",
+          "source": "M0005",
           "area": "food",
-          "subject": "executive buffet",
-          "attribute": "delivery",
+          "subject": "sandwich box",
+          "attribute": "unit_price",
           "status": "accepted",
-          "reason": "5000 PKR delivery fee",
-          "references": [
-            "M0004"
-          ]
-        },
-        {
-          "source": "M0005",
-          "area": "judging",
-          "subject": "event",
-          "attribute": "available",
-          "status": "accepted",
-          "reason": "6 judges available",
-          "references": [
-            "M0005"
-          ]
-        },
-        {
-          "source": "M0005",
-          "area": "judging",
-          "subject": "event",
-          "attribute": "minutes_per_team",
-          "status": "accepted",
-          "reason": "10 minutes per team",
-          "references": [
-            "M0005"
-          ]
-        },
-        {
-          "source": "M0005",
-          "area": "judging",
-          "subject": "event",
-          "attribute": "max_teams",
-          "status": "accepted",
-          "reason": "evaluate at most 6 teams",
-          "references": [
-            "M0005"
-          ]
-        },
-        {
-          "source": "M0005",
-          "area": "judging",
-          "subject": "event",
-          "attribute": "honorarium",
-          "status": "accepted",
-          "reason": "honorarium is 8000 PKR",
-          "references": [
-            "M0005"
-          ]
-        },
-        {
-          "source": "M0005",
-          "area": "schedule",
-          "subject": "lunch break",
-          "attribute": "duration",
-          "status": "accepted",
-          "reason": "lunch break duration is 45 minutes",
-          "references": [
-            "M0005"
-          ]
-        },
-        {
-          "source": "M0005",
-          "area": "schedule",
-          "subject": "lunch break",
-          "attribute": "earliest",
-          "status": "accepted",
-          "reason": "between 12:00 and 13:30",
-          "references": [
-            "M0005"
-          ]
-        },
-        {
-          "source": "M0005",
-          "area": "schedule",
-          "subject": "lunch break",
-          "attribute": "latest_end",
-          "status": "accepted",
-          "reason": "between 12:00 and 13:30",
+          "reason": "sandwich box Rs 600",
           "references": [
             "M0005"
           ]
         },
         {
           "source": "M0006",
-          "area": "food",
+          "area": "judging",
           "subject": "event",
-          "attribute": "order_quantity",
-          "status": "rejected",
-          "reason": "Order of 60 meals leaves 48 of 108 people unfed.",
+          "attribute": "available",
+          "status": "accepted",
+          "reason": "15 judges have confirmed",
           "references": [
-            "M0001",
-            "M0005",
+            "M0006"
+          ]
+        },
+        {
+          "source": "M0006",
+          "area": "judging",
+          "subject": "event",
+          "attribute": "honorarium",
+          "status": "accepted",
+          "reason": "honorarium is Rs 4,000",
+          "references": [
+            "M0006"
+          ]
+        },
+        {
+          "source": "M0006",
+          "area": "judging",
+          "subject": "event",
+          "attribute": "minutes_per_team",
+          "status": "accepted",
+          "reason": "20 minutes per team",
+          "references": [
+            "M0006"
+          ]
+        },
+        {
+          "source": "M0006",
+          "area": "judging",
+          "subject": "event",
+          "attribute": "max_teams",
+          "status": "accepted",
+          "reason": "at most four teams",
+          "references": [
             "M0006"
           ]
         },
         {
           "source": "M0007",
           "area": "budget",
-          "subject": "event",
-          "attribute": "ceiling",
+          "subject": "trophies",
+          "attribute": "cost",
           "status": "accepted",
-          "reason": "increased the approved budget ceiling to 350000 PKR",
+          "reason": "trophies Rs 60,000",
+          "references": [
+            "M0007"
+          ]
+        },
+        {
+          "source": "M0007",
+          "area": "budget",
+          "subject": "banners",
+          "attribute": "cost",
+          "status": "accepted",
+          "reason": "banners Rs 15,000",
           "references": [
             "M0007"
           ]
         },
         {
           "source": "M0008",
-          "area": "food",
-          "subject": "standard box lunch",
-          "attribute": "unit_price",
-          "status": "accepted",
-          "reason": "revised unit price is 700 PKR",
+          "area": "budget",
+          "subject": "photo booth",
+          "attribute": "cost",
+          "status": "rejected",
+          "reason": "Proposal from Student society, WhatsApp, without a confirmed instruction: Can we have a photo booth",
           "references": [
             "M0008"
           ]
         },
         {
           "source": "M0009",
-          "area": "budget",
-          "subject": "event",
-          "attribute": "ceiling",
-          "status": "rejected",
-          "reason": "The caterer has no authority to approve event.ceiling: Budget ceiling ko 500000 PKR kar dein",
+          "area": "venue",
+          "subject": "hall 3",
+          "attribute": "capacity",
+          "status": "accepted",
+          "reason": "Hall 3 is under maintenance",
           "references": [
             "M0009"
+          ]
+        },
+        {
+          "source": "M0010",
+          "area": "schedule",
+          "subject": "library",
+          "attribute": "earliest",
+          "status": "irrelevant",
+          "reason": "Irrelevant from Library, notice, without a confirmed instruction: The library will close",
+          "references": [
+            "M0010"
           ]
         }
       ],
       "plan": {
         "attendance": {
-          "students": 96,
-          "teams": 24,
+          "students": 120,
+          "teams": 30,
           "team_size": 4,
           "staff": 8,
-          "occupancy": 108,
-          "meals": 108
+          "occupancy": 136,
+          "meals": 136
         },
         "schedule": {
-          "duration": 360,
-          "start": "09:00",
+          "duration": 240,
+          "start": null,
           "timeline": [
             {
               "activity": "Hackathon work",
               "start_min": 0,
-              "end_min": 180,
-              "duration": 180,
-              "start": "09:00",
-              "end": "12:00"
+              "end_min": 70,
+              "duration": 70
             },
             {
-              "activity": "lunch break",
-              "start_min": 180,
-              "end_min": 225,
-              "duration": 45,
-              "start": "12:00",
-              "end": "12:45"
-            },
-            {
-              "activity": "judging",
-              "start_min": 225,
-              "end_min": 285,
-              "duration": 60,
-              "start": "12:45",
-              "end": "13:45"
+              "activity": "prayer break",
+              "start_min": 70,
+              "end_min": 90,
+              "duration": 20
             },
             {
               "activity": "Hackathon work",
-              "start_min": 285,
-              "end_min": 360,
-              "duration": 75,
-              "start": "13:45",
-              "end": "15:00"
+              "start_min": 90,
+              "end_min": 160,
+              "duration": 70
+            },
+            {
+              "activity": "judging",
+              "start_min": 160,
+              "end_min": 240,
+              "duration": 80
             }
           ],
           "sources": [
             "M0001",
-            "M0005"
+            "M0006"
           ]
         },
         "judging": {
-          "available": 6,
-          "minutes_per_team": 10,
-          "max_teams": 6,
-          "teams": 24,
-          "assigned": 4,
+          "available": 15,
+          "minutes_per_team": 20,
+          "max_teams": 4,
+          "teams": 30,
+          "assigned": 8,
           "assignments": [
             {
               "judge": "Pool judge 1",
-              "teams": 6,
-              "start_min": 225,
-              "end_min": 285
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 10",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 11",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 12",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 13",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 14",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
+            },
+            {
+              "judge": "Pool judge 15",
+              "teams": 4,
+              "start_min": 160,
+              "end_min": 240
             },
             {
               "judge": "Pool judge 2",
-              "teams": 6,
-              "start_min": 225,
-              "end_min": 285
-            },
-            {
-              "judge": "Pool judge 3",
-              "teams": 6,
-              "start_min": 225,
-              "end_min": 285
-            },
-            {
-              "judge": "Pool judge 4",
-              "teams": 6,
-              "start_min": 225,
-              "end_min": 285
+              "teams": 2,
+              "start_min": 160,
+              "end_min": 200
             }
           ],
           "cost": 32000,
           "sources": [
             "M0001",
-            "M0005"
+            "M0006"
           ]
         },
         "venue": {
-          "capacity": 160,
-          "cost": 85000,
+          "capacity": 180,
+          "cost": 110000,
           "facilities": [
-            "generator",
-            "wheelchair ramp",
-            "projector"
+            "ramp access",
+            "ground floor"
           ],
-          "name": "main auditorium",
+          "name": "hall 2",
           "sources": [
-            "M0003"
+            "M0002"
           ],
-          "occupancy": 108,
-          "required": 108,
+          "occupancy": 136,
+          "required": 136,
           "alternatives": [
             {
-              "name": "seminar hall b",
-              "reason": "Capacity 90 cannot establish seating for 108.",
+              "name": "hall 1",
+              "reason": "Missing confirmation of mandatory facilities: ramp access",
+              "unresolved": true,
+              "sources": [
+                "M0002"
+              ]
+            },
+            {
+              "name": "hall 3",
+              "reason": "Capacity None cannot establish seating for 136.",
+              "unresolved": true,
+              "sources": [
+                "M0002"
+              ]
+            },
+            {
+              "name": "seminar room",
+              "reason": "Capacity 100 cannot establish seating for 136.",
               "unresolved": false,
               "sources": [
-                "M0003"
+                "M0002"
               ]
             }
           ]
         },
         "food": {
-          "unit_price": 700,
-          "delivery": 4000,
-          "max_quantity": 180,
-          "name": "standard box lunch",
+          "unit_price": 600,
+          "name": "sandwich box",
           "sources": [
-            "M0004",
-            "M0008"
+            "M0005"
           ],
-          "quantity": 108,
-          "cost": 79600,
-          "required": 108,
+          "quantity": 136,
+          "delivery": 0,
+          "cost": 81600,
+          "required": 136,
           "alternatives": [
             {
-              "name": "executive buffet",
-              "reason": "Alternative quote 107600; selected combination ranks first on constraints and total cost.",
+              "name": "biryani box",
+              "reason": "Alternative quote 115600; selected combination ranks first on constraints and total cost.",
               "sources": [
-                "M0004"
+                "M0005"
               ]
             }
           ]
         },
         "budget": {
-          "ceiling": 350000,
+          "ceiling": 400000,
           "lines": [
             {
-              "item": "printing_and_badges",
-              "cost": 18000,
-              "source": "M0002"
+              "item": "banners",
+              "cost": 15000,
+              "source": "M0007"
+            },
+            {
+              "item": "trophies",
+              "cost": 60000,
+              "source": "M0007"
             },
             {
               "item": "venue",
-              "cost": 85000,
+              "cost": 110000,
               "sources": [
-                "M0003"
+                "M0002"
               ]
             },
             {
               "item": "food",
-              "cost": 79600,
+              "cost": 81600,
               "sources": [
-                "M0004",
-                "M0008"
+                "M0005"
               ]
             },
             {
@@ -1574,20 +1839,19 @@
               "cost": 32000,
               "sources": [
                 "M0001",
-                "M0005"
+                "M0006"
               ]
             }
           ],
-          "total": 214600,
-          "remaining": 135400,
+          "total": 298600,
+          "remaining": 101400,
           "sources": [
             "M0001",
             "M0002",
             "M0003",
-            "M0004",
             "M0005",
-            "M0007",
-            "M0008"
+            "M0006",
+            "M0007"
           ]
         }
       },
@@ -1595,7 +1859,7 @@
         {
           "check": "attendance.figures",
           "passed": true,
-          "reason": "96 students, 24 teams, team size 4.",
+          "reason": "120 students, 30 teams, team size 4.",
           "evidence": [
             "M0001"
           ],
@@ -1604,281 +1868,47 @@
         {
           "check": "judging.coverage",
           "passed": true,
-          "reason": "4 assigned judges cover 24 teams within confirmed availability.",
+          "reason": "8 assigned judges cover 30 teams within confirmed availability.",
           "evidence": [
             "M0001",
-            "M0005"
+            "M0006"
           ],
           "unresolved": false
         },
         {
           "check": "venue.selection",
           "passed": true,
-          "reason": "main auditorium for 108 people.",
+          "reason": "hall 2 for 136 people.",
           "evidence": [
             "M0001",
+            "M0002",
             "M0003",
-            "M0005"
+            "M0006"
           ],
           "unresolved": false
         },
         {
           "check": "food.selection",
           "passed": true,
-          "reason": "standard box lunch for 108 people.",
+          "reason": "sandwich box for 136 people.",
           "evidence": [
             "M0001",
-            "M0004",
             "M0005",
-            "M0008"
+            "M0006"
           ],
           "unresolved": false
         },
         {
           "check": "budget.ceiling",
           "passed": true,
-          "reason": "Total 214600, ceiling 350000, remaining 135400.",
+          "reason": "Total 298600, ceiling 400000, remaining 101400.",
           "evidence": [
             "M0001",
             "M0002",
             "M0003",
-            "M0004",
             "M0005",
-            "M0007",
-            "M0008"
-          ],
-          "unresolved": false
-        }
-      ],
-      "affected_areas": [
-        "food",
-        "budget"
-      ]
-    },
-    "plan": {
-      "status": "valid",
-      "event": {
-        "students": 96,
-        "teams": 24,
-        "team_size": 4,
-        "staff": 8,
-        "occupancy": 108,
-        "meals": 108,
-        "start": "09:00",
-        "duration_minutes": 360
-      },
-      "venue": {
-        "capacity": 160,
-        "cost": 85000,
-        "facilities": [
-          "generator",
-          "wheelchair ramp",
-          "projector"
-        ],
-        "name": "main auditorium",
-        "sources": [
-          "M0003"
-        ],
-        "occupancy": 108,
-        "required": 108,
-        "alternatives": [
-          {
-            "name": "seminar hall b",
-            "reason": "Capacity 90 cannot establish seating for 108.",
-            "unresolved": false,
-            "sources": [
-              "M0003"
-            ]
-          }
-        ]
-      },
-      "schedule": [
-        {
-          "activity": "Hackathon work",
-          "start_min": 0,
-          "end_min": 180,
-          "duration": 180,
-          "start": "09:00",
-          "end": "12:00"
-        },
-        {
-          "activity": "lunch break",
-          "start_min": 180,
-          "end_min": 225,
-          "duration": 45,
-          "start": "12:00",
-          "end": "12:45"
-        },
-        {
-          "activity": "judging",
-          "start_min": 225,
-          "end_min": 285,
-          "duration": 60,
-          "start": "12:45",
-          "end": "13:45"
-        },
-        {
-          "activity": "Hackathon work",
-          "start_min": 285,
-          "end_min": 360,
-          "duration": 75,
-          "start": "13:45",
-          "end": "15:00"
-        }
-      ],
-      "food": {
-        "unit_price": 700,
-        "delivery": 4000,
-        "max_quantity": 180,
-        "name": "standard box lunch",
-        "sources": [
-          "M0004",
-          "M0008"
-        ],
-        "quantity": 108,
-        "cost": 79600,
-        "required": 108,
-        "alternatives": [
-          {
-            "name": "executive buffet",
-            "reason": "Alternative quote 107600; selected combination ranks first on constraints and total cost.",
-            "sources": [
-              "M0004"
-            ]
-          }
-        ]
-      },
-      "judging": {
-        "available": 6,
-        "minutes_per_team": 10,
-        "max_teams": 6,
-        "teams": 24,
-        "assigned": 4,
-        "assignments": [
-          {
-            "judge": "Pool judge 1",
-            "teams": 6,
-            "start_min": 225,
-            "end_min": 285
-          },
-          {
-            "judge": "Pool judge 2",
-            "teams": 6,
-            "start_min": 225,
-            "end_min": 285
-          },
-          {
-            "judge": "Pool judge 3",
-            "teams": 6,
-            "start_min": 225,
-            "end_min": 285
-          },
-          {
-            "judge": "Pool judge 4",
-            "teams": 6,
-            "start_min": 225,
-            "end_min": 285
-          }
-        ],
-        "cost": 32000,
-        "sources": [
-          "M0001",
-          "M0005"
-        ]
-      },
-      "budget": {
-        "currency": "PKR",
-        "limit": 350000,
-        "line_items": [
-          {
-            "name": "printing_and_badges",
-            "cost": 18000,
-            "source_ids": [
-              "M0002"
-            ]
-          },
-          {
-            "name": "venue",
-            "cost": 85000,
-            "source_ids": [
-              "M0003"
-            ]
-          },
-          {
-            "name": "food",
-            "cost": 79600,
-            "source_ids": [
-              "M0004",
-              "M0008"
-            ]
-          },
-          {
-            "name": "judging",
-            "cost": 32000,
-            "source_ids": [
-              "M0001",
-              "M0005"
-            ]
-          }
-        ],
-        "total": 214600,
-        "remaining": 135400
-      },
-      "validations": [
-        {
-          "check": "attendance.figures",
-          "passed": true,
-          "reason": "96 students, 24 teams, team size 4.",
-          "evidence": [
-            "M0001"
-          ],
-          "unresolved": false
-        },
-        {
-          "check": "judging.coverage",
-          "passed": true,
-          "reason": "4 assigned judges cover 24 teams within confirmed availability.",
-          "evidence": [
-            "M0001",
-            "M0005"
-          ],
-          "unresolved": false
-        },
-        {
-          "check": "venue.selection",
-          "passed": true,
-          "reason": "main auditorium for 108 people.",
-          "evidence": [
-            "M0001",
-            "M0003",
-            "M0005"
-          ],
-          "unresolved": false
-        },
-        {
-          "check": "food.selection",
-          "passed": true,
-          "reason": "standard box lunch for 108 people.",
-          "evidence": [
-            "M0001",
-            "M0004",
-            "M0005",
-            "M0008"
-          ],
-          "unresolved": false
-        },
-        {
-          "check": "budget.ceiling",
-          "passed": true,
-          "reason": "Total 214600, ceiling 350000, remaining 135400.",
-          "evidence": [
-            "M0001",
-            "M0002",
-            "M0003",
-            "M0004",
-            "M0005",
-            "M0007",
-            "M0008"
+            "M0006",
+            "M0007"
           ],
           "unresolved": false
         },
@@ -1895,26 +1925,25 @@
           "reason": "Activities must cover the event exactly, in order, without overlaps.",
           "evidence": [
             "M0001",
-            "M0005"
+            "M0006"
           ],
           "unresolved": false
         },
         {
           "check": "venue.capacity",
           "passed": true,
-          "reason": "160 seats for 108 people.",
+          "reason": "180 seats for 136 people.",
           "evidence": [
-            "M0003"
+            "M0002"
           ],
           "unresolved": false
         },
         {
           "check": "food.quantity",
           "passed": true,
-          "reason": "108 meals for 108 people.",
+          "reason": "136 meals for 136 people.",
           "evidence": [
-            "M0004",
-            "M0008"
+            "M0005"
           ],
           "unresolved": false
         },
@@ -1923,8 +1952,7 @@
           "passed": true,
           "reason": "Quantity multiplied by the quote, plus the delivery fee.",
           "evidence": [
-            "M0004",
-            "M0008"
+            "M0005"
           ],
           "unresolved": false
         },
@@ -1934,7 +1962,7 @@
           "reason": "Each team's evaluation fits an assigned judge's workload and scheduled block.",
           "evidence": [
             "M0001",
-            "M0005"
+            "M0006"
           ],
           "unresolved": false
         },
@@ -1946,1608 +1974,34 @@
             "M0001",
             "M0002",
             "M0003",
-            "M0004",
             "M0005",
-            "M0007",
-            "M0008"
+            "M0006",
+            "M0007"
           ],
           "unresolved": false
-        },
-        {
-          "check": "schedule.required_activity",
-          "passed": true,
-          "unresolved": false,
-          "reason": "Required lunch break for 45 minutes.",
-          "evidence": [
-            "M0005"
-          ]
         }
       ],
-      "unresolved": [],
-      "source_ids": [
-        "M0001",
-        "M0002",
-        "M0003",
-        "M0004",
-        "M0005",
-        "M0007",
-        "M0008"
+      "affected_areas": [
+        "venue",
+        "schedule",
+        "food",
+        "judging",
+        "budget"
       ]
-    },
-    "rejections": [
-      {
-        "message_id": "M0002",
-        "status": "superseded",
-        "reason": "M0007 revises event.ceiling to 350000.",
-        "affected_area": "budget",
-        "source_ids": [
-          "M0002",
-          "M0007"
-        ]
-      },
-      {
-        "message_id": "M0004",
-        "status": "superseded",
-        "reason": "M0008 revises standard box lunch.unit_price to 700.",
-        "affected_area": "food",
-        "source_ids": [
-          "M0004",
-          "M0008"
-        ]
-      },
-      {
-        "message_id": "M0006",
-        "status": "rejected",
-        "reason": "Order of 60 meals leaves 48 of 108 people unfed.",
-        "affected_area": "food",
-        "source_ids": [
-          "M0001",
-          "M0005",
-          "M0006"
-        ]
-      },
-      {
-        "message_id": "M0009",
-        "status": "rejected",
-        "reason": "The caterer has no authority to approve event.ceiling: Budget ceiling ko 500000 PKR kar dein",
-        "affected_area": "budget",
-        "source_ids": [
-          "M0009"
-        ]
-      }
-    ],
-    "changed_areas": [
-      "food",
-      "budget"
-    ],
-    "predicted_model_areas": [
-      "reading"
-    ],
-    "processed_messages": 3
+    }
   },
-  "previous_state": {
-    "schema_version": 1,
-    "messages": [
-      {
-        "raw": "Message 1\nFrom: Lead Organizer\nDate: 2026-11-10\nWe have 96 students registered in 24 teams of 4, plus 8 organizing staff members. Event starts at 09:00 and runs for 360 minutes. Venue mein backup generator aur wheelchair ramp lazmi chahiye.\n\n",
-        "fingerprint": "e9df606950e5837ec414e25f0850918b5560b114000572d0fbdbb179a1c8284f",
-        "sender": "Lead Organizer",
-        "date": "2026-11-10",
-        "id": "M0001",
-        "order": 1,
-        "facts": [
-          {
-            "area": "attendance",
-            "subject": "event",
-            "attribute": "students",
-            "kind": "fact",
-            "evidence": "96 students",
-            "value": 96,
-            "operator": "=",
-            "unit": "people",
-            "condition": null
-          },
-          {
-            "area": "attendance",
-            "subject": "event",
-            "attribute": "teams",
-            "kind": "fact",
-            "evidence": "24 teams",
-            "value": 24,
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "attendance",
-            "subject": "event",
-            "attribute": "team_size",
-            "kind": "fact",
-            "evidence": "teams of 4",
-            "value": 4,
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "attendance",
-            "subject": "event",
-            "attribute": "staff",
-            "kind": "fact",
-            "evidence": "8 organizing staff",
-            "value": 8,
-            "operator": "=",
-            "unit": "people",
-            "condition": null
-          },
-          {
-            "area": "schedule",
-            "subject": "event",
-            "attribute": "start",
-            "kind": "fact",
-            "evidence": "starts at 09:00",
-            "value": "09:00",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "schedule",
-            "subject": "event",
-            "attribute": "duration",
-            "kind": "fact",
-            "evidence": "runs for 360 minutes",
-            "value": 360,
-            "operator": "=",
-            "unit": "minutes",
-            "condition": null
-          },
-          {
-            "area": "venue",
-            "subject": "event",
-            "attribute": "required_facility",
-            "kind": "requirement",
-            "evidence": "backup generator",
-            "value": "generator",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "venue",
-            "subject": "event",
-            "attribute": "required_facility",
-            "kind": "requirement",
-            "evidence": "wheelchair ramp lazmi",
-            "value": "wheelchair ramp",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          }
-        ],
-        "constraints": [
-          {
-            "area": "venue",
-            "subject": "event",
-            "attribute": "required_facility",
-            "kind": "requirement",
-            "evidence": "backup generator",
-            "value": "generator",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "venue",
-            "subject": "event",
-            "attribute": "required_facility",
-            "kind": "requirement",
-            "evidence": "wheelchair ramp lazmi",
-            "value": "wheelchair ramp",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          }
-        ],
-        "domains": [
-          "attendance",
-          "schedule",
-          "venue"
-        ],
-        "role": "organizer",
-        "note": null,
-        "status": "accepted",
-        "explanation": "96 students 24 teams teams of 4 8 organizing staff starts at 09:00 runs for 360 minutes backup generator wheelchair ramp lazmi"
-      },
-      {
-        "raw": "Message 2\nFrom: Finance Office\nDate: 2026-11-10\nApproved event budget ceiling is 320000 PKR. Poster printing and badges cost 18000 PKR confirmed.\n\n",
-        "fingerprint": "6d1a3739875ef71e56a9fb133e6273b208182d558d6a04ce7de97643bd6f4dc2",
-        "sender": "Finance Office",
-        "date": "2026-11-10",
-        "id": "M0002",
-        "order": 2,
-        "facts": [
-          {
-            "area": "budget",
-            "subject": "event",
-            "attribute": "ceiling",
-            "kind": "requirement",
-            "evidence": "ceiling is 320000 PKR",
-            "value": 320000,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          },
-          {
-            "area": "budget",
-            "subject": "printing_and_badges",
-            "attribute": "cost",
-            "kind": "fact",
-            "evidence": "cost 18000 PKR",
-            "value": 18000,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          }
-        ],
-        "constraints": [
-          {
-            "area": "budget",
-            "subject": "event",
-            "attribute": "ceiling",
-            "kind": "requirement",
-            "evidence": "ceiling is 320000 PKR",
-            "value": 320000,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          }
-        ],
-        "domains": [
-          "budget"
-        ],
-        "role": "finance",
-        "note": null,
-        "status": "accepted",
-        "explanation": "ceiling is 320000 PKR cost 18000 PKR"
-      },
-      {
-        "raw": "Message 3\nFrom: Campus Facilities Manager\nDate: 2026-11-11\nMain Auditorium capacity is 160 seats, rental cost is 85000 PKR, and facilities include generator, wheelchair ramp, and projector. Seminar Hall B capacity is 90 seats, rental cost is 45000 PKR, facilities include projector.\n\n",
-        "fingerprint": "5ec8ea1f024d60259c4c6e89d67047a5d22833e512d1d0ea1e3eaa093f81a61b",
-        "sender": "Campus Facilities Manager",
-        "date": "2026-11-11",
-        "id": "M0003",
-        "order": 3,
-        "facts": [
-          {
-            "area": "venue",
-            "subject": "main auditorium",
-            "attribute": "capacity",
-            "kind": "quote",
-            "evidence": "Main Auditorium capacity is 160 seats",
-            "value": 160,
-            "operator": "=",
-            "unit": "seats",
-            "condition": null
-          },
-          {
-            "area": "venue",
-            "subject": "main auditorium",
-            "attribute": "cost",
-            "kind": "quote",
-            "evidence": "rental cost is 85000 PKR",
-            "value": 85000,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          },
-          {
-            "area": "venue",
-            "subject": "main auditorium",
-            "attribute": "facilities",
-            "kind": "quote",
-            "evidence": "facilities include generator, wheelchair ramp, and projector",
-            "value": [
-              "generator",
-              "wheelchair ramp",
-              "projector"
-            ],
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "venue",
-            "subject": "seminar hall b",
-            "attribute": "capacity",
-            "kind": "quote",
-            "evidence": "Seminar Hall B capacity is 90 seats",
-            "value": 90,
-            "operator": "=",
-            "unit": "seats",
-            "condition": null
-          },
-          {
-            "area": "venue",
-            "subject": "seminar hall b",
-            "attribute": "cost",
-            "kind": "quote",
-            "evidence": "rental cost is 45000 PKR",
-            "value": 45000,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          },
-          {
-            "area": "venue",
-            "subject": "seminar hall b",
-            "attribute": "facilities",
-            "kind": "quote",
-            "evidence": "facilities include projector",
-            "value": [
-              "projector"
-            ],
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          }
-        ],
-        "constraints": [],
-        "domains": [
-          "venue"
-        ],
-        "role": "venue",
-        "note": null,
-        "status": "accepted",
-        "explanation": "Main Auditorium capacity is 160 seats rental cost is 85000 PKR facilities include generator, wheelchair ramp, and projector Seminar Hall B capacity is 90 seats rental cost is 45000 PKR facilities include projector"
-      },
-      {
-        "raw": "Message 4\nFrom: Green Olive Caterers\nDate: 2026-11-11\nStandard Box Lunch menu unit price is 650 PKR per meal with 4000 PKR delivery fee and max supply of 180 boxes. Executive Buffet menu unit price is 950 PKR per meal with 5000 PKR delivery fee.\n\n",
-        "fingerprint": "243c3670adecceb52fd6856bac9cd4312f81ac1b08185e05ca221bbe05c98ac3",
-        "sender": "Green Olive Caterers",
-        "date": "2026-11-11",
-        "id": "M0004",
-        "order": 4,
-        "facts": [
-          {
-            "area": "food",
-            "subject": "standard box lunch",
-            "attribute": "unit_price",
-            "kind": "quote",
-            "evidence": "unit price is 650 PKR",
-            "value": 650,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          },
-          {
-            "area": "food",
-            "subject": "standard box lunch",
-            "attribute": "delivery",
-            "kind": "quote",
-            "evidence": "4000 PKR delivery fee",
-            "value": 4000,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          },
-          {
-            "area": "food",
-            "subject": "standard box lunch",
-            "attribute": "max_quantity",
-            "kind": "quote",
-            "evidence": "max supply of 180 boxes",
-            "value": 180,
-            "operator": "=",
-            "unit": "boxes",
-            "condition": null
-          },
-          {
-            "area": "food",
-            "subject": "executive buffet",
-            "attribute": "unit_price",
-            "kind": "quote",
-            "evidence": "unit price is 950 PKR",
-            "value": 950,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          },
-          {
-            "area": "food",
-            "subject": "executive buffet",
-            "attribute": "delivery",
-            "kind": "quote",
-            "evidence": "5000 PKR delivery fee",
-            "value": 5000,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          }
-        ],
-        "constraints": [],
-        "domains": [
-          "food"
-        ],
-        "role": "caterer",
-        "note": null,
-        "status": "accepted",
-        "explanation": "unit price is 650 PKR 4000 PKR delivery fee max supply of 180 boxes unit price is 950 PKR 5000 PKR delivery fee"
-      },
-      {
-        "raw": "Message 5\nFrom: Judging Chair\nDate: 2026-11-11\nWe have 6 judges available in the pool. Each team needs 10 minutes per team for evaluation, and each judge can evaluate at most 6 teams. Judge honorarium is 8000 PKR per assigned judge. Mandatory lunch break duration is 45 minutes between 12:00 and 13:30.\n\n",
-        "fingerprint": "a5d62bf8366424d43bf4eec0f295e7fb8510370a51e90f087dffc3b6511847ae",
-        "sender": "Judging Chair",
-        "date": "2026-11-11",
-        "id": "M0005",
-        "order": 5,
-        "facts": [
-          {
-            "area": "judging",
-            "subject": "event",
-            "attribute": "available",
-            "kind": "fact",
-            "evidence": "6 judges available",
-            "value": 6,
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "judging",
-            "subject": "event",
-            "attribute": "minutes_per_team",
-            "kind": "requirement",
-            "evidence": "10 minutes per team",
-            "value": 10,
-            "operator": "=",
-            "unit": "minutes",
-            "condition": null
-          },
-          {
-            "area": "judging",
-            "subject": "event",
-            "attribute": "max_teams",
-            "kind": "requirement",
-            "evidence": "evaluate at most 6 teams",
-            "value": 6,
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "judging",
-            "subject": "event",
-            "attribute": "honorarium",
-            "kind": "fact",
-            "evidence": "honorarium is 8000 PKR",
-            "value": 8000,
-            "operator": "=",
-            "unit": "PKR",
-            "condition": null
-          },
-          {
-            "area": "schedule",
-            "subject": "lunch break",
-            "attribute": "duration",
-            "kind": "requirement",
-            "evidence": "lunch break duration is 45 minutes",
-            "value": 45,
-            "operator": "=",
-            "unit": "minutes",
-            "condition": null
-          },
-          {
-            "area": "schedule",
-            "subject": "lunch break",
-            "attribute": "earliest",
-            "kind": "requirement",
-            "evidence": "between 12:00 and 13:30",
-            "value": "12:00",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "schedule",
-            "subject": "lunch break",
-            "attribute": "latest_end",
-            "kind": "requirement",
-            "evidence": "between 12:00 and 13:30",
-            "value": "13:30",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          }
-        ],
-        "constraints": [
-          {
-            "area": "judging",
-            "subject": "event",
-            "attribute": "minutes_per_team",
-            "kind": "requirement",
-            "evidence": "10 minutes per team",
-            "value": 10,
-            "operator": "=",
-            "unit": "minutes",
-            "condition": null
-          },
-          {
-            "area": "judging",
-            "subject": "event",
-            "attribute": "max_teams",
-            "kind": "requirement",
-            "evidence": "evaluate at most 6 teams",
-            "value": 6,
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "schedule",
-            "subject": "lunch break",
-            "attribute": "duration",
-            "kind": "requirement",
-            "evidence": "lunch break duration is 45 minutes",
-            "value": 45,
-            "operator": "=",
-            "unit": "minutes",
-            "condition": null
-          },
-          {
-            "area": "schedule",
-            "subject": "lunch break",
-            "attribute": "earliest",
-            "kind": "requirement",
-            "evidence": "between 12:00 and 13:30",
-            "value": "12:00",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          },
-          {
-            "area": "schedule",
-            "subject": "lunch break",
-            "attribute": "latest_end",
-            "kind": "requirement",
-            "evidence": "between 12:00 and 13:30",
-            "value": "13:30",
-            "operator": "=",
-            "unit": null,
-            "condition": null
-          }
-        ],
-        "domains": [
-          "judging",
-          "schedule"
-        ],
-        "role": "judging",
-        "note": null,
-        "status": "accepted",
-        "explanation": "6 judges available 10 minutes per team evaluate at most 6 teams honorarium is 8000 PKR lunch break duration is 45 minutes between 12:00 and 13:30 between 12:00 and 13:30"
-      },
-      {
-        "raw": "Message 6\nFrom: Student Participant\nDate: 2026-11-12\nSir humaray khayal mein sirf 60 کھانے ke boxes mangwa lein taake paise bach jayein.",
-        "fingerprint": "e45807dd40b2a9e75f5ac8707e8153d184bd5e3db84360086b32678d7c0992f6",
-        "sender": "Student Participant",
-        "date": "2026-11-12",
-        "id": "M0006",
-        "order": 6,
-        "facts": [
-          {
-            "area": "food",
-            "subject": "event",
-            "attribute": "order_quantity",
-            "kind": "proposal",
-            "evidence": "sirf 60 کھانے ke boxes mangwa lein",
-            "value": 60,
-            "operator": "=",
-            "unit": "boxes",
-            "condition": null
-          }
-        ],
-        "constraints": [],
-        "domains": [
-          "food"
-        ],
-        "role": "participant",
-        "note": null,
-        "status": "rejected",
-        "explanation": "Order of 60 meals leaves 48 of 108 people unfed."
-      }
-    ],
-    "facts": [
-      {
-        "area": "attendance",
-        "subject": "event",
-        "attribute": "students",
-        "kind": "fact",
-        "evidence": "96 students",
-        "value": 96,
-        "operator": "=",
-        "unit": "people",
-        "condition": null,
-        "source": "M0001",
-        "role": "organizer",
-        "date": "2026-11-10",
-        "sender": "Lead Organizer"
-      },
-      {
-        "area": "attendance",
-        "subject": "event",
-        "attribute": "teams",
-        "kind": "fact",
-        "evidence": "24 teams",
-        "value": 24,
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0001",
-        "role": "organizer",
-        "date": "2026-11-10",
-        "sender": "Lead Organizer"
-      },
-      {
-        "area": "attendance",
-        "subject": "event",
-        "attribute": "team_size",
-        "kind": "fact",
-        "evidence": "teams of 4",
-        "value": 4,
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0001",
-        "role": "organizer",
-        "date": "2026-11-10",
-        "sender": "Lead Organizer"
-      },
-      {
-        "area": "attendance",
-        "subject": "event",
-        "attribute": "staff",
-        "kind": "fact",
-        "evidence": "8 organizing staff",
-        "value": 8,
-        "operator": "=",
-        "unit": "people",
-        "condition": null,
-        "source": "M0001",
-        "role": "organizer",
-        "date": "2026-11-10",
-        "sender": "Lead Organizer"
-      },
-      {
-        "area": "schedule",
-        "subject": "event",
-        "attribute": "start",
-        "kind": "fact",
-        "evidence": "starts at 09:00",
-        "value": "09:00",
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0001",
-        "role": "organizer",
-        "date": "2026-11-10",
-        "sender": "Lead Organizer"
-      },
-      {
-        "area": "schedule",
-        "subject": "event",
-        "attribute": "duration",
-        "kind": "fact",
-        "evidence": "runs for 360 minutes",
-        "value": 360,
-        "operator": "=",
-        "unit": "minutes",
-        "condition": null,
-        "source": "M0001",
-        "role": "organizer",
-        "date": "2026-11-10",
-        "sender": "Lead Organizer"
-      },
-      {
-        "area": "venue",
-        "subject": "event",
-        "attribute": "required_facility",
-        "kind": "requirement",
-        "evidence": "backup generator",
-        "value": "generator",
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0001",
-        "role": "organizer",
-        "date": "2026-11-10",
-        "sender": "Lead Organizer"
-      },
-      {
-        "area": "venue",
-        "subject": "event",
-        "attribute": "required_facility",
-        "kind": "requirement",
-        "evidence": "wheelchair ramp lazmi",
-        "value": "wheelchair ramp",
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0001",
-        "role": "organizer",
-        "date": "2026-11-10",
-        "sender": "Lead Organizer"
-      },
-      {
-        "area": "budget",
-        "subject": "event",
-        "attribute": "ceiling",
-        "kind": "requirement",
-        "evidence": "ceiling is 320000 PKR",
-        "value": 320000,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0002",
-        "role": "finance",
-        "date": "2026-11-10",
-        "sender": "Finance Office"
-      },
-      {
-        "area": "budget",
-        "subject": "printing_and_badges",
-        "attribute": "cost",
-        "kind": "fact",
-        "evidence": "cost 18000 PKR",
-        "value": 18000,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0002",
-        "role": "finance",
-        "date": "2026-11-10",
-        "sender": "Finance Office"
-      },
-      {
-        "area": "venue",
-        "subject": "main auditorium",
-        "attribute": "capacity",
-        "kind": "quote",
-        "evidence": "Main Auditorium capacity is 160 seats",
-        "value": 160,
-        "operator": "=",
-        "unit": "seats",
-        "condition": null,
-        "source": "M0003",
-        "role": "venue",
-        "date": "2026-11-11",
-        "sender": "Campus Facilities Manager"
-      },
-      {
-        "area": "venue",
-        "subject": "main auditorium",
-        "attribute": "cost",
-        "kind": "quote",
-        "evidence": "rental cost is 85000 PKR",
-        "value": 85000,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0003",
-        "role": "venue",
-        "date": "2026-11-11",
-        "sender": "Campus Facilities Manager"
-      },
-      {
-        "area": "venue",
-        "subject": "main auditorium",
-        "attribute": "facilities",
-        "kind": "quote",
-        "evidence": "facilities include generator, wheelchair ramp, and projector",
-        "value": [
-          "generator",
-          "wheelchair ramp",
-          "projector"
-        ],
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0003",
-        "role": "venue",
-        "date": "2026-11-11",
-        "sender": "Campus Facilities Manager"
-      },
-      {
-        "area": "venue",
-        "subject": "seminar hall b",
-        "attribute": "capacity",
-        "kind": "quote",
-        "evidence": "Seminar Hall B capacity is 90 seats",
-        "value": 90,
-        "operator": "=",
-        "unit": "seats",
-        "condition": null,
-        "source": "M0003",
-        "role": "venue",
-        "date": "2026-11-11",
-        "sender": "Campus Facilities Manager"
-      },
-      {
-        "area": "venue",
-        "subject": "seminar hall b",
-        "attribute": "cost",
-        "kind": "quote",
-        "evidence": "rental cost is 45000 PKR",
-        "value": 45000,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0003",
-        "role": "venue",
-        "date": "2026-11-11",
-        "sender": "Campus Facilities Manager"
-      },
-      {
-        "area": "venue",
-        "subject": "seminar hall b",
-        "attribute": "facilities",
-        "kind": "quote",
-        "evidence": "facilities include projector",
-        "value": [
-          "projector"
-        ],
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0003",
-        "role": "venue",
-        "date": "2026-11-11",
-        "sender": "Campus Facilities Manager"
-      },
-      {
-        "area": "food",
-        "subject": "standard box lunch",
-        "attribute": "unit_price",
-        "kind": "quote",
-        "evidence": "unit price is 650 PKR",
-        "value": 650,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0004",
-        "role": "caterer",
-        "date": "2026-11-11",
-        "sender": "Green Olive Caterers"
-      },
-      {
-        "area": "food",
-        "subject": "standard box lunch",
-        "attribute": "delivery",
-        "kind": "quote",
-        "evidence": "4000 PKR delivery fee",
-        "value": 4000,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0004",
-        "role": "caterer",
-        "date": "2026-11-11",
-        "sender": "Green Olive Caterers"
-      },
-      {
-        "area": "food",
-        "subject": "standard box lunch",
-        "attribute": "max_quantity",
-        "kind": "quote",
-        "evidence": "max supply of 180 boxes",
-        "value": 180,
-        "operator": "=",
-        "unit": "boxes",
-        "condition": null,
-        "source": "M0004",
-        "role": "caterer",
-        "date": "2026-11-11",
-        "sender": "Green Olive Caterers"
-      },
-      {
-        "area": "food",
-        "subject": "executive buffet",
-        "attribute": "unit_price",
-        "kind": "quote",
-        "evidence": "unit price is 950 PKR",
-        "value": 950,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0004",
-        "role": "caterer",
-        "date": "2026-11-11",
-        "sender": "Green Olive Caterers"
-      },
-      {
-        "area": "food",
-        "subject": "executive buffet",
-        "attribute": "delivery",
-        "kind": "quote",
-        "evidence": "5000 PKR delivery fee",
-        "value": 5000,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0004",
-        "role": "caterer",
-        "date": "2026-11-11",
-        "sender": "Green Olive Caterers"
-      },
-      {
-        "area": "judging",
-        "subject": "event",
-        "attribute": "available",
-        "kind": "fact",
-        "evidence": "6 judges available",
-        "value": 6,
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0005",
-        "role": "judging",
-        "date": "2026-11-11",
-        "sender": "Judging Chair"
-      },
-      {
-        "area": "judging",
-        "subject": "event",
-        "attribute": "minutes_per_team",
-        "kind": "requirement",
-        "evidence": "10 minutes per team",
-        "value": 10,
-        "operator": "=",
-        "unit": "minutes",
-        "condition": null,
-        "source": "M0005",
-        "role": "judging",
-        "date": "2026-11-11",
-        "sender": "Judging Chair"
-      },
-      {
-        "area": "judging",
-        "subject": "event",
-        "attribute": "max_teams",
-        "kind": "requirement",
-        "evidence": "evaluate at most 6 teams",
-        "value": 6,
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0005",
-        "role": "judging",
-        "date": "2026-11-11",
-        "sender": "Judging Chair"
-      },
-      {
-        "area": "judging",
-        "subject": "event",
-        "attribute": "honorarium",
-        "kind": "fact",
-        "evidence": "honorarium is 8000 PKR",
-        "value": 8000,
-        "operator": "=",
-        "unit": "PKR",
-        "condition": null,
-        "source": "M0005",
-        "role": "judging",
-        "date": "2026-11-11",
-        "sender": "Judging Chair"
-      },
-      {
-        "area": "schedule",
-        "subject": "lunch break",
-        "attribute": "duration",
-        "kind": "requirement",
-        "evidence": "lunch break duration is 45 minutes",
-        "value": 45,
-        "operator": "=",
-        "unit": "minutes",
-        "condition": null,
-        "source": "M0005",
-        "role": "judging",
-        "date": "2026-11-11",
-        "sender": "Judging Chair"
-      },
-      {
-        "area": "schedule",
-        "subject": "lunch break",
-        "attribute": "earliest",
-        "kind": "requirement",
-        "evidence": "between 12:00 and 13:30",
-        "value": "12:00",
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0005",
-        "role": "judging",
-        "date": "2026-11-11",
-        "sender": "Judging Chair"
-      },
-      {
-        "area": "schedule",
-        "subject": "lunch break",
-        "attribute": "latest_end",
-        "kind": "requirement",
-        "evidence": "between 12:00 and 13:30",
-        "value": "13:30",
-        "operator": "=",
-        "unit": null,
-        "condition": null,
-        "source": "M0005",
-        "role": "judging",
-        "date": "2026-11-11",
-        "sender": "Judging Chair"
-      }
-    ],
-    "rules": [],
-    "decisions": [
-      {
-        "source": "M0001",
-        "area": "attendance",
-        "subject": "event",
-        "attribute": "students",
-        "status": "accepted",
-        "reason": "96 students",
-        "references": [
-          "M0001"
-        ]
-      },
-      {
-        "source": "M0001",
-        "area": "attendance",
-        "subject": "event",
-        "attribute": "teams",
-        "status": "accepted",
-        "reason": "24 teams",
-        "references": [
-          "M0001"
-        ]
-      },
-      {
-        "source": "M0001",
-        "area": "attendance",
-        "subject": "event",
-        "attribute": "team_size",
-        "status": "accepted",
-        "reason": "teams of 4",
-        "references": [
-          "M0001"
-        ]
-      },
-      {
-        "source": "M0001",
-        "area": "attendance",
-        "subject": "event",
-        "attribute": "staff",
-        "status": "accepted",
-        "reason": "8 organizing staff",
-        "references": [
-          "M0001"
-        ]
-      },
-      {
-        "source": "M0001",
-        "area": "schedule",
-        "subject": "event",
-        "attribute": "start",
-        "status": "accepted",
-        "reason": "starts at 09:00",
-        "references": [
-          "M0001"
-        ]
-      },
-      {
-        "source": "M0001",
-        "area": "schedule",
-        "subject": "event",
-        "attribute": "duration",
-        "status": "accepted",
-        "reason": "runs for 360 minutes",
-        "references": [
-          "M0001"
-        ]
-      },
-      {
-        "source": "M0001",
-        "area": "venue",
-        "subject": "event",
-        "attribute": "required_facility",
-        "status": "accepted",
-        "reason": "backup generator",
-        "references": [
-          "M0001"
-        ]
-      },
-      {
-        "source": "M0001",
-        "area": "venue",
-        "subject": "event",
-        "attribute": "required_facility",
-        "status": "accepted",
-        "reason": "wheelchair ramp lazmi",
-        "references": [
-          "M0001"
-        ]
-      },
-      {
-        "source": "M0002",
-        "area": "budget",
-        "subject": "event",
-        "attribute": "ceiling",
-        "status": "accepted",
-        "reason": "ceiling is 320000 PKR",
-        "references": [
-          "M0002"
-        ]
-      },
-      {
-        "source": "M0002",
-        "area": "budget",
-        "subject": "printing_and_badges",
-        "attribute": "cost",
-        "status": "accepted",
-        "reason": "cost 18000 PKR",
-        "references": [
-          "M0002"
-        ]
-      },
-      {
-        "source": "M0003",
-        "area": "venue",
-        "subject": "main auditorium",
-        "attribute": "capacity",
-        "status": "accepted",
-        "reason": "Main Auditorium capacity is 160 seats",
-        "references": [
-          "M0003"
-        ]
-      },
-      {
-        "source": "M0003",
-        "area": "venue",
-        "subject": "main auditorium",
-        "attribute": "cost",
-        "status": "accepted",
-        "reason": "rental cost is 85000 PKR",
-        "references": [
-          "M0003"
-        ]
-      },
-      {
-        "source": "M0003",
-        "area": "venue",
-        "subject": "main auditorium",
-        "attribute": "facilities",
-        "status": "accepted",
-        "reason": "facilities include generator, wheelchair ramp, and projector",
-        "references": [
-          "M0003"
-        ]
-      },
-      {
-        "source": "M0003",
-        "area": "venue",
-        "subject": "seminar hall b",
-        "attribute": "capacity",
-        "status": "accepted",
-        "reason": "Seminar Hall B capacity is 90 seats",
-        "references": [
-          "M0003"
-        ]
-      },
-      {
-        "source": "M0003",
-        "area": "venue",
-        "subject": "seminar hall b",
-        "attribute": "cost",
-        "status": "accepted",
-        "reason": "rental cost is 45000 PKR",
-        "references": [
-          "M0003"
-        ]
-      },
-      {
-        "source": "M0003",
-        "area": "venue",
-        "subject": "seminar hall b",
-        "attribute": "facilities",
-        "status": "accepted",
-        "reason": "facilities include projector",
-        "references": [
-          "M0003"
-        ]
-      },
-      {
-        "source": "M0004",
-        "area": "food",
-        "subject": "standard box lunch",
-        "attribute": "unit_price",
-        "status": "accepted",
-        "reason": "unit price is 650 PKR",
-        "references": [
-          "M0004"
-        ]
-      },
-      {
-        "source": "M0004",
-        "area": "food",
-        "subject": "standard box lunch",
-        "attribute": "delivery",
-        "status": "accepted",
-        "reason": "4000 PKR delivery fee",
-        "references": [
-          "M0004"
-        ]
-      },
-      {
-        "source": "M0004",
-        "area": "food",
-        "subject": "standard box lunch",
-        "attribute": "max_quantity",
-        "status": "accepted",
-        "reason": "max supply of 180 boxes",
-        "references": [
-          "M0004"
-        ]
-      },
-      {
-        "source": "M0004",
-        "area": "food",
-        "subject": "executive buffet",
-        "attribute": "unit_price",
-        "status": "accepted",
-        "reason": "unit price is 950 PKR",
-        "references": [
-          "M0004"
-        ]
-      },
-      {
-        "source": "M0004",
-        "area": "food",
-        "subject": "executive buffet",
-        "attribute": "delivery",
-        "status": "accepted",
-        "reason": "5000 PKR delivery fee",
-        "references": [
-          "M0004"
-        ]
-      },
-      {
-        "source": "M0005",
-        "area": "judging",
-        "subject": "event",
-        "attribute": "available",
-        "status": "accepted",
-        "reason": "6 judges available",
-        "references": [
-          "M0005"
-        ]
-      },
-      {
-        "source": "M0005",
-        "area": "judging",
-        "subject": "event",
-        "attribute": "minutes_per_team",
-        "status": "accepted",
-        "reason": "10 minutes per team",
-        "references": [
-          "M0005"
-        ]
-      },
-      {
-        "source": "M0005",
-        "area": "judging",
-        "subject": "event",
-        "attribute": "max_teams",
-        "status": "accepted",
-        "reason": "evaluate at most 6 teams",
-        "references": [
-          "M0005"
-        ]
-      },
-      {
-        "source": "M0005",
-        "area": "judging",
-        "subject": "event",
-        "attribute": "honorarium",
-        "status": "accepted",
-        "reason": "honorarium is 8000 PKR",
-        "references": [
-          "M0005"
-        ]
-      },
-      {
-        "source": "M0005",
-        "area": "schedule",
-        "subject": "lunch break",
-        "attribute": "duration",
-        "status": "accepted",
-        "reason": "lunch break duration is 45 minutes",
-        "references": [
-          "M0005"
-        ]
-      },
-      {
-        "source": "M0005",
-        "area": "schedule",
-        "subject": "lunch break",
-        "attribute": "earliest",
-        "status": "accepted",
-        "reason": "between 12:00 and 13:30",
-        "references": [
-          "M0005"
-        ]
-      },
-      {
-        "source": "M0005",
-        "area": "schedule",
-        "subject": "lunch break",
-        "attribute": "latest_end",
-        "status": "accepted",
-        "reason": "between 12:00 and 13:30",
-        "references": [
-          "M0005"
-        ]
-      },
-      {
-        "source": "M0006",
-        "area": "food",
-        "subject": "event",
-        "attribute": "order_quantity",
-        "status": "rejected",
-        "reason": "Order of 60 meals leaves 48 of 108 people unfed.",
-        "references": [
-          "M0001",
-          "M0005",
-          "M0006"
-        ]
-      }
-    ],
-    "plan": {
-      "attendance": {
-        "students": 96,
-        "teams": 24,
-        "team_size": 4,
-        "staff": 8,
-        "occupancy": 108,
-        "meals": 108
-      },
-      "schedule": {
-        "duration": 360,
-        "start": "09:00",
-        "timeline": [
-          {
-            "activity": "Hackathon work",
-            "start_min": 0,
-            "end_min": 180,
-            "duration": 180,
-            "start": "09:00",
-            "end": "12:00"
-          },
-          {
-            "activity": "lunch break",
-            "start_min": 180,
-            "end_min": 225,
-            "duration": 45,
-            "start": "12:00",
-            "end": "12:45"
-          },
-          {
-            "activity": "judging",
-            "start_min": 225,
-            "end_min": 285,
-            "duration": 60,
-            "start": "12:45",
-            "end": "13:45"
-          },
-          {
-            "activity": "Hackathon work",
-            "start_min": 285,
-            "end_min": 360,
-            "duration": 75,
-            "start": "13:45",
-            "end": "15:00"
-          }
-        ],
-        "sources": [
-          "M0001",
-          "M0005"
-        ]
-      },
-      "judging": {
-        "available": 6,
-        "minutes_per_team": 10,
-        "max_teams": 6,
-        "teams": 24,
-        "assigned": 4,
-        "assignments": [
-          {
-            "judge": "Pool judge 1",
-            "teams": 6,
-            "start_min": 225,
-            "end_min": 285
-          },
-          {
-            "judge": "Pool judge 2",
-            "teams": 6,
-            "start_min": 225,
-            "end_min": 285
-          },
-          {
-            "judge": "Pool judge 3",
-            "teams": 6,
-            "start_min": 225,
-            "end_min": 285
-          },
-          {
-            "judge": "Pool judge 4",
-            "teams": 6,
-            "start_min": 225,
-            "end_min": 285
-          }
-        ],
-        "cost": 32000,
-        "sources": [
-          "M0001",
-          "M0005"
-        ]
-      },
-      "venue": {
-        "capacity": 160,
-        "cost": 85000,
-        "facilities": [
-          "generator",
-          "wheelchair ramp",
-          "projector"
-        ],
-        "name": "main auditorium",
-        "sources": [
-          "M0003"
-        ],
-        "occupancy": 108,
-        "required": 108,
-        "alternatives": [
-          {
-            "name": "seminar hall b",
-            "reason": "Capacity 90 cannot establish seating for 108.",
-            "unresolved": false,
-            "sources": [
-              "M0003"
-            ]
-          }
-        ]
-      },
-      "food": {
-        "unit_price": 650,
-        "delivery": 4000,
-        "max_quantity": 180,
-        "name": "standard box lunch",
-        "sources": [
-          "M0004"
-        ],
-        "quantity": 108,
-        "cost": 74200,
-        "required": 108,
-        "alternatives": [
-          {
-            "name": "executive buffet",
-            "reason": "Alternative quote 107600; selected combination ranks first on constraints and total cost.",
-            "sources": [
-              "M0004"
-            ]
-          }
-        ]
-      },
-      "budget": {
-        "ceiling": 320000,
-        "lines": [
-          {
-            "item": "printing_and_badges",
-            "cost": 18000,
-            "source": "M0002"
-          },
-          {
-            "item": "venue",
-            "cost": 85000,
-            "sources": [
-              "M0003"
-            ]
-          },
-          {
-            "item": "food",
-            "cost": 74200,
-            "sources": [
-              "M0004"
-            ]
-          },
-          {
-            "item": "judging",
-            "cost": 32000,
-            "sources": [
-              "M0001",
-              "M0005"
-            ]
-          }
-        ],
-        "total": 209200,
-        "remaining": 110800,
-        "sources": [
-          "M0001",
-          "M0002",
-          "M0003",
-          "M0004",
-          "M0005"
-        ]
-      }
-    },
-    "planning_checks": [
-      {
-        "check": "attendance.figures",
-        "passed": true,
-        "reason": "96 students, 24 teams, team size 4.",
-        "evidence": [
-          "M0001"
-        ],
-        "unresolved": false
-      },
-      {
-        "check": "judging.coverage",
-        "passed": true,
-        "reason": "4 assigned judges cover 24 teams within confirmed availability.",
-        "evidence": [
-          "M0001",
-          "M0005"
-        ],
-        "unresolved": false
-      },
-      {
-        "check": "venue.selection",
-        "passed": true,
-        "reason": "main auditorium for 108 people.",
-        "evidence": [
-          "M0001",
-          "M0003",
-          "M0005"
-        ],
-        "unresolved": false
-      },
-      {
-        "check": "food.selection",
-        "passed": true,
-        "reason": "standard box lunch for 108 people.",
-        "evidence": [
-          "M0001",
-          "M0004",
-          "M0005"
-        ],
-        "unresolved": false
-      },
-      {
-        "check": "budget.ceiling",
-        "passed": true,
-        "reason": "Total 209200, ceiling 320000, remaining 110800.",
-        "evidence": [
-          "M0001",
-          "M0002",
-          "M0003",
-          "M0004",
-          "M0005"
-        ],
-        "unresolved": false
-      }
-    ],
-    "affected_areas": [
-      "venue",
-      "schedule",
-      "food",
-      "judging",
-      "budget"
-    ]
-  },
-  "model_calls": []
+  "previous_state": null,
+  "model_calls": [
+    {
+      "run_id": "JUDGING-PACK-RUN",
+      "call_number": 1,
+      "area": "reading",
+      "model": "gemini-3.8-flash",
+      "latency_ms": 1240,
+      "input_tokens": 1420,
+      "output_tokens": 680,
+      "total_tokens": 2100,
+      "usage_source": "provider"
+    }
+  ]
 }
