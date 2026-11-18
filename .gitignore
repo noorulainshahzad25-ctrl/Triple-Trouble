@@ -9,6 +9,7 @@ sessions/
 __pycache__/
 .pytest_cache/
 *.py[cod]
+*$py.class
 *.pem
 *.key
 .DS_Store
